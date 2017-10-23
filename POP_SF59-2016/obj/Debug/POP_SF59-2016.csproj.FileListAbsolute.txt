@@ -1,0 +1,7 @@
+C:\Users\TEMP.FTN.000\Documents\New folder\POP_SF59-2016\POP_SF59-2016\obj\Debug\POP_SF59-2016.csprojResolveAssemblyReference.cache
+C:\Users\TEMP.FTN.000\Documents\New folder\POP_SF59-2016\POP_SF59-2016\obj\Debug\POP_SF59-2016.csproj.CoreCompileInputs.cache
+C:\Users\TEMP.FTN.000\Documents\New folder\POP_SF59-2016\POP_SF59-2016\bin\Debug\POP_SF59-2016.exe.config
+C:\Users\TEMP.FTN.000\Documents\New folder\POP_SF59-2016\POP_SF59-2016\bin\Debug\POP_SF59-2016.exe
+C:\Users\TEMP.FTN.000\Documents\New folder\POP_SF59-2016\POP_SF59-2016\bin\Debug\POP_SF59-2016.pdb
+C:\Users\TEMP.FTN.000\Documents\New folder\POP_SF59-2016\POP_SF59-2016\obj\Debug\POP_SF59-2016.exe
+C:\Users\TEMP.FTN.000\Documents\New folder\POP_SF59-2016\POP_SF59-2016\obj\Debug\POP_SF59-2016.pdb

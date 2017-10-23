@@ -20,7 +20,7 @@ namespace POP_SF59_2016.Model
 
         public string Email { get; set; }
 
-        public string AdresaInternetSajta { get; set; }
+        public string WebSajt { get; set; }
 
         public int PIB { get; set; }
 

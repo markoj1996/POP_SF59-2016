@@ -16,7 +16,7 @@ namespace POP_SF59_2016.Model
 
         public DateTime DatumZavrsetka { get; set; }
 
-        public double Popust { get; set; }
+        public decimal Popust { get; set; }
 
         public List<Namestaj> NamestajNaPopustu { get; set; }
     }

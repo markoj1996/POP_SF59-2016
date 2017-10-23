@@ -18,7 +18,7 @@ namespace POP_SF59_2016.Model
 
         public double PDV { get; set; }
 
-        public List<DodatnaUsluga> DodatnaUsluga { get; set; }
+        public List<DodatnaUsluga> DodatnaUsluge { get; set; }
 
         public double UkupanIznaos { get; set; }
     }

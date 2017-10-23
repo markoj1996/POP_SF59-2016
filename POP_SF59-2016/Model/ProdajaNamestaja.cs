@@ -17,5 +17,6 @@ namespace POP_SF59_2016.Model
         public string BrojRacuna { get; set; }
 
         public string Kupac { get; set; }
+
     }
 }
