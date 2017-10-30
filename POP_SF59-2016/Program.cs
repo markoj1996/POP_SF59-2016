@@ -1,4 +1,5 @@
 ﻿using POP_SF59_2016.Model;
+using POP_SF59_2016.Util1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,25 +28,24 @@ namespace POP_SF59_2016
                 WebSajt = "http://www.ftn.uns.ac.rs"
             };
 
-            var tn1 = new TipNamestaja()
+            var lista = Projekat.Instance.Namestaj;
+            Projekat.Instance.Namestaj = lista;
+
+            foreach (var stavka in lista)
             {
-                Id = 1,
-                Naziv = "aaa"
-            };
+                Console.WriteLine($"{stavka.Naziv}");
+            }
 
-            TipoviNamestaja.Add(tn1);
+            var listaTipa = Projekat.Instance.TipNamestaja;
+            Projekat.Instance.TipNamestaja = listaTipa;
 
-            var n1 = new Namestaj()
+            foreach (var stavka in listaTipa)
             {
-                Id = 1,
-                Naziv = "a",
-                Sifra = "a123",
-                JedinicnaCena = 20,
-                TipNamestaja = tn1,
-                KolicinaUMagacinu = 2
-            };
+                Console.WriteLine($"{stavka.Naziv}");
+            }
+   
 
-            Namestaj.Add(n1);
+
             Console.WriteLine($"==== Dobrodosli u salon {s1.Naziv}");
             IspisGlavnogMenija();
         }
