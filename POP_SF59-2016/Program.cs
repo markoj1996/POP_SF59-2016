@@ -13,6 +13,7 @@ namespace POP_SF59_2016
         static List<Namestaj> Namestaj { get; set; } = new List<Namestaj>();
         static List<TipNamestaja> TipoviNamestaja { get; set; } = new List<TipNamestaja>();
         static List<Akcija> Akcije { get; set; } = new List<Akcija>();
+        static List<Korisnik> Korisnici { get; set; } = new List<Korisnik>();
 
         static void Main(string[] args)
         {
@@ -59,6 +60,18 @@ namespace POP_SF59_2016
 
             Akcije.Add(a1);
 
+
+            var k1 = new Korisnik()
+            {
+                Id = 1,
+                Ime = "Marko",
+                Prezime = "Jankovic",
+                KorisnickoIme = "m",
+                Lozinka = "m"
+            };
+
+            Korisnici.Add(k1);
+
             Console.WriteLine($"==== Dobrodosli u salon {s1.Naziv}");
             IspisGlavnogMenija();
         }
@@ -71,11 +84,12 @@ namespace POP_SF59_2016
                 Console.WriteLine("1. Rad sa namestajem");
                 Console.WriteLine("2. Rad sa tipom namestaja");
                 Console.WriteLine("3. Rad sa akcijama");
+                Console.WriteLine("4. Rad sa korisnicima");
                 Console.WriteLine("0. Izlaz");
 
                 izbor = int.Parse(Console.ReadLine());
 
-            } while (izbor < 0 || izbor > 3);
+            } while (izbor < 0 || izbor > 4);
 
             
 
@@ -90,12 +104,132 @@ namespace POP_SF59_2016
                 case 3:
                     IspisiMeniAkcija();
                     break;
+                case 4:
+                    IspisiMeniKorisnika();
+                    break;
                 case 0:
                     Environment.Exit(0);
                     break;
                 default:
                     break;
             }
+        }
+
+        private static void IspisiMeniKorisnika()
+        {
+            int izbor = 0;
+            do
+            {
+                Console.WriteLine("=== Meni korisnika ===");
+                Console.WriteLine("1. Izlistaj korisnike");
+                Console.WriteLine("2. Dodaj korisnika");
+                Console.WriteLine("3. Izmeni korisnika");
+                Console.WriteLine("4. Obrisi korisnika");
+                Console.WriteLine("0. Povratak u glavni meni");
+
+                izbor = int.Parse(Console.ReadLine());
+
+            } while (izbor < 0 || izbor > 4);
+
+
+            switch (izbor)
+            {
+                case 1:
+                    IzlistajKorisnike();
+                    break;
+                case 2:
+                    DodajKorisnika();
+                    break;
+                case 3:
+                    IzmeniKorisnike();
+                    break;
+                case 4:
+                    ObrisiKorisnike();
+                    break;
+                case 0:
+                    IspisGlavnogMenija();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private static void ObrisiKorisnike()
+        {
+            Console.WriteLine("=== Brisanje korisnika ===");
+            Console.WriteLine("Unesite Id korisnika za brisanje: ");
+            int unos = int.Parse(Console.ReadLine());
+
+            foreach (var korisnik in Korisnici)
+            {
+                if (korisnik.Id == unos)
+                {
+                    korisnik.Obrisan = true;
+                    IspisiMeniKorisnika();
+                }
+            }
+        }
+
+        private static void IzmeniKorisnike()
+        {
+            var novi = new Korisnik();
+
+            Console.WriteLine("=== Izmena korisnika ===");
+            Console.WriteLine("Unesite Id korisnika za izmenu: ");
+            int unos = int.Parse(Console.ReadLine());
+            foreach (var korisnik in Korisnici)
+            {
+                if (korisnik.Id == unos)
+                {
+                    Console.WriteLine("=== Izmena korisnika ===");
+                    novi.Id = korisnik.Id;
+                    Console.WriteLine("Unesite ime: ");
+                    novi.Ime = Console.ReadLine();
+                    Console.WriteLine("Unesite prezime: ");
+                    novi.Prezime = Console.ReadLine();
+                    Console.WriteLine("Unesite korisnicko ime: ");
+                    novi.KorisnickoIme = Console.ReadLine();
+                    Console.WriteLine("Unesite lozinku: ");
+                    novi.Lozinka = Console.ReadLine();
+
+                    Korisnici.Remove(korisnik);
+                    Korisnici.Add(novi);
+                    IspisiMeniKorisnika();
+
+                }
+            }
+        }
+
+        private static void DodajKorisnika()
+        {
+            var novi = new Korisnik();
+            Console.WriteLine("=== Dodavanje korisnika ===");
+            novi.Id = Korisnici.Count + 1;
+            Console.WriteLine("Unesite ime: ");
+            novi.Ime = Console.ReadLine();
+            Console.WriteLine("Unesite prezime: ");
+            novi.Prezime = Console.ReadLine();
+            Console.WriteLine("Unesite korisnicko ime: ");
+            novi.KorisnickoIme = Console.ReadLine();
+            Console.WriteLine("Unesite lozinku: ");
+            novi.Lozinka = Console.ReadLine();
+
+            Korisnici.Add(novi);
+            IspisiMeniKorisnika();
+        }
+
+        private static void IzlistajKorisnike()
+        {
+            Console.WriteLine("=== Izlistavanje korisnika ===");
+            for (int i = 0; i < Korisnici.Count; i++)
+            {
+                if (Korisnici[i].Obrisan == false)
+                {
+                    Console.WriteLine($"{i + 1}. ime: {Korisnici[i].Ime}, prezime: {Korisnici[i].Prezime}, korisnicko ime: {Korisnici[i].KorisnickoIme}");
+                }
+            }
+
+            IspisiMeniKorisnika();
         }
 
         private static void IspisiMeniAkcija()
