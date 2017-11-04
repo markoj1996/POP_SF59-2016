@@ -19,5 +19,6 @@ namespace POP_SF59_2016.Model
         public decimal Popust { get; set; }
 
         public List<int> NamestajNaPopustuId { get; set; }
+
     }
 }

@@ -31,71 +31,44 @@ namespace POP_SF59_2016
                 WebSajt = "http://www.ftn.uns.ac.rs"
             };
 
-            var tn1 = new TipNamestaja()
+
+            var listaT = Projekat.Instance.TipNamestaja;
+            Projekat.Instance.TipNamestaja = listaT;
+            foreach (var stavka in listaT)
             {
-                Id = 1,
-                Naziv = "aaa"
-            };
+                TipoviNamestaja.Add(stavka);
 
-            TipoviNamestaja.Add(tn1);
-
-            var n1 = new Namestaj()
+            }
+            
+            var listaN = Projekat.Instance.Namestaj;
+            Projekat.Instance.Namestaj = listaN;
+            foreach (var stavka in listaN)
             {
-                Id = 1,
-                Naziv = "a",
-                Sifra = "a123",
-                JedinicnaCena = 20,
-                TipNamestaja = tn1,
-                KolicinaUMagacinu = 2
-            };
+                Namestaj.Add(stavka);
+
+            }
 
 
-
-            Namestaj.Add(n1);
-
-            var a1 = new Akcija()
+            var listaK = Projekat.Instance.Korisnik;
+            Projekat.Instance.Korisnik = listaK;
+            foreach (var stavka in listaK)
             {
-                Id = 1,
-                DatumPocetka = new DateTime(2017, 11, 3),
-                DatumZavrsetka = new DateTime(2017, 11, 5),
-                Popust = 10
-            };
+                Korisnici.Add(stavka);
+            }
 
-            Akcije.Add(a1);
-
-
-            var k1 = new Korisnik()
+            var listaA = Projekat.Instance.Akcija;
+            Projekat.Instance.Akcija = listaA;
+            foreach (var stavka in listaA)
             {
-                Id = 1,
-                Ime = "Marko",
-                Prezime = "Jankovic",
-                KorisnickoIme = "m",
-                Lozinka = "m",
-                TipKorisnika = TipKorisnika.Administrator
-            };
-
-            var k2 = new Korisnik()
+                Akcije.Add(stavka);
+            }
+            
+            var listaP = Projekat.Instance.Prodaja;
+            Projekat.Instance.Prodaja = listaP;
+            foreach (var stavka in listaP)
             {
-                Id = 1,
-                Ime = "Marko",
-                Prezime = "Jankovic",
-                KorisnickoIme = "j",
-                Lozinka = "j",
-                TipKorisnika = TipKorisnika.Prodavac
-            };
-
-            Korisnici.Add(k1);
-            Korisnici.Add(k2);
-
-            var p1 = new ProdajaNamestaja()
-            {
-                Id = 1,
-                DatumProdaje = new DateTime(2017, 11, 4),
-                BrojRacuna = "123-321",
-                Kupac = "kupac1"
-            };
-
-            Prodaje.Add(p1);
+                Prodaje.Add(stavka);
+            }
 
             Prijava();
 
@@ -156,7 +129,7 @@ namespace POP_SF59_2016
                     }
                     Console.WriteLine("Pogresno korisnicko ime ili lozinka");*/
 
-                }
+        }
 
         private static void IspisGlavnogMenijaAdministratora()
         {
@@ -167,11 +140,12 @@ namespace POP_SF59_2016
                 Console.WriteLine("1. Rad sa namestajem");
                 Console.WriteLine("2. Rad sa akcijama");
                 Console.WriteLine("3. Rad sa korisnicima");
+                Console.WriteLine("4. Rad sa tipom namestaja");
                 Console.WriteLine("0. Izlaz");
 
                 izbor = int.Parse(Console.ReadLine());
 
-            } while (izbor < 0 || izbor > 3);
+            } while (izbor < 0 || izbor > 4);
 
 
 
@@ -185,6 +159,9 @@ namespace POP_SF59_2016
                     break;
                 case 3:
                     IspisiMeniKorisnika();
+                    break;
+                case 4:
+                    IspisiMeniTipaNamestaja();
                     break;
                 case 0:
                     Environment.Exit(0);
@@ -313,6 +290,7 @@ namespace POP_SF59_2016
                 if (prodaja.Id == unos)
                 {
                     prodaja.Obrisan = true;
+                    GenericSerialize.Serialize<ProdajaNamestaja>("prodaje.xml", Prodaje);
                     IspisiMeniProdaja();
                 }
             }
@@ -341,6 +319,7 @@ namespace POP_SF59_2016
 
                     Prodaje.Remove(prodaja);
                     Prodaje.Add(nova);
+                    GenericSerialize.Serialize<ProdajaNamestaja>("prodaje.xml", Prodaje);
                     IspisiMeniProdaja();
 
                 }
@@ -351,7 +330,7 @@ namespace POP_SF59_2016
         {
             var nova = new ProdajaNamestaja();
             Console.WriteLine("=== Dodavanje prodaje ===");
-            nova.Id = Korisnici.Count + 1;
+            nova.Id = Prodaje.Count + 1;
             Console.WriteLine("Unesite datum prodaje: ");
             nova.DatumProdaje = DateTime.Parse(Console.ReadLine());
             Console.WriteLine("Unesite kupca: ");
@@ -360,6 +339,7 @@ namespace POP_SF59_2016
             nova.BrojRacuna = Console.ReadLine();
 
             Prodaje.Add(nova);
+            GenericSerialize.Serialize<ProdajaNamestaja>("prodaje.xml", Prodaje);
             IspisiMeniProdaja();
         }
 
@@ -371,6 +351,14 @@ namespace POP_SF59_2016
                 if (Prodaje[i].Obrisan == false)
                 {
                     Console.WriteLine($"{i + 1}. datum prodaje: {Prodaje[i].DatumProdaje} , kupac: {Prodaje[i].Kupac} , broj racuna: {Prodaje[i].BrojRacuna}");
+                    Console.WriteLine("Kupljeni namestaj");
+                    foreach (var namestaj in Namestaj)
+                    {
+                        if (Prodaje[i].NamestajZaProdajuId.Contains(namestaj.Id))
+                        {
+                            Console.WriteLine(namestaj.Naziv);
+                        }
+                    }
                 }
             }
 
@@ -427,6 +415,7 @@ namespace POP_SF59_2016
                 if (korisnik.Id == unos)
                 {
                     korisnik.Obrisan = true;
+                    GenericSerialize.Serialize<Korisnik>("korisnici.xml", Korisnici);
                     IspisiMeniKorisnika();
                 }
             }
@@ -456,6 +445,7 @@ namespace POP_SF59_2016
 
                     Korisnici.Remove(korisnik);
                     Korisnici.Add(novi);
+                    GenericSerialize.Serialize<Korisnik>("korisnici.xml", Korisnici);
                     IspisiMeniKorisnika();
 
                 }
@@ -477,6 +467,7 @@ namespace POP_SF59_2016
             novi.Lozinka = Console.ReadLine();
 
             Korisnici.Add(novi);
+            GenericSerialize.Serialize<Korisnik>("korisnici.xml", Korisnici);
             IspisiMeniKorisnika();
         }
 
@@ -544,6 +535,7 @@ namespace POP_SF59_2016
                 if (akcija.Id == unos)
                 {
                     akcija.Obrisan = true;
+                    GenericSerialize.Serialize<Akcija>("akcije.xml", Akcije);
                     IspisiMeniAkcija();
                 }
             }
@@ -571,6 +563,7 @@ namespace POP_SF59_2016
 
                     Akcije.Remove(akcija);
                     Akcije.Add(nova);
+                    GenericSerialize.Serialize<Akcija>("akcije.xml", Akcije);
                     IspisiMeniAkcija();
                 }
             }
@@ -589,6 +582,7 @@ namespace POP_SF59_2016
             nova.Popust = decimal.Parse(Console.ReadLine());
 
             Akcije.Add(nova);
+            GenericSerialize.Serialize<Akcija>("akcije.xml", Akcije);
             IspisiMeniAkcija();
         }
 
@@ -599,7 +593,15 @@ namespace POP_SF59_2016
             {
                 if (Akcije[i].Obrisan == false)
                 {
-                    Console.WriteLine($"{i + 1}. datum pocetka:{Akcije[i].DatumPocetka},datum zavrsetka{Akcije[i].DatumZavrsetka},popust: {Akcije[i].Popust}");
+                    Console.WriteLine($"{i + 1}. datum pocetka: {Akcije[i].DatumPocetka} , datum zavrsetka {Akcije[i].DatumZavrsetka} , popust: {Akcije[i].Popust}");
+                    Console.WriteLine("Namestaj na akciji: ");
+                    foreach (var namestaj in Namestaj)
+                    {
+                        if (Akcije[i].NamestajNaPopustuId.Contains(namestaj.Id))
+                        {
+                            Console.WriteLine(namestaj.Naziv);
+                        }
+                    }
                 }
             }
 
@@ -655,7 +657,8 @@ namespace POP_SF59_2016
             {
                 if (tip.Id == unos)
                 {
-                    tip.Obrisan=true;  
+                    tip.Obrisan=true;
+                    GenericSerialize.Serialize<TipNamestaja>("tipNamestaja.xml", TipoviNamestaja);
                     IspisiMeniTipaNamestaja();
                 }
             }
@@ -679,6 +682,7 @@ namespace POP_SF59_2016
 
                     TipoviNamestaja.Remove(tip);
                     TipoviNamestaja.Add(novi);
+                    GenericSerialize.Serialize<TipNamestaja>("tipNamestaja.xml", TipoviNamestaja);
                     IspisiMeniTipaNamestaja();
                 }
             }
@@ -695,6 +699,7 @@ namespace POP_SF59_2016
             novi.Naziv = Console.ReadLine();
 
             TipoviNamestaja.Add(novi);
+            GenericSerialize.Serialize<TipNamestaja>("tipNamestaja.xml", TipoviNamestaja);
             IspisiMeniTipaNamestaja();
 
         }
@@ -762,7 +767,8 @@ namespace POP_SF59_2016
             {
                 if (Namestaj1.Id == unos)
                 {
-                    Namestaj1.Obrisan=true;  
+                    Namestaj1.Obrisan=true;
+                    GenericSerialize.Serialize<Namestaj>("namestaj.xml", Namestaj);
                     IspisiMeniNamestaja();
                 }
             }
@@ -795,12 +801,12 @@ namespace POP_SF59_2016
                     TipNamestaja trazeniTip = null;
                     do
                     {
-                        Console.WriteLine("Unesite tip namestaja: ");
-                        string nazivTipa = Console.ReadLine();
+                        Console.WriteLine("Unesite id tipa namestaja: ");
+                        int IdTipa = int.Parse(Console.ReadLine());
 
                         foreach (var tipNamestaja in TipoviNamestaja)
                         {
-                            if (tipNamestaja.Naziv == nazivTipa)
+                            if (tipNamestaja.Id == IdTipa)
                             {
                                 trazeniTip = tipNamestaja;
                             }
@@ -808,10 +814,11 @@ namespace POP_SF59_2016
 
                     } while (trazeniTip == null);
 
-                    novi.TipNamestaja = trazeniTip;
+                    novi.TipNamestajaId = trazeniTip.Id;
 
                     Namestaj.Remove(Namestaj1);
                     Namestaj.Add(novi);
+                    GenericSerialize.Serialize<Namestaj>("namestaj.xml", Namestaj);
                     IspisiMeniNamestaja();
                 }
             }
@@ -837,12 +844,12 @@ namespace POP_SF59_2016
             TipNamestaja trazeniTip=null;
             do
             {
-                Console.WriteLine("Unesite tip namestaja: ");
-                string nazivTipa = Console.ReadLine();
+                Console.WriteLine("Unesite id tipa namestaja: ");
+                int IdTipa = int.Parse(Console.ReadLine());
 
                 foreach (var tipNamestaja in TipoviNamestaja)
                 {
-                    if (tipNamestaja.Naziv == nazivTipa)
+                    if (tipNamestaja.Id == IdTipa)
                     {
                         trazeniTip = tipNamestaja;
                     }
@@ -850,9 +857,10 @@ namespace POP_SF59_2016
 
             } while (trazeniTip == null);
 
-            novi.TipNamestaja = trazeniTip;
+            novi.TipNamestajaId = trazeniTip.Id;
 
             Namestaj.Add(novi);
+            GenericSerialize.Serialize<Namestaj>("namestaj.xml",Namestaj);
             IspisiMeniNamestaja();
 
         }
@@ -864,7 +872,7 @@ namespace POP_SF59_2016
             {
                 if(Namestaj[i].Obrisan==false)
                 {
-                    Console.WriteLine($"{i + 1}.{Namestaj[i].Naziv}, cena: {Namestaj[i].JedinicnaCena}, tip namestaja: {Namestaj[i].TipNamestaja.Naziv}");
+                    Console.WriteLine($"{i + 1}.{Namestaj[i].Naziv}, cena: {Namestaj[i].JedinicnaCena},");
                 }            
             }
 

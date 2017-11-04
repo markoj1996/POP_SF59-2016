@@ -20,6 +20,6 @@ namespace POP_SF59_2016.Model
 
         public int KolicinaUMagacinu { get; set; }
 
-        public TipNamestaja TipNamestaja { get; set; }
+        public int TipNamestajaId { get; set; }
     }
 }

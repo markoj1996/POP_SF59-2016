@@ -3,9 +3,10 @@
   <Namestaj>
     <Id>1</Id>
     <Obrisan>false</Obrisan>
-    <Naziv>a</Naziv>
-    <Sifra>a123</Sifra>
-    <JedinicnaCena>20</JedinicnaCena>
-    <KolicinaUMagacinu>2</KolicinaUMagacinu>
+    <Naziv>b</Naziv>
+    <Sifra>b</Sifra>
+    <JedinicnaCena>1</JedinicnaCena>
+    <KolicinaUMagacinu>1</KolicinaUMagacinu>
+    <TipNamestajaId>1</TipNamestajaId>
   </Namestaj>
 </ArrayOfNamestaj>
