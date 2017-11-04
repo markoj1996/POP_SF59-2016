@@ -14,6 +14,7 @@ namespace POP_SF59_2016
         static List<TipNamestaja> TipoviNamestaja { get; set; } = new List<TipNamestaja>();
         static List<Akcija> Akcije { get; set; } = new List<Akcija>();
         static List<Korisnik> Korisnici { get; set; } = new List<Korisnik>();
+        static List<ProdajaNamestaja> Prodaje { get; set; } = new List<ProdajaNamestaja>();
 
         static void Main(string[] args)
         {
@@ -48,6 +49,8 @@ namespace POP_SF59_2016
                 KolicinaUMagacinu = 2
             };
 
+
+
             Namestaj.Add(n1);
 
             var a1 = new Akcija()
@@ -67,15 +70,156 @@ namespace POP_SF59_2016
                 Ime = "Marko",
                 Prezime = "Jankovic",
                 KorisnickoIme = "m",
-                Lozinka = "m"
+                Lozinka = "m",
+                TipKorisnika = TipKorisnika.Administrator
+            };
+
+            var k2 = new Korisnik()
+            {
+                Id = 1,
+                Ime = "Marko",
+                Prezime = "Jankovic",
+                KorisnickoIme = "j",
+                Lozinka = "j",
+                TipKorisnika = TipKorisnika.Prodavac
             };
 
             Korisnici.Add(k1);
+            Korisnici.Add(k2);
 
-            Console.WriteLine($"==== Dobrodosli u salon {s1.Naziv}");
-            IspisGlavnogMenija();
+            var p1 = new ProdajaNamestaja()
+            {
+                Id = 1,
+                DatumProdaje = new DateTime(2017, 11, 4),
+                BrojRacuna = "123-321",
+                Kupac = "kupac1"
+            };
+
+            Prodaje.Add(p1);
+
+            Prijava();
+
+
         }
 
+        private static void Prijava()
+        {
+
+            Console.WriteLine($"==== Prijava ====");
+            Console.WriteLine("Korisnicko ime: ");
+            string korisnickoIme = Console.ReadLine();
+            Console.WriteLine("Lozinka: ");
+            string lozinka = Console.ReadLine();
+
+            for (int i = 0; i < Korisnici.Count; i++)
+            {
+                if (Korisnici[i].KorisnickoIme == korisnickoIme && Korisnici[i].Lozinka == lozinka)
+                {
+                    if (Korisnici[i].TipKorisnika == TipKorisnika.Administrator)
+                    {
+                        IspisGlavnogMenijaAdministratora();
+                    }
+                    else
+                    {
+                        IspisGlavnogMenijaProdavca();
+                    }
+
+                }
+                else
+                {
+                    continue;
+                }
+                Console.WriteLine("Pogresno korisnicko ime ili lozinka");
+            }
+                    /*foreach (var korisnik in Korisnici)
+                    {
+                        Console.WriteLine($"==== Prijava ====");
+                        Console.WriteLine("Korisnicko ime: ");
+                        string korisnickoIme = Console.ReadLine();
+                        Console.WriteLine("Lozinka: ");
+                        string lozinka = Console.ReadLine();
+                        if (korisnik.KorisnickoIme == korisnickoIme && korisnik.Lozinka == lozinka)
+                        {
+                            if (korisnik.TipKorisnika == TipKorisnika.Administrator)
+                            {
+                                IspisGlavnogMenijaAdministratora();
+                            }
+                            else
+                            {
+                                IspisGlavnogMenijaProdavca();
+                            }
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
+                    Console.WriteLine("Pogresno korisnicko ime ili lozinka");*/
+
+                }
+
+        private static void IspisGlavnogMenijaAdministratora()
+        {
+            int izbor = 0;
+            do
+            {
+                Console.WriteLine("=== Meni Administratora ===");
+                Console.WriteLine("1. Rad sa namestajem");
+                Console.WriteLine("2. Rad sa akcijama");
+                Console.WriteLine("3. Rad sa korisnicima");
+                Console.WriteLine("0. Izlaz");
+
+                izbor = int.Parse(Console.ReadLine());
+
+            } while (izbor < 0 || izbor > 3);
+
+
+
+            switch (izbor)
+            {
+                case 1:
+                    IspisiMeniNamestaja();
+                    break;
+                case 2:
+                    IspisiMeniAkcija();
+                    break;
+                case 3:
+                    IspisiMeniKorisnika();
+                    break;
+                case 0:
+                    Environment.Exit(0);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private static void IspisGlavnogMenijaProdavca()
+        {
+            int izbor = 0;
+            do
+            {
+                Console.WriteLine("=== Meni Prodavca ===");
+                Console.WriteLine("1. Rad sa prodajama");
+                Console.WriteLine("0. Izlaz");
+
+                izbor = int.Parse(Console.ReadLine());
+
+            } while (izbor < 0 || izbor > 1);
+
+            switch (izbor)
+            {
+                case 1:
+                    IspisiMeniProdaja();
+                    break;
+                case 0:
+                    Environment.Exit(0);
+                    break;
+                default:
+                    break;
+            }
+        }
+        /*
         private static void IspisGlavnogMenija()
         {
             int izbor = 0;
@@ -85,11 +229,12 @@ namespace POP_SF59_2016
                 Console.WriteLine("2. Rad sa tipom namestaja");
                 Console.WriteLine("3. Rad sa akcijama");
                 Console.WriteLine("4. Rad sa korisnicima");
+                Console.WriteLine("5. Rad sa prodajama");
                 Console.WriteLine("0. Izlaz");
 
                 izbor = int.Parse(Console.ReadLine());
 
-            } while (izbor < 0 || izbor > 4);
+            } while (izbor < 0 || izbor > 5);
 
             
 
@@ -107,12 +252,129 @@ namespace POP_SF59_2016
                 case 4:
                     IspisiMeniKorisnika();
                     break;
+                case 5:
+                    IspisiMeniProdaja();
+                    break;
                 case 0:
                     Environment.Exit(0);
                     break;
                 default:
                     break;
             }
+        }*/
+
+        private static void IspisiMeniProdaja()
+        {
+            int izbor = 0;
+            do
+            {
+                Console.WriteLine("=== Meni prodaje namestaja ===");
+                Console.WriteLine("1. Izlistaj prodaje");
+                Console.WriteLine("2. Dodaj prodaju");
+                Console.WriteLine("3. Izmeni prodaju");
+                Console.WriteLine("4. Obrisi prodaju");
+                Console.WriteLine("0. Povratak u glavni meni");
+
+                izbor = int.Parse(Console.ReadLine());
+
+            } while (izbor < 0 || izbor > 4);
+
+
+            switch (izbor)
+            {
+                case 1:
+                    IzlistajProdaje();
+                    break;
+                case 2:
+                    DodajProdaju();
+                    break;
+                case 3:
+                    IzmeniProdaju();
+                    break;
+                case 4:
+                    ObrisiProdaju();
+                    break;
+                case 0:
+                    IspisGlavnogMenijaProdavca();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private static void ObrisiProdaju()
+        {
+            Console.WriteLine("=== Brisanje prodaje ===");
+            Console.WriteLine("Unesite Id prodaje za brisanje: ");
+            int unos = int.Parse(Console.ReadLine());
+
+            foreach (var prodaja in Prodaje)
+            {
+                if (prodaja.Id == unos)
+                {
+                    prodaja.Obrisan = true;
+                    IspisiMeniProdaja();
+                }
+            }
+        }
+
+        private static void IzmeniProdaju()
+        {
+            var nova = new ProdajaNamestaja();
+
+            Console.WriteLine("=== Izmena prodaje ===");
+            Console.WriteLine("Unesite Id prodaje za izmenu: ");
+            int unos = int.Parse(Console.ReadLine());
+            foreach (var prodaja in Prodaje)
+            {
+                if (prodaja.Id == unos)
+                {
+                    Console.WriteLine("=== Izmena prodaje ===");
+                    Console.WriteLine("=== Dodavanje prodaje ===");
+                    nova.Id = prodaja.Id;
+                    Console.WriteLine("Unesite datum prodaje: ");
+                    nova.DatumProdaje = DateTime.Parse(Console.ReadLine());
+                    Console.WriteLine("Unesite kupca: ");
+                    nova.Kupac = Console.ReadLine();
+                    Console.WriteLine("Unesite broj racuna: ");
+                    nova.BrojRacuna = Console.ReadLine();
+
+                    Prodaje.Remove(prodaja);
+                    Prodaje.Add(nova);
+                    IspisiMeniProdaja();
+
+                }
+            }
+        }
+
+        private static void DodajProdaju()
+        {
+            var nova = new ProdajaNamestaja();
+            Console.WriteLine("=== Dodavanje prodaje ===");
+            nova.Id = Korisnici.Count + 1;
+            Console.WriteLine("Unesite datum prodaje: ");
+            nova.DatumProdaje = DateTime.Parse(Console.ReadLine());
+            Console.WriteLine("Unesite kupca: ");
+            nova.Kupac = Console.ReadLine();
+            Console.WriteLine("Unesite broj racuna: ");
+            nova.BrojRacuna = Console.ReadLine();
+
+            Prodaje.Add(nova);
+            IspisiMeniProdaja();
+        }
+
+        private static void IzlistajProdaje()
+        {
+            Console.WriteLine("=== Izlistavanje prodaja ===");
+            for (int i = 0; i < Prodaje.Count; i++)
+            {
+                if (Prodaje[i].Obrisan == false)
+                {
+                    Console.WriteLine($"{i + 1}. datum prodaje: {Prodaje[i].DatumProdaje} , kupac: {Prodaje[i].Kupac} , broj racuna: {Prodaje[i].BrojRacuna}");
+                }
+            }
+
+            IspisiMeniProdaja();
         }
 
         private static void IspisiMeniKorisnika()
@@ -147,7 +409,7 @@ namespace POP_SF59_2016
                     ObrisiKorisnike();
                     break;
                 case 0:
-                    IspisGlavnogMenija();
+                    IspisGlavnogMenijaAdministratora();
                     break;
                 default:
                     break;
@@ -225,7 +487,7 @@ namespace POP_SF59_2016
             {
                 if (Korisnici[i].Obrisan == false)
                 {
-                    Console.WriteLine($"{i + 1}. ime: {Korisnici[i].Ime}, prezime: {Korisnici[i].Prezime}, korisnicko ime: {Korisnici[i].KorisnickoIme}");
+                    Console.WriteLine($"{i + 1}. ime: {Korisnici[i].Ime}, prezime: {Korisnici[i].Prezime}, korisnicko ime: {Korisnici[i].KorisnickoIme} , tip korisnika: {Korisnici[i].TipKorisnika}");
                 }
             }
 
@@ -264,7 +526,7 @@ namespace POP_SF59_2016
                     ObrisiAkciju();
                     break;
                 case 0:
-                    IspisGlavnogMenija();
+                    IspisGlavnogMenijaAdministratora();
                     break;
                 default:
                     break;
@@ -376,7 +638,7 @@ namespace POP_SF59_2016
                     ObrisiTipNamestaja();
                     break;
                 case 0:
-                    IspisGlavnogMenija();
+                    IspisGlavnogMenijaAdministratora();
                     break;
                 default:
                     break;
@@ -483,7 +745,7 @@ namespace POP_SF59_2016
                     ObrisiNamestaj();
                     break;
                 case 0:
-                    IspisGlavnogMenija();
+                    IspisGlavnogMenijaAdministratora();
                     break;
                 default:
                     break;

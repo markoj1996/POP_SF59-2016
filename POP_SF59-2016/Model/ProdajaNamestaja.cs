@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace POP_SF59_2016.Model
 {
-    class ProdajaNamestaja
+    public class ProdajaNamestaja
     {
         public int Id { get; set; }
 
-        public List<Namestaj> NamestajZaProdaju { get; set; }
+        public bool Obrisan { get; set; }
+
+        public List<int> NamestajZaProdajuId { get; set; }
 
         public DateTime DatumProdaje { get; set; }
 

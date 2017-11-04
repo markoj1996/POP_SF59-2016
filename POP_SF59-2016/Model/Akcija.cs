@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace POP_SF59_2016.Model
 {
-    class Akcija
+    public class Akcija
     {
         public int Id { get; set; }
 

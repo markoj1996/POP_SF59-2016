@@ -8,10 +8,10 @@ namespace POP_SF59_2016.Model
 {
     public enum TipKorisnika
     {
-        Administrator,
-        Prodavac
+        Administrator=0,
+        Prodavac=1
     }
-    class Korisnik
+    public class Korisnik
     {
         public int Id { get; set; }
 
