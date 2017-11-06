@@ -25,3 +25,10 @@ C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP_SF59-2016\bin\Debug\POP_SF59-
 C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP_SF59-2016\obj\Debug\POP_SF59-2016.csproj.CoreCompileInputs.cache
 C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP_SF59-2016\obj\Debug\POP_SF59-2016.exe
 C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP_SF59-2016\obj\Debug\POP_SF59-2016.pdb
+S:\New folder\POP_SF59-2016\POP_SF59-2016\bin\Debug\POP_SF59-2016.exe.config
+S:\New folder\POP_SF59-2016\POP_SF59-2016\bin\Debug\POP_SF59-2016.exe
+S:\New folder\POP_SF59-2016\POP_SF59-2016\bin\Debug\POP_SF59-2016.pdb
+S:\New folder\POP_SF59-2016\POP_SF59-2016\obj\Debug\POP_SF59-2016.csprojResolveAssemblyReference.cache
+S:\New folder\POP_SF59-2016\POP_SF59-2016\obj\Debug\POP_SF59-2016.csproj.CoreCompileInputs.cache
+S:\New folder\POP_SF59-2016\POP_SF59-2016\obj\Debug\POP_SF59-2016.exe
+S:\New folder\POP_SF59-2016\POP_SF59-2016\obj\Debug\POP_SF59-2016.pdb
