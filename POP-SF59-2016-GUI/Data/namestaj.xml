@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfNamestaj xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Namestaj>
+    <Id>1</Id>
+    <Obrisan>false</Obrisan>
+    <Naziv>namestaj1</Naziv>
+    <Sifra>b</Sifra>
+    <JedinicnaCena>1</JedinicnaCena>
+    <KolicinaUMagacinu>1</KolicinaUMagacinu>
+    <TipNamestajaId>0</TipNamestajaId>
+  </Namestaj>
+  <Namestaj>
+    <Id>2</Id>
+    <Obrisan>false</Obrisan>
+    <Naziv>novi</Naziv>
+    <JedinicnaCena>0</JedinicnaCena>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <TipNamestajaId>0</TipNamestajaId>
+  </Namestaj>
+  <Namestaj>
+    <Id>3</Id>
+    <Obrisan>true</Obrisan>
+    <Naziv>asd</Naziv>
+    <JedinicnaCena>0</JedinicnaCena>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <TipNamestajaId>0</TipNamestajaId>
+  </Namestaj>
+</ArrayOfNamestaj>
