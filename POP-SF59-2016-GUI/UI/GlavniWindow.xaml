@@ -1,0 +1,66 @@
+﻿<Window x:Class="POP_SF59_2016_GUI.UI.GlavniWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:POP_SF59_2016_GUI.UI"
+        mc:Ignorable="d"
+        Title="GlavniWindow" Height="500" Width="620">
+    <Grid>
+        <TabControl >
+            <TabItem Header="Namestaj" Width="147">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="183*"/>
+                        <RowDefinition Height="38*"/>
+                    </Grid.RowDefinitions>
+                    <ListBox Grid.Row="0" FontSize="20" Name="lbNamestaj" Height="365" />
+                    <Button Content="Dodaj" Margin="25,20,463,21" Grid.Row="1" Click="DodajN_Click"/>
+                    <Button Content="Izmeni" Margin="171,20,317,21" Grid.Row="1" Width="108" Click="IzmeniN_Click"/>
+                    <Button Content="Obrisi" Margin="319,20,169,21" Grid.Row="1" Width="108" Click="ObrisiN_Click"/>
+                    <Button Content="Izadji" Margin="463,20,25,21" Grid.Row="1" Width="108" Click="Izadji_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Korisnici" Width="147">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="183*"/>
+                        <RowDefinition Height="38*"/>
+                    </Grid.RowDefinitions>
+                    <ListBox Grid.Row="0" FontSize="20" Name="lbKorisnici" Height="365"/>
+                    <Button Content="Dodaj" Margin="25,20,463,21" Grid.Row="1" Click="DodajK_Click"/>
+                    <Button Content="Izmeni" Margin="171,20,317,21" Grid.Row="1" Width="108" Click="IzmeniK_Click"/>
+                    <Button Content="Obrisi" Margin="319,20,169,21" Grid.Row="1" Width="108" Click="ObrisiK_Click"/>
+                    <Button Content="Izadji" Margin="463,20,25,21" Grid.Row="1" Width="108" Click="Izadji_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Akcije" Width="147">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="183*"/>
+                        <RowDefinition Height="38*"/>
+                    </Grid.RowDefinitions>
+                    <ListBox Grid.Row="0" FontSize="20" Name="lbAkcije" Height="365"/>
+                    <Button Content="Dodaj" Margin="25,20,463,21" Grid.Row="1" Click="DodajA_Click"/>
+                    <Button Content="Izmeni" Margin="171,20,317,21" Grid.Row="1" Width="108" Click="IzmeniA_Click"/>
+                    <Button Content="Obrisi" Margin="319,20,169,21" Grid.Row="1" Width="108" Click="ObrisiA_Click"/>
+                    <Button Content="Izadji" Margin="463,20,25,21" Grid.Row="1" Width="108" Click="Izadji_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Tip namestaja" Width="147">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="183*"/>
+                        <RowDefinition Height="38*"/>
+                    </Grid.RowDefinitions>
+                    <ListBox Grid.Row="0" FontSize="20" Name="lbTipNamestaja" Height="365"/>
+                    <Button Content="Dodaj" Margin="25,20,463,21" Grid.Row="1" Click="DodajT_Click"/>
+                    <Button Content="Izmeni" Margin="171,20,317,21" Grid.Row="1" Width="108" Click="IzmeniT_Click"/>
+                    <Button Content="Obrisi" Margin="319,20,169,21" Grid.Row="1" Width="108" Click="ObrisiT_Click"/>
+                    <Button Content="Izadji" Margin="463,20,25,21" Grid.Row="1" Width="108" Click="Izadji_Click"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>

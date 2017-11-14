@@ -1,0 +1,21 @@
+﻿<Window x:Class="POP_SF59_2016_GUI.UI.AkcijaWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:POP_SF59_2016_GUI.UI"
+        mc:Ignorable="d"
+        Title="AkcijaWindow" Height="319" Width="387">
+    <Grid>
+        <Label Grid.Row="0" Grid.Column="0" Content="Datum pocetka" Margin="10,17,0,222" HorizontalAlignment="Left" VerticalAlignment="Center" Height="49" Width="117"/>
+        <TextBox Name="tbDatumPocetka"  Margin="127,17,10,234" />
+        <Label Grid.Row="0" Grid.Column="0" Content="Datum zavrsetka" Margin="10,71,0,168" HorizontalAlignment="Left" VerticalAlignment="Center" Height="49" Width="117"/>
+        <TextBox Name="tbDatumZavrsetka" Margin="127,71,10,180" />
+        <Label Grid.Row="0" Grid.Column="0" Content="Popust" Margin="10,125,0,114" HorizontalAlignment="Left" VerticalAlignment="Center" Height="49" Width="117"/>
+        <TextBox Name="tbPopust" Margin="127,120,10,131"></TextBox>
+        <Button Content="Sacuvaj" Height="40" Width="80" Margin="159,215,140,33" Click="SacuvajIzmene"/>
+        <Button Content="Izadji" Height="40" Width="80" Margin="275,215,24,33" Click="Izadji"/>
+
+
+    </Grid>
+</Window>
