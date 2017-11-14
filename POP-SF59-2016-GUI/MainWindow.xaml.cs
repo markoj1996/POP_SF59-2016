@@ -25,66 +25,33 @@ namespace POP_SF59_2016_GUI
         public MainWindow()
         {
             InitializeComponent();
-
-            OsveziPrikaz();
         }
 
-        private void OsveziPrikaz()
+        private void login_Click(object sender, RoutedEventArgs e)
         {
-            lbNamestaj.Items.Clear();
+            var korisnici = Projekat.Instance.Korisnik;
 
-            foreach (var tipNamestaja in Projekat.Instance.TipNamestaja)
+            if (tbUsername.Text != "" && pwPassword.Password != "")
             {
-                if (tipNamestaja.Obrisan == false)
+                for (int i = 0; i < korisnici.Count; i++)
                 {
-                    lbNamestaj.Items.Add(tipNamestaja);
-                }
-
-            }
-            lbNamestaj.SelectedIndex = 0;
-        }
-
-
-        private void DodajNamestaj_Click(object sender, RoutedEventArgs e)
-        {
-            var noviTipNamestaja = new TipNamestaja()
-            {
-                Naziv = ""
-            };
-            var TipNamestajaProzor = new TipNamestajaWindow(noviTipNamestaja,TipNamestajaWindow.OperacijaT.Dodavanje);
-            TipNamestajaProzor.ShowDialog();
-            OsveziPrikaz();
-        }
-
-        private void IzmeniNamestaj_Click(object sender, RoutedEventArgs e)
-        {
-            var izabraniTipNamestaja =(TipNamestaja) lbNamestaj.SelectedItem;
-            var TipNamestajaProzor = new TipNamestajaWindow(izabraniTipNamestaja, TipNamestajaWindow.OperacijaT.Izmena);
-            TipNamestajaProzor.ShowDialog();
-            OsveziPrikaz();
-        }
-
-        private void Zatvori_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-        }
-
-        private void Obrisi_Click(object sender, RoutedEventArgs e)
-        {
-            var izabranTipNamestaja = (TipNamestaja) lbNamestaj.SelectedItem;
-            var listaTipaNamestaja = Projekat.Instance.TipNamestaja;
-
-            if(MessageBox.Show($"Da li zelite da obrisete: {izabranTipNamestaja.Naziv}", "Brisanje", MessageBoxButton.YesNo)==MessageBoxResult.Yes)
-            {
-                foreach (var n in listaTipaNamestaja)
-                {
-                    if (n.Id == izabranTipNamestaja.Id)
+                    if (korisnici[i].KorisnickoIme == tbUsername.Text && korisnici[i].Lozinka == pwPassword.Password)
                     {
-                        n.Obrisan = true;
+                        GlavniWindow g = new GlavniWindow();
+                        g.Show();
+                        this.Close();
+                        break;
                     }
+                    else
+                    {
+                        continue;
+                    }
+                    MessageBox.Show("Pogresno korisnicko ime ili lozinka!!!");
                 }
-                Projekat.Instance.TipNamestaja = listaTipaNamestaja;
-                OsveziPrikaz();
+            }
+            else
+            {
+                MessageBox.Show("Morate uneti korisnicko ime i lozinku!!!");
             }
         }
     }

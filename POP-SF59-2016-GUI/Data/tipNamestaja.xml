@@ -6,23 +6,8 @@
     <Naziv>Tip1</Naziv>
   </TipNamestaja>
   <TipNamestaja>
-    <Id>2</Id>
+    <Id>1</Id>
     <Obrisan>false</Obrisan>
     <Naziv>novi</Naziv>
-  </TipNamestaja>
-  <TipNamestaja>
-    <Id>3</Id>
-    <Obrisan>true</Obrisan>
-    <Naziv>Izmena</Naziv>
-  </TipNamestaja>
-  <TipNamestaja>
-    <Id>4</Id>
-    <Obrisan>true</Obrisan>
-    <Naziv>izmena</Naziv>
-  </TipNamestaja>
-  <TipNamestaja>
-    <Id>5</Id>
-    <Obrisan>true</Obrisan>
-    <Naziv>izmena</Naziv>
   </TipNamestaja>
 </ArrayOfTipNamestaja>

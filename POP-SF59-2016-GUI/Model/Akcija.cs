@@ -20,5 +20,29 @@ namespace POP_SF59_2016.Model
 
         public List<int> NamestajNaPopustuId { get; set; }
 
+        public Namestaj nadji(int id)
+        {
+            foreach (var namestaj in Projekat.Instance.Namestaj)
+            {
+                if (namestaj.Id == id)
+                {
+                    return namestaj;
+                }
+            }
+            return null;
+        }
+
+        public override string ToString()
+        {
+            List<string> listaImena= new List<string>();
+            foreach (var id in NamestajNaPopustuId)
+            {
+                Namestaj nadjeni = nadji(id);
+                listaImena.Add(nadjeni.Naziv);
+            }
+            var result = string.Join(",", listaImena.ToArray());
+            return $"{DatumPocetka},{DatumZavrsetka},{Popust},{result}";
+        }
+
     }
 }

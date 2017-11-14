@@ -5,17 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:POP_SF59_2016_GUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="525">
+        Title="Login" Height="400" Width="600">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="89*"/>
-            <RowDefinition Height="19*"/>
-        </Grid.RowDefinitions>
-        <ListBox Grid.Row="0" FontSize="20" Name="lbNamestaj" />
-        <Button Grid.Row="1" Content="Dodaj" Height="40" Width="80" Margin="35.795,24.553,401.204,26.752" Click="DodajNamestaj_Click"/>
-        <Button Grid.Row="1" Content="Izmeni" Height="40" Width="80" Margin="152.462,24.553,284.537,26.752" Click="IzmeniNamestaj_Click"/>
-        <Button Grid.Row="1" Content="Obrisi" Height="40" Width="80" Margin="273.531,24.553,163.468,26.752" Click="Obrisi_Click"/>
-        <Button Grid.Row="1" Content="Izadji" Height="40" Width="80" Margin="394.6,24.553,42.399,26.752" Click="Zatvori_Click"/>
-
+        <Label Content="Username" Margin="80,91,362,220" FontSize="24"/>
+        <Label Content="Password" Margin="80,153,362,158" FontSize="24"/>
+        <TextBox Name="tbUsername" Margin="207,91,55,235" VerticalContentAlignment="Center" FontSize="18"/>
+        <PasswordBox Name="pwPassword" Margin="207,154,55,172" VerticalContentAlignment="Center" FontSize="18"/>
+        <Button Content="Login" Margin="241,228,241,101" FontSize="18" Click="login_Click"/>
     </Grid>
 </Window>

@@ -17,3 +17,28 @@ S:\New folder\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\NamestajWindow.g.cs
 S:\New folder\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\NamestajWindow.baml
 S:\New folder\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\TipNamestajaWindow.g.cs
 S:\New folder\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\TipNamestajaWindow.baml
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\POP-SF59-2016-GUI.csprojResolveAssemblyReference.cache
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\MainWindow.g.cs
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\NamestajWindow.g.cs
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\TipNamestajaWindow.g.cs
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\App.g.cs
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\POP-SF59-2016-GUI_MarkupCompile.cache
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\POP-SF59-2016-GUI_MarkupCompile.lref
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\POP-SF59-2016-GUI.exe
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\POP-SF59-2016-GUI.pdb
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\bin\Debug\POP-SF59-2016-GUI.exe.config
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\bin\Debug\POP-SF59-2016-GUI.exe
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\bin\Debug\POP-SF59-2016-GUI.pdb
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\MainWindow.baml
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\NamestajWindow.baml
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\TipNamestajaWindow.baml
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\POP-SF59-2016-GUI.g.resources
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\POP_SF59_2016_GUI.Properties.Resources.resources
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\POP-SF59-2016-GUI.csproj.GenerateResource.Cache
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\POP-SF59-2016-GUI.csproj.CoreCompileInputs.cache
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\GlavniWindow.g.cs
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\GlavniWindow.baml
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\KorisnikWindow.g.cs
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\KorisnikWindow.baml
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\AkcijaWindow.g.cs
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\AkcijaWindow.baml

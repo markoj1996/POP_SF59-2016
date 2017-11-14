@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace POP_SF59_2016.Model
 {
-    public enum TipKorisnika
+    /*public enum TipKorisnika
     {
         Administrator=0,
         Prodavac=1
-    }
+    }*/
     public class Korisnik
     {
         public int Id { get; set; }
@@ -25,6 +25,11 @@ namespace POP_SF59_2016.Model
 
         public string Lozinka { get; set; }
 
-        public TipKorisnika TipKorisnika { get; set; }
+        public string TipKorisnika { get; set; }
+
+        public override string ToString()
+        {
+            return $"{Ime},{Prezime},{KorisnickoIme},{TipKorisnika}";
+        }
     }
 }

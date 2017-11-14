@@ -25,4 +25,20 @@
     <KolicinaUMagacinu>0</KolicinaUMagacinu>
     <TipNamestajaId>0</TipNamestajaId>
   </Namestaj>
+  <Namestaj>
+    <Id>4</Id>
+    <Obrisan>true</Obrisan>
+    <Naziv>hdh</Naziv>
+    <JedinicnaCena>0</JedinicnaCena>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <TipNamestajaId>0</TipNamestajaId>
+  </Namestaj>
+  <Namestaj>
+    <Id>5</Id>
+    <Obrisan>false</Obrisan>
+    <Naziv>asfaf</Naziv>
+    <JedinicnaCena>0</JedinicnaCena>
+    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <TipNamestajaId>0</TipNamestajaId>
+  </Namestaj>
 </ArrayOfNamestaj>

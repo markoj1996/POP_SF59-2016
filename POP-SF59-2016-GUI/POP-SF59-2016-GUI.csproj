@@ -54,6 +54,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="UI\AkcijaWindow.xaml.cs">
+      <DependentUpon>AkcijaWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\GlavniWindow.xaml.cs">
+      <DependentUpon>GlavniWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\KorisnikWindow.xaml.cs">
+      <DependentUpon>KorisnikWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\NamestajWindow.xaml.cs">
       <DependentUpon>NamestajWindow.xaml</DependentUpon>
     </Compile>
@@ -73,6 +82,18 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UI\AkcijaWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\GlavniWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\KorisnikWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\NamestajWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -116,7 +137,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Data\akcije.xml" />
+    <Resource Include="Data\korisnici.xml" />
+    <Resource Include="Data\prodaje.xml" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Data\namestaj.xml" />
   </ItemGroup>
