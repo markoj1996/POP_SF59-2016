@@ -34,30 +34,30 @@ namespace POP_SF59_2016_GUI.UI
         public GlavniWindow()
         {
             InitializeComponent();
-            OsveziPrikaz();
+            OsveziPrikaz(Projekat.Instance.Namestaj,Projekat.Instance.Korisnik,Projekat.Instance.TipNamestaja);
         }
 
  
-        private void OsveziPrikaz()
+        public void OsveziPrikaz(List<Namestaj>namestaj,List<Korisnik>korisnik,List<TipNamestaja>tip)
         {
             lbNamestaj.Items.Clear();
 
-            foreach (var namestaj in Projekat.Instance.Namestaj)
+            foreach (var n in namestaj)
             {
-                if (namestaj.Obrisan == false)
+                if (n.Obrisan == false)
                 {
-                    lbNamestaj.Items.Add(namestaj);
+                    lbNamestaj.Items.Add(n);
                 }
 
             }
             lbNamestaj.SelectedIndex = 0;
 
             lbKorisnici.Items.Clear();
-            foreach (var korisnik in Projekat.Instance.Korisnik)
+            foreach (var k in korisnik)
             {
-                if (korisnik.Obrisan == false)
+                if (k.Obrisan == false)
                 {
-                    lbKorisnici.Items.Add(korisnik);
+                    lbKorisnici.Items.Add(k);
                 }
 
             }
@@ -75,11 +75,11 @@ namespace POP_SF59_2016_GUI.UI
             lbAkcije.SelectedIndex = 0;
 
             lbTipNamestaja.Items.Clear();
-            foreach (var tip in Projekat.Instance.TipNamestaja)
+            foreach (var t in tip)
             {
-                if (tip.Obrisan == false)
+                if (t.Obrisan == false)
                 {
-                    lbTipNamestaja.Items.Add(tip);
+                    lbTipNamestaja.Items.Add(t);
                 }
 
             }
@@ -94,7 +94,7 @@ namespace POP_SF59_2016_GUI.UI
             };
             var NamestajProzor = new NamestajWindow(noviNamestaj, NamestajWindow.Operacija.Dodavanje);
             NamestajProzor.ShowDialog();
-            OsveziPrikaz();
+            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.TipNamestaja);
         }
 
         private void IzmeniN_Click(object sender, RoutedEventArgs e)
@@ -102,7 +102,7 @@ namespace POP_SF59_2016_GUI.UI
             var izabraniNamestaj = (Namestaj)lbNamestaj.SelectedItem;
             var NamestajProzor = new NamestajWindow(izabraniNamestaj, NamestajWindow.Operacija.Izmena);
             NamestajProzor.ShowDialog();
-            OsveziPrikaz();
+            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.TipNamestaja);
         }
 
         private void ObrisiN_Click(object sender, RoutedEventArgs e)
@@ -120,11 +120,24 @@ namespace POP_SF59_2016_GUI.UI
                     }
                 }
                 Projekat.Instance.Namestaj = listaNamestaja;
-                OsveziPrikaz();
+                OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.TipNamestaja);
             }
         }
 
-        private void DodajT_Click(object sender, RoutedEventArgs e)
+        private void PretraziN_Click(object sender, RoutedEventArgs e)
+        {
+            var PretragaProzor = new PretragaNamestajaWindow();
+            Close();
+            PretragaProzor.ShowDialog();
+            
+        }
+
+        private void Osvezi_Click(object sender, RoutedEventArgs e)
+        {
+            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.TipNamestaja);
+        }
+
+            private void DodajT_Click(object sender, RoutedEventArgs e)
         {
             var noviTipNamestaja = new TipNamestaja()
             {
@@ -132,7 +145,7 @@ namespace POP_SF59_2016_GUI.UI
             };
             var TipNamestajaProzor = new TipNamestajaWindow(noviTipNamestaja, TipNamestajaWindow.OperacijaT.Dodavanje);
             TipNamestajaProzor.ShowDialog();
-            OsveziPrikaz();
+            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.TipNamestaja);
         }
 
         private void IzmeniT_Click(object sender, RoutedEventArgs e)
@@ -140,7 +153,7 @@ namespace POP_SF59_2016_GUI.UI
             var izabraniTipNamestaja = (TipNamestaja)lbTipNamestaja.SelectedItem;
             var TipNamestajaProzor = new TipNamestajaWindow(izabraniTipNamestaja, TipNamestajaWindow.OperacijaT.Izmena);
             TipNamestajaProzor.ShowDialog();
-            OsveziPrikaz();
+            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.TipNamestaja);
         }
 
         private void ObrisiT_Click(object sender, RoutedEventArgs e)
@@ -158,8 +171,16 @@ namespace POP_SF59_2016_GUI.UI
                     }
                 }
                 Projekat.Instance.TipNamestaja = listaTipaNamestaja;
-                OsveziPrikaz();
+                OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.TipNamestaja);
             }
+        }
+
+        private void PretraziT_Click(object sender, RoutedEventArgs e)
+        {
+            var PretragaProzor = new PretragaTipaNamestajaWindow();
+            Close();
+            PretragaProzor.ShowDialog();
+
         }
 
         private void DodajK_Click(object sender, RoutedEventArgs e)
@@ -173,7 +194,7 @@ namespace POP_SF59_2016_GUI.UI
             };
             var KorisnikProzor = new KorisnikWindow(noviKorisnik, KorisnikWindow.OperacijaK.Dodavanje);
             KorisnikProzor.ShowDialog();
-            OsveziPrikaz();
+            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.TipNamestaja);
         }
 
         private void IzmeniK_Click(object sender, RoutedEventArgs e)
@@ -181,7 +202,7 @@ namespace POP_SF59_2016_GUI.UI
             var izabraniKorisnik = (Korisnik)lbKorisnici.SelectedItem;
             var KorisnikProzor = new KorisnikWindow(izabraniKorisnik, KorisnikWindow.OperacijaK.Izmena);
             KorisnikProzor.ShowDialog();
-            OsveziPrikaz();
+            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.TipNamestaja);
         }
 
         private void ObrisiK_Click(object sender, RoutedEventArgs e)
@@ -199,8 +220,16 @@ namespace POP_SF59_2016_GUI.UI
                     }
                 }
                 Projekat.Instance.Korisnik = listaKorisnika;
-                OsveziPrikaz();
+                OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.TipNamestaja);
             }
+        }
+
+        private void PretraziK_Click(object sender, RoutedEventArgs e)
+        {
+            var PretragaProzor = new PretragaKorsnikaWindow();
+            Close();
+            PretragaProzor.ShowDialog();
+
         }
 
         private void DodajA_Click(object sender, RoutedEventArgs e)
@@ -213,7 +242,7 @@ namespace POP_SF59_2016_GUI.UI
             };
             var AkcijaProzor = new AkcijaWindow(novaAkcija, AkcijaWindow.OperacijaA.Dodavanje);
             AkcijaProzor.ShowDialog();
-            OsveziPrikaz();
+            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.TipNamestaja);
         }
 
         private void IzmeniA_Click(object sender, RoutedEventArgs e)
@@ -221,7 +250,7 @@ namespace POP_SF59_2016_GUI.UI
             var izabranaAkcija = (Akcija)lbAkcije.SelectedItem;
             var AkcijaProzor = new AkcijaWindow(izabranaAkcija, AkcijaWindow.OperacijaA.Izmena);
             AkcijaProzor.ShowDialog();
-            OsveziPrikaz();
+            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.TipNamestaja);
         }
 
         private void ObrisiA_Click(object sender, RoutedEventArgs e)
@@ -239,7 +268,7 @@ namespace POP_SF59_2016_GUI.UI
                     }
                 }
                 Projekat.Instance.Akcija = listaAkcija;
-                OsveziPrikaz();
+                OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.TipNamestaja);
             }
         }
 

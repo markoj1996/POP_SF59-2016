@@ -41,7 +41,15 @@ namespace POP_SF59_2016_GUI.UI
             this.namestaj = namestaj;
             this.operacija = operacija;
 
+            /*String cenas = tbCena.Text;
+            double cena = double.Parse(cenas);
+            String kolicinas = tbKolicina.Text;
+            int kolicina = int.Parse(kolicinas);*/
+
             this.tbNaziv.Text = namestaj.Naziv;
+            this.tbSifra.Text = namestaj.Sifra;
+            /*cena = namestaj.JedinicnaCena;
+            kolicina = namestaj.KolicinaUMagacinu;*/
 
             foreach (var tipNamestaja in Projekat.Instance.TipNamestaja)
             {
@@ -66,21 +74,40 @@ namespace POP_SF59_2016_GUI.UI
 
             switch (operacija)
             {
+
+
                 case Operacija.Dodavanje:
+
+                    String cenas = tbCena.Text;
+                    double cena = double.Parse(cenas);
+                    String kolicinas = tbKolicina.Text;
+                    int kolicina = int.Parse(kolicinas);
+
                     var noviNamestaj = new Namestaj()
                     {
                         Id = listaNamestaja.Count + 1,
                         Naziv = this.tbNaziv.Text,
+                        Sifra = this.tbSifra.Text,
+                        JedinicnaCena = cena,
+                        KolicinaUMagacinu = kolicina,
                         TipNamestajaId = izabraniTipNamestaja.Id
                     };
                     listaNamestaja.Add(noviNamestaj);
                     break;
                 case Operacija.Izmena:
+
+                    String cenass = tbCena.Text;
+                    double cenaa = double.Parse(cenass);
+                    String kolicinass = tbKolicina.Text;
+                    int kolicinaa = int.Parse(kolicinass);
                     foreach (var n in listaNamestaja)
                     {
                         if (n.Id == namestaj.Id)
                         {
                             n.Naziv = this.tbNaziv.Text;
+                            n.Sifra = this.tbSifra.Text;
+                            n.JedinicnaCena = cenaa;
+                            n.KolicinaUMagacinu = kolicinaa;
                             n.TipNamestajaId = izabraniTipNamestaja.Id;
                             break;
                         }

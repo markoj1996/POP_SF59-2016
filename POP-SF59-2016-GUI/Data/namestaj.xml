@@ -3,7 +3,7 @@
   <Namestaj>
     <Id>1</Id>
     <Obrisan>false</Obrisan>
-    <Naziv>namestaj1</Naziv>
+    <Naziv>a</Naziv>
     <Sifra>b</Sifra>
     <JedinicnaCena>1</JedinicnaCena>
     <KolicinaUMagacinu>1</KolicinaUMagacinu>
@@ -12,33 +12,10 @@
   <Namestaj>
     <Id>2</Id>
     <Obrisan>false</Obrisan>
-    <Naziv>novi</Naziv>
-    <JedinicnaCena>0</JedinicnaCena>
-    <KolicinaUMagacinu>0</KolicinaUMagacinu>
-    <TipNamestajaId>0</TipNamestajaId>
-  </Namestaj>
-  <Namestaj>
-    <Id>3</Id>
-    <Obrisan>true</Obrisan>
-    <Naziv>asd</Naziv>
-    <JedinicnaCena>0</JedinicnaCena>
-    <KolicinaUMagacinu>0</KolicinaUMagacinu>
-    <TipNamestajaId>0</TipNamestajaId>
-  </Namestaj>
-  <Namestaj>
-    <Id>4</Id>
-    <Obrisan>true</Obrisan>
-    <Naziv>hdh</Naziv>
-    <JedinicnaCena>0</JedinicnaCena>
-    <KolicinaUMagacinu>0</KolicinaUMagacinu>
-    <TipNamestajaId>0</TipNamestajaId>
-  </Namestaj>
-  <Namestaj>
-    <Id>5</Id>
-    <Obrisan>false</Obrisan>
-    <Naziv>asfaf</Naziv>
-    <JedinicnaCena>0</JedinicnaCena>
-    <KolicinaUMagacinu>0</KolicinaUMagacinu>
+    <Naziv>b</Naziv>
+    <Sifra>a</Sifra>
+    <JedinicnaCena>50</JedinicnaCena>
+    <KolicinaUMagacinu>50</KolicinaUMagacinu>
     <TipNamestajaId>0</TipNamestajaId>
   </Namestaj>
 </ArrayOfNamestaj>

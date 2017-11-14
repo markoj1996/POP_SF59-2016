@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:POP_SF59_2016_GUI.UI"
         mc:Ignorable="d"
-        Title="GlavniWindow" Height="500" Width="620">
+        Title="GlavniWindow" Height="520" Width="620">
     <Grid>
         <TabControl >
             <TabItem Header="Namestaj" Width="147">
@@ -14,7 +14,9 @@
                         <RowDefinition Height="183*"/>
                         <RowDefinition Height="38*"/>
                     </Grid.RowDefinitions>
-                    <ListBox Grid.Row="0" FontSize="20" Name="lbNamestaj" Height="365" />
+                    <ListBox Grid.Row="0" FontSize="20" Name="lbNamestaj" Margin="0,35,0,0" />
+                    <Button Content="Pretraga" Grid.Row="0" Margin="15,7,523,355" Click="PretraziN_Click" Height="20"/>
+                    <Button Content="Refresh" Grid.Row="0" Margin="100,7,438,355" Click="Osvezi_Click" Height="20"/>
                     <Button Content="Dodaj" Margin="25,20,463,21" Grid.Row="1" Click="DodajN_Click"/>
                     <Button Content="Izmeni" Margin="171,20,317,21" Grid.Row="1" Width="108" Click="IzmeniN_Click"/>
                     <Button Content="Obrisi" Margin="319,20,169,21" Grid.Row="1" Width="108" Click="ObrisiN_Click"/>
@@ -27,7 +29,9 @@
                         <RowDefinition Height="183*"/>
                         <RowDefinition Height="38*"/>
                     </Grid.RowDefinitions>
-                    <ListBox Grid.Row="0" FontSize="20" Name="lbKorisnici" Height="365"/>
+                    <ListBox Grid.Row="0" FontSize="20" Name="lbKorisnici" Margin="0,35,0,0"/>
+                    <Button Content="Pretraga" Grid.Row="0" Margin="15,7,523,355" Height="20" Click="PretraziK_Click"/>
+                    <Button Content="Refresh" Grid.Row="0" Margin="100,7,438,355" Height="20" Click="Osvezi_Click"/>
                     <Button Content="Dodaj" Margin="25,20,463,21" Grid.Row="1" Click="DodajK_Click"/>
                     <Button Content="Izmeni" Margin="171,20,317,21" Grid.Row="1" Width="108" Click="IzmeniK_Click"/>
                     <Button Content="Obrisi" Margin="319,20,169,21" Grid.Row="1" Width="108" Click="ObrisiK_Click"/>
@@ -40,7 +44,8 @@
                         <RowDefinition Height="183*"/>
                         <RowDefinition Height="38*"/>
                     </Grid.RowDefinitions>
-                    <ListBox Grid.Row="0" FontSize="20" Name="lbAkcije" Height="365"/>
+                    <ListBox Grid.Row="0" FontSize="20" Name="lbAkcije" Margin="0,35,0,0"/>
+                    <Button Content="Refresh" Grid.Row="0" Margin="15,7,523,355" Height="20"/>
                     <Button Content="Dodaj" Margin="25,20,463,21" Grid.Row="1" Click="DodajA_Click"/>
                     <Button Content="Izmeni" Margin="171,20,317,21" Grid.Row="1" Width="108" Click="IzmeniA_Click"/>
                     <Button Content="Obrisi" Margin="319,20,169,21" Grid.Row="1" Width="108" Click="ObrisiA_Click"/>
@@ -53,7 +58,9 @@
                         <RowDefinition Height="183*"/>
                         <RowDefinition Height="38*"/>
                     </Grid.RowDefinitions>
-                    <ListBox Grid.Row="0" FontSize="20" Name="lbTipNamestaja" Height="365"/>
+                    <ListBox Grid.Row="0" FontSize="20" Name="lbTipNamestaja" Margin="0,35,0,0"/>
+                    <Button Content="Pretraga" Grid.Row="0" Margin="15,7,523,355" Height="20" Click="PretraziT_Click"/>
+                    <Button Content="Refresh" Grid.Row="0" Margin="100,7,438,355" Height="20" Click="Osvezi_Click"/>
                     <Button Content="Dodaj" Margin="25,20,463,21" Grid.Row="1" Click="DodajT_Click"/>
                     <Button Content="Izmeni" Margin="171,20,317,21" Grid.Row="1" Width="108" Click="IzmeniT_Click"/>
                     <Button Content="Obrisi" Margin="319,20,169,21" Grid.Row="1" Width="108" Click="ObrisiT_Click"/>

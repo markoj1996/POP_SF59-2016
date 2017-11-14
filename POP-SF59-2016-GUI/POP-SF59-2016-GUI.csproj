@@ -66,6 +66,15 @@
     <Compile Include="UI\NamestajWindow.xaml.cs">
       <DependentUpon>NamestajWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\PretragaKorsnikaWindow.xaml.cs">
+      <DependentUpon>PretragaKorsnikaWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PretragaNamestajaWindow.xaml.cs">
+      <DependentUpon>PretragaNamestajaWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\PretragaTipaNamestajaWindow.xaml.cs">
+      <DependentUpon>PretragaTipaNamestajaWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\TipNamestajaWindow.xaml.cs">
       <DependentUpon>TipNamestajaWindow.xaml</DependentUpon>
     </Compile>
@@ -95,6 +104,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\NamestajWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\PretragaKorsnikaWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\PretragaNamestajaWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\PretragaTipaNamestajaWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

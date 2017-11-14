@@ -24,7 +24,14 @@ namespace POP_SF59_2016.Model
 
         public override string ToString()
         {
-            return $"{Naziv},{JedinicnaCena}";
+            foreach (var tip in Projekat.Instance.TipNamestaja)
+            {
+                if (tip.Id == TipNamestajaId)
+                {
+                    return $"{Naziv},{Sifra},{JedinicnaCena},{tip.Naziv}";
+                }
+            }
+            return $"{Naziv},{Sifra},{JedinicnaCena}";
         }
 
         public static Namestaj GetById(int id)

@@ -728,17 +728,18 @@ namespace POP_SF59_2016
                 Console.WriteLine("2. Dodaj novi namestaj");
                 Console.WriteLine("3. Izmeni postojeci namestaj");
                 Console.WriteLine("4. Obrisi postojeci");
+                Console.WriteLine("5. Pretrazi namestaj");
                 Console.WriteLine("0. Povratak u glavni meni");
 
                 izbor = int.Parse(Console.ReadLine());
 
-            } while (izbor < 0 || izbor > 4);
+            } while (izbor < 0 || izbor > 5);
 
 
             switch (izbor)
             {
                 case 1:
-                    IzlistajNamestaj();
+                    IzlistajNamestaj(Namestaj);
                     break;
                 case 2:
                     DodajNamestaj();
@@ -749,12 +750,32 @@ namespace POP_SF59_2016
                 case 4:
                     ObrisiNamestaj();
                     break;
+                case 5:
+                    PretraziNamestaj();
+                    break;
                 case 0:
                     IspisGlavnogMenijaAdministratora();
                     break;
                 default:
                     break;
             }
+        }
+
+        private static void PretraziNamestaj()
+        {
+            Console.WriteLine("Unesite naziv za pretragu: ");
+            string naziv = Console.ReadLine();
+            List<Namestaj> pronadjeni = new List<Namestaj>();
+
+            foreach (var namestaj in Namestaj)
+            {
+                if (namestaj.Naziv == naziv)
+                {
+                    pronadjeni.Add(namestaj);
+                }
+            }
+            IzlistajNamestaj(pronadjeni);
+
         }
 
         private static void ObrisiNamestaj()
@@ -865,14 +886,14 @@ namespace POP_SF59_2016
 
         }
 
-        private static void IzlistajNamestaj()
+        private static void IzlistajNamestaj(List<Namestaj> namestaj)
         {
             Console.WriteLine("=== Izlistavanje namestaja ===");
-            for (int i = 0; i < Namestaj.Count; i++)
+            for (int i = 0; i < namestaj.Count; i++)
             {
-                if(Namestaj[i].Obrisan==false)
+                if(namestaj[i].Obrisan==false)
                 {
-                    Console.WriteLine($"{i + 1}.{Namestaj[i].Naziv}, cena: {Namestaj[i].JedinicnaCena},");
+                    Console.WriteLine($"{namestaj[i].Id}.{namestaj[i].Naziv}, cena: {namestaj[i].JedinicnaCena},");
                 }            
             }
 

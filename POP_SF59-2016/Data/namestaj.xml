@@ -9,4 +9,31 @@
     <KolicinaUMagacinu>1</KolicinaUMagacinu>
     <TipNamestajaId>1</TipNamestajaId>
   </Namestaj>
+  <Namestaj>
+    <Id>2</Id>
+    <Obrisan>false</Obrisan>
+    <Naziv>a</Naziv>
+    <Sifra>a</Sifra>
+    <JedinicnaCena>1</JedinicnaCena>
+    <KolicinaUMagacinu>1</KolicinaUMagacinu>
+    <TipNamestajaId>1</TipNamestajaId>
+  </Namestaj>
+  <Namestaj>
+    <Id>3</Id>
+    <Obrisan>false</Obrisan>
+    <Naziv>c</Naziv>
+    <Sifra>c</Sifra>
+    <JedinicnaCena>1</JedinicnaCena>
+    <KolicinaUMagacinu>1</KolicinaUMagacinu>
+    <TipNamestajaId>1</TipNamestajaId>
+  </Namestaj>
+  <Namestaj>
+    <Id>4</Id>
+    <Obrisan>false</Obrisan>
+    <Naziv>a</Naziv>
+    <Sifra>v</Sifra>
+    <JedinicnaCena>10</JedinicnaCena>
+    <KolicinaUMagacinu>10</KolicinaUMagacinu>
+    <TipNamestajaId>1</TipNamestajaId>
+  </Namestaj>
 </ArrayOfNamestaj>
