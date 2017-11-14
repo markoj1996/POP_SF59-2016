@@ -32,3 +32,4 @@ S:\New folder\POP_SF59-2016\POP_SF59-2016\obj\Debug\POP_SF59-2016.csprojResolveA
 S:\New folder\POP_SF59-2016\POP_SF59-2016\obj\Debug\POP_SF59-2016.csproj.CoreCompileInputs.cache
 S:\New folder\POP_SF59-2016\POP_SF59-2016\obj\Debug\POP_SF59-2016.exe
 S:\New folder\POP_SF59-2016\POP_SF59-2016\obj\Debug\POP_SF59-2016.pdb
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP_SF59-2016\obj\Debug\POP_SF59-2016.csprojResolveAssemblyReference.cache
