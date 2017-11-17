@@ -37,13 +37,13 @@ namespace POP_SF59_2016_GUI.UI
                 string naziv = tbPronadji.Text;
                 foreach (var n in Projekat.Instance.Namestaj)
                 {
-                    if (n.Naziv == naziv)
+                    if (n.Naziv.Contains(naziv))
                     {
                         namestaj.Add(n);
                         GlavniWindow g = new GlavniWindow();
                         this.Close();
                         g.Show();
-                        g.OsveziPrikaz(namestaj, Projekat.Instance.Korisnik, Projekat.Instance.TipNamestaja);
+                        g.OsveziPrikaz(namestaj, Projekat.Instance.Korisnik,Projekat.Instance.Akcija ,Projekat.Instance.TipNamestaja);
                     }
                 }
             }
@@ -52,13 +52,13 @@ namespace POP_SF59_2016_GUI.UI
                 string sifra = tbPronadji.Text;
                 foreach (var n in Projekat.Instance.Namestaj)
                 {
-                    if (n.Sifra == sifra)
+                    if (n.Sifra.Contains(sifra))
                     {
                         namestaj.Add(n);
                         GlavniWindow g = new GlavniWindow();
                         this.Close();
                         g.Show();
-                        g.OsveziPrikaz(namestaj, Projekat.Instance.Korisnik, Projekat.Instance.TipNamestaja);
+                        g.OsveziPrikaz(namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
                     }
                 }
             }
@@ -69,13 +69,13 @@ namespace POP_SF59_2016_GUI.UI
                 {
                     foreach (var t in Projekat.Instance.TipNamestaja)
                     {
-                        if (n.TipNamestajaId == t.Id && t.Naziv == tipN)
+                        if (n.TipNamestajaId == t.Id && t.Naziv.Contains(tipN))
                         {
                             namestaj.Add(n);
                             GlavniWindow g = new GlavniWindow();
                             this.Close();
                             g.Show();
-                            g.OsveziPrikaz(namestaj, Projekat.Instance.Korisnik, Projekat.Instance.TipNamestaja);
+                            g.OsveziPrikaz(namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
                         }
                     }   
                 }

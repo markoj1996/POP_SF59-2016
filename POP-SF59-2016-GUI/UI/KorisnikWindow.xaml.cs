@@ -45,15 +45,7 @@ namespace POP_SF59_2016_GUI.UI
             this.tbPrezime.Text = korisnik.Prezime;
             this.tbKorisnickoIme.Text = korisnik.KorisnickoIme;
             this.tbLozinka.Text = korisnik.Lozinka;
-
-            foreach (var tipKorisnika in cbTipKorisnika.Items)
-            {
-                if (tipKorisnika == korisnik.TipKorisnika)
-                {
-                    cbTipKorisnika.SelectedItem = tipKorisnika;
-                    break;
-                }
-            }
+            this.cbTipKorisnika.Text = korisnik.TipKorisnika;
         }
 
         private void SacuvajIzmene(object sender, RoutedEventArgs e)

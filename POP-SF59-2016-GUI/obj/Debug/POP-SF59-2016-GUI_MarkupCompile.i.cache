@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\App.xaml
-91991154850
+10-152038501
 
-261174193968
+272050835174
 131569487696
-MainWindow.xaml;UI\AkcijaWindow.xaml;UI\GlavniWindow.xaml;UI\KorisnikWindow.xaml;UI\NamestajWindow.xaml;UI\PretragaKorsnikaWindow.xaml;UI\PretragaNamestajaWindow.xaml;UI\PretragaTipaNamestajaWindow.xaml;UI\TipNamestajaWindow.xaml;
+MainWindow.xaml;UI\AkcijaWindow.xaml;UI\DodajNamestajNaAkciju.xaml;UI\GlavniWindow.xaml;UI\KorisnikWindow.xaml;UI\NamestajWindow.xaml;UI\PretragaKorsnikaWindow.xaml;UI\PretragaNamestajaWindow.xaml;UI\PretragaTipaNamestajaWindow.xaml;UI\TipNamestajaWindow.xaml;
 
-True
+False
 

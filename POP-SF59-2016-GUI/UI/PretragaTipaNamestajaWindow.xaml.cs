@@ -36,13 +36,13 @@ namespace POP_SF59_2016_GUI.UI
                 string naziv = tbPronadji.Text;
                 foreach (var t in Projekat.Instance.TipNamestaja)
                 {
-                    if (t.Naziv == naziv)
+                    if (t.Naziv.Contains(naziv))
                     {
                         tipNamestaja.Add(t);
                         GlavniWindow g = new GlavniWindow();
                         this.Close();
                         g.Show();
-                        g.OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, tipNamestaja);
+                        g.OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija,tipNamestaja);
                     }
                 }
             }

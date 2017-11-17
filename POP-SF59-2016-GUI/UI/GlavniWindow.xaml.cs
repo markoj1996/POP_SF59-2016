@@ -34,11 +34,11 @@ namespace POP_SF59_2016_GUI.UI
         public GlavniWindow()
         {
             InitializeComponent();
-            OsveziPrikaz(Projekat.Instance.Namestaj,Projekat.Instance.Korisnik,Projekat.Instance.TipNamestaja);
+            OsveziPrikaz(Projekat.Instance.Namestaj,Projekat.Instance.Korisnik,Projekat.Instance.Akcija,Projekat.Instance.TipNamestaja);
         }
 
  
-        public void OsveziPrikaz(List<Namestaj>namestaj,List<Korisnik>korisnik,List<TipNamestaja>tip)
+        public void OsveziPrikaz(List<Namestaj>namestaj,List<Korisnik>korisnik, List<Akcija>akcija ,List<TipNamestaja>tip)
         {
             lbNamestaj.Items.Clear();
 
@@ -64,11 +64,11 @@ namespace POP_SF59_2016_GUI.UI
             lbKorisnici.SelectedIndex = 0;
 
             lbAkcije.Items.Clear();
-            foreach (var akcija in Projekat.Instance.Akcija)
+            foreach (var a in akcija)
             {
-                if (akcija.Obrisan == false)
+                if (a.Obrisan == false)
                 {
-                    lbAkcije.Items.Add(akcija);
+                    lbAkcije.Items.Add(a);
                 }
 
             }
@@ -94,7 +94,7 @@ namespace POP_SF59_2016_GUI.UI
             };
             var NamestajProzor = new NamestajWindow(noviNamestaj, NamestajWindow.Operacija.Dodavanje);
             NamestajProzor.ShowDialog();
-            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.TipNamestaja);
+            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
         }
 
         private void IzmeniN_Click(object sender, RoutedEventArgs e)
@@ -102,7 +102,7 @@ namespace POP_SF59_2016_GUI.UI
             var izabraniNamestaj = (Namestaj)lbNamestaj.SelectedItem;
             var NamestajProzor = new NamestajWindow(izabraniNamestaj, NamestajWindow.Operacija.Izmena);
             NamestajProzor.ShowDialog();
-            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.TipNamestaja);
+            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
         }
 
         private void ObrisiN_Click(object sender, RoutedEventArgs e)
@@ -120,7 +120,7 @@ namespace POP_SF59_2016_GUI.UI
                     }
                 }
                 Projekat.Instance.Namestaj = listaNamestaja;
-                OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.TipNamestaja);
+                OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
             }
         }
 
@@ -132,9 +132,46 @@ namespace POP_SF59_2016_GUI.UI
             
         }
 
+        private void SortirajN_Click(object sender, RoutedEventArgs e)
+        {
+            string tip = cbTipSortiranjaN.Text;
+
+            if (tip == "Po ID")
+            {
+                List<Namestaj> sortirana = Projekat.Instance.Namestaj.OrderBy(o => o.Id).ToList();
+                OsveziPrikaz(sortirana, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
+            }
+            else if (tip == "Po nazivu")
+            {
+                List<Namestaj> sortirana = Projekat.Instance.Namestaj.OrderBy(o => o.Naziv).ToList();
+                OsveziPrikaz(sortirana, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
+            }
+            else if (tip == "Po sifri")
+            {
+                List<Namestaj> sortirana = Projekat.Instance.Namestaj.OrderBy(o => o.Sifra).ToList();
+                OsveziPrikaz(sortirana, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
+            }
+            else if (tip == "Po ceni")
+            {
+                List<Namestaj> sortirana = Projekat.Instance.Namestaj.OrderBy(o => o.JedinicnaCena).ToList();
+                OsveziPrikaz(sortirana, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
+            }
+            else if (tip == "Po kolicini")
+            {
+                List<Namestaj> sortirana = Projekat.Instance.Namestaj.OrderBy(o => o.KolicinaUMagacinu).ToList();
+                OsveziPrikaz(sortirana, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
+            }
+            else if (tip == "Po tipu")
+            {
+                List<Namestaj> sortirana = Projekat.Instance.Namestaj.OrderBy(o => o.TipNamestajaId).ToList();
+                OsveziPrikaz(sortirana, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
+            }
+
+        }
+
         private void Osvezi_Click(object sender, RoutedEventArgs e)
         {
-            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.TipNamestaja);
+            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
         }
 
             private void DodajT_Click(object sender, RoutedEventArgs e)
@@ -145,7 +182,7 @@ namespace POP_SF59_2016_GUI.UI
             };
             var TipNamestajaProzor = new TipNamestajaWindow(noviTipNamestaja, TipNamestajaWindow.OperacijaT.Dodavanje);
             TipNamestajaProzor.ShowDialog();
-            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.TipNamestaja);
+            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
         }
 
         private void IzmeniT_Click(object sender, RoutedEventArgs e)
@@ -153,7 +190,7 @@ namespace POP_SF59_2016_GUI.UI
             var izabraniTipNamestaja = (TipNamestaja)lbTipNamestaja.SelectedItem;
             var TipNamestajaProzor = new TipNamestajaWindow(izabraniTipNamestaja, TipNamestajaWindow.OperacijaT.Izmena);
             TipNamestajaProzor.ShowDialog();
-            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.TipNamestaja);
+            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
         }
 
         private void ObrisiT_Click(object sender, RoutedEventArgs e)
@@ -171,7 +208,7 @@ namespace POP_SF59_2016_GUI.UI
                     }
                 }
                 Projekat.Instance.TipNamestaja = listaTipaNamestaja;
-                OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.TipNamestaja);
+                OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
             }
         }
 
@@ -183,7 +220,23 @@ namespace POP_SF59_2016_GUI.UI
 
         }
 
-        private void DodajK_Click(object sender, RoutedEventArgs e)
+        private void SortirajT_Click(object sender, RoutedEventArgs e)
+        {
+            string tip = cbTipSortiranjaT.Text;
+
+            if (tip == "Po ID")
+            {
+                List<TipNamestaja> sortirana = Projekat.Instance.TipNamestaja.OrderBy(o => o.Id).ToList();
+                OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, sortirana);
+            }
+            else if (tip == "Po nazivu")
+            {
+                List<TipNamestaja> sortirana = Projekat.Instance.TipNamestaja.OrderBy(o => o.Naziv).ToList();
+                OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, sortirana);
+            }
+        }
+
+            private void DodajK_Click(object sender, RoutedEventArgs e)
         {
             var noviKorisnik = new Korisnik()
             {
@@ -194,7 +247,7 @@ namespace POP_SF59_2016_GUI.UI
             };
             var KorisnikProzor = new KorisnikWindow(noviKorisnik, KorisnikWindow.OperacijaK.Dodavanje);
             KorisnikProzor.ShowDialog();
-            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.TipNamestaja);
+            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
         }
 
         private void IzmeniK_Click(object sender, RoutedEventArgs e)
@@ -202,7 +255,7 @@ namespace POP_SF59_2016_GUI.UI
             var izabraniKorisnik = (Korisnik)lbKorisnici.SelectedItem;
             var KorisnikProzor = new KorisnikWindow(izabraniKorisnik, KorisnikWindow.OperacijaK.Izmena);
             KorisnikProzor.ShowDialog();
-            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.TipNamestaja);
+            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
         }
 
         private void ObrisiK_Click(object sender, RoutedEventArgs e)
@@ -220,9 +273,10 @@ namespace POP_SF59_2016_GUI.UI
                     }
                 }
                 Projekat.Instance.Korisnik = listaKorisnika;
-                OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.TipNamestaja);
+                OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
             }
         }
+
 
         private void PretraziK_Click(object sender, RoutedEventArgs e)
         {
@@ -232,17 +286,50 @@ namespace POP_SF59_2016_GUI.UI
 
         }
 
+        private void SortirajK_Click(object sender, RoutedEventArgs e)
+        {
+            string tip = cbTipSortiranjaK.Text;
+
+            if (tip == "Po ID")
+            {
+                List<Korisnik> sortirana = Projekat.Instance.Korisnik.OrderBy(o => o.Id).ToList();
+                OsveziPrikaz(Projekat.Instance.Namestaj, sortirana, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
+            }
+            else if (tip == "Po imenu")
+            {
+                List<Korisnik> sortirana = Projekat.Instance.Korisnik.OrderBy(o => o.Ime).ToList();
+                OsveziPrikaz(Projekat.Instance.Namestaj, sortirana, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
+            }
+            else if (tip == "Po prezimenu")
+            {
+                List<Korisnik> sortirana = Projekat.Instance.Korisnik.OrderBy(o => o.Prezime).ToList();
+                OsveziPrikaz(Projekat.Instance.Namestaj, sortirana, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
+            }
+            else if (tip == "Po korisnickom imenu")
+            {
+                List<Korisnik> sortirana = Projekat.Instance.Korisnik.OrderBy(o => o.KorisnickoIme).ToList();
+                OsveziPrikaz(Projekat.Instance.Namestaj, sortirana, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
+            }
+            else if (tip == "Po lozinci")
+            {
+                List<Korisnik> sortirana = Projekat.Instance.Korisnik.OrderBy(o => o.Lozinka).ToList();
+                OsveziPrikaz(Projekat.Instance.Namestaj, sortirana, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
+            }
+
+        }
+
         private void DodajA_Click(object sender, RoutedEventArgs e)
         {
             var novaAkcija = new Akcija()
             {
-                DatumPocetka = new DateTime(2017,1,1) ,
-                DatumZavrsetka = new DateTime(2017, 1, 1),
-                Popust = 10
+                DatumPocetka = new DateTime(),
+                DatumZavrsetka = new DateTime(),
+                Popust = 0,
+                NamestajNaPopustuId = new List<int>()
             };
             var AkcijaProzor = new AkcijaWindow(novaAkcija, AkcijaWindow.OperacijaA.Dodavanje);
             AkcijaProzor.ShowDialog();
-            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.TipNamestaja);
+            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
         }
 
         private void IzmeniA_Click(object sender, RoutedEventArgs e)
@@ -250,7 +337,7 @@ namespace POP_SF59_2016_GUI.UI
             var izabranaAkcija = (Akcija)lbAkcije.SelectedItem;
             var AkcijaProzor = new AkcijaWindow(izabranaAkcija, AkcijaWindow.OperacijaA.Izmena);
             AkcijaProzor.ShowDialog();
-            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.TipNamestaja);
+            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
         }
 
         private void ObrisiA_Click(object sender, RoutedEventArgs e)
@@ -268,8 +355,35 @@ namespace POP_SF59_2016_GUI.UI
                     }
                 }
                 Projekat.Instance.Akcija = listaAkcija;
-                OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.TipNamestaja);
+                OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
             }
+        }
+
+        private void SortirajA_Click(object sender, RoutedEventArgs e)
+        {
+            string tip = cbTipSortiranjaA.Text;
+
+            if (tip == "Po ID")
+            {
+                List<Akcija> sortirana = Projekat.Instance.Akcija.OrderBy(o => o.Id).ToList();
+                OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, sortirana, Projekat.Instance.TipNamestaja);
+            }
+            else if (tip == "Po datumu pocetka")
+            {
+                List<Akcija> sortirana = Projekat.Instance.Akcija.OrderBy(o => o.DatumPocetka).ToList();
+                OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, sortirana, Projekat.Instance.TipNamestaja);
+            }
+            else if (tip == "Po datumu zavrsetka")
+            {
+                List<Akcija> sortirana = Projekat.Instance.Akcija.OrderBy(o => o.DatumZavrsetka).ToList();
+                OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, sortirana, Projekat.Instance.TipNamestaja);
+            }
+            else if (tip == "Po popustu")
+            {
+                List<Akcija> sortirana = Projekat.Instance.Akcija.OrderBy(o => o.Popust).ToList();
+                OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, sortirana, Projekat.Instance.TipNamestaja);
+            }
+
         }
 
         private void Izadji_Click(object sender, RoutedEventArgs e)

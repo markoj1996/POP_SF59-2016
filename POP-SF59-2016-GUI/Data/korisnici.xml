@@ -23,8 +23,8 @@
     <Obrisan>true</Obrisan>
     <Ime>m</Ime>
     <Prezime>m</Prezime>
-    <KorisnickoIme>m</KorisnickoIme>
-    <Lozinka>m</Lozinka>
+    <KorisnickoIme>marko</KorisnickoIme>
+    <Lozinka>marko</Lozinka>
     <TipKorisnika>Administrator</TipKorisnika>
   </Korisnik>
   <Korisnik>

@@ -57,6 +57,9 @@
     <Compile Include="UI\AkcijaWindow.xaml.cs">
       <DependentUpon>AkcijaWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\DodajNamestajNaAkciju.xaml.cs">
+      <DependentUpon>DodajNamestajNaAkciju.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\GlavniWindow.xaml.cs">
       <DependentUpon>GlavniWindow.xaml</DependentUpon>
     </Compile>
@@ -92,6 +95,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="UI\AkcijaWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\DodajNamestajNaAkciju.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

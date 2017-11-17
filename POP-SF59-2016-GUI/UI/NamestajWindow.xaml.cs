@@ -41,15 +41,10 @@ namespace POP_SF59_2016_GUI.UI
             this.namestaj = namestaj;
             this.operacija = operacija;
 
-            /*String cenas = tbCena.Text;
-            double cena = double.Parse(cenas);
-            String kolicinas = tbKolicina.Text;
-            int kolicina = int.Parse(kolicinas);*/
-
             this.tbNaziv.Text = namestaj.Naziv;
             this.tbSifra.Text = namestaj.Sifra;
-            /*cena = namestaj.JedinicnaCena;
-            kolicina = namestaj.KolicinaUMagacinu;*/
+            this.tbCena.Text = namestaj.JedinicnaCena.ToString();
+            this.tbKolicina.Text = namestaj.KolicinaUMagacinu.ToString();
 
             foreach (var tipNamestaja in Projekat.Instance.TipNamestaja)
             {

@@ -5,16 +5,19 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:POP_SF59_2016_GUI.UI"
         mc:Ignorable="d"
-        Title="AkcijaWindow" Height="319" Width="387">
+        Title="AkcijaWindow" Height="436.526" Width="387">
     <Grid>
-        <Label Grid.Row="0" Grid.Column="0" Content="Datum pocetka" Margin="10,17,0,222" HorizontalAlignment="Left" VerticalAlignment="Center" Height="49" Width="117"/>
-        <TextBox Name="tbDatumPocetka"  Margin="127,17,10,234" />
-        <Label Grid.Row="0" Grid.Column="0" Content="Datum zavrsetka" Margin="10,71,0,168" HorizontalAlignment="Left" VerticalAlignment="Center" Height="49" Width="117"/>
-        <TextBox Name="tbDatumZavrsetka" Margin="127,71,10,180" />
-        <Label Grid.Row="0" Grid.Column="0" Content="Popust" Margin="10,125,0,114" HorizontalAlignment="Left" VerticalAlignment="Center" Height="49" Width="117"/>
-        <TextBox Name="tbPopust" Margin="127,120,10,131"></TextBox>
-        <Button Content="Sacuvaj" Height="40" Width="80" Margin="159,215,140,33" Click="SacuvajIzmene"/>
-        <Button Content="Izadji" Height="40" Width="80" Margin="275,215,24,33" Click="Izadji"/>
+        <Label Grid.Row="0" Grid.Column="0" Content="Datum pocetka" Margin="8,32,0,325" HorizontalAlignment="Left" VerticalAlignment="Center" Height="49" Width="117"/>
+        <TextBox Name="tbDatumPocetka"  Margin="127,32,10,337" Width="242" Height="37" />
+        <Label Grid.Row="0" Grid.Column="0" Content="Datum zavrsetka" Margin="8,86,0,271" HorizontalAlignment="Left" VerticalAlignment="Center" Height="49" Width="117"/>
+        <TextBox Name="tbDatumZavrsetka" Margin="127,86,10,283" Width="242" Height="37" />
+        <Label Grid.Row="0" Grid.Column="0" Content="Popust" Margin="8,140,0,217" HorizontalAlignment="Left" VerticalAlignment="Center" Height="49" Width="117"/>
+        <TextBox Name="tbPopust" Margin="127,135,10,234" Width="242" Height="37"></TextBox>
+        <Label Grid.Row="0" Grid.Column="0" Content="Namestaj na popustu" Margin="8,194,0,163" HorizontalAlignment="Left" VerticalAlignment="Center" Height="49" Width="117"/>
+        <ListBox Grid.Row="0" FontSize="20" Name="lbNamestaj" Margin="127,194,10,78" />
+        <Button Content="Dodaj" Margin="36,224,295,156" FontSize="10" Click="Dodaj_Click"/>
+        <Button Content="Sacuvaj" Height="40" Width="80" Margin="155,356,144,10" Click="SacuvajIzmene"/>
+        <Button Content="Izadji" Height="40" Width="80" Margin="273,356,26,10" Click="Izadji"/>
 
 
     </Grid>

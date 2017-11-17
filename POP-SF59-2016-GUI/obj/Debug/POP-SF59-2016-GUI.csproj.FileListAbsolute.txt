@@ -48,3 +48,5 @@ C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\Pr
 C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\PretragaTipaNamestajaWindow.g.cs
 C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\PretragaKorsnikaWindow.baml
 C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\PretragaTipaNamestajaWindow.baml
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\DodajNamestajNaAkciju.g.cs
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\DodajNamestajNaAkciju.baml
