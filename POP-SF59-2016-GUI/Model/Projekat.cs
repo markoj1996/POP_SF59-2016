@@ -1,6 +1,7 @@
 ﻿using POP_SF59_2016.Util1;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,13 +12,20 @@ namespace POP_SF59_2016.Model
     {
         public static Projekat Instance { get; } = new Projekat();
 
-        private List<Namestaj> namestaj;
-        private List<TipNamestaja> tipNamestaja;
-        private List<Korisnik> korisnik;
+        public ObservableCollection<Namestaj> Namestaj;
+        public ObservableCollection<TipNamestaja> TipNamestaja;
+        public ObservableCollection<Korisnik> Korisnik;
         private List<Akcija> akcija;
         private List<ProdajaNamestaja> prodaja;
 
-        public List<ProdajaNamestaja> Prodaja
+        private Projekat()
+        {
+            Korisnik = GenericSerialize.Deserialize<Korisnik>("korisnici.xml");
+            TipNamestaja = GenericSerialize.Deserialize<TipNamestaja>("tipNamestaja.xml");
+            Namestaj = GenericSerialize.Deserialize<Namestaj>("namestaj.xml");
+        }
+
+       /* public List<ProdajaNamestaja> Prodaja
         {
             get
             {
@@ -86,7 +94,7 @@ namespace POP_SF59_2016.Model
                 this.tipNamestaja = value;
                 GenericSerialize.Serialize<TipNamestaja>("tipNamestaja.xml", tipNamestaja);
             }
-        }
+        }*/
 
     }
 }

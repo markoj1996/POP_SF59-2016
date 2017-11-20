@@ -14,7 +14,7 @@
                         <RowDefinition Height="183*"/>
                         <RowDefinition Height="38*"/>
                     </Grid.RowDefinitions>
-                    <ListBox Grid.Row="0" FontSize="20" Name="lbNamestaj" Margin="0,35,0,0" Width="606" Height="347" />
+                    <DataGrid Grid.Row="0" FontSize="20" Name="dgNamestaj" Margin="0,35,0,0" Width="606" Height="347" SelectedItem="{Binding Path=izabraniNamestaj}" />
                     <ComboBox x:Name="cbTipSortiranjaN" Margin="367,7,73,355" Width="166" Height="20">
                         <ComboBoxItem Content="Po ID" Height="22"/>
                         <ComboBoxItem Content="Po nazivu" Height="22"/>

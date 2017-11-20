@@ -1,13 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POP_SF59-2016", "POP_SF59-2016\POP_SF59-2016.csproj", "{596F805E-352E-4F64-BC2D-60EF591FE900}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "POP-SF59-2016-GUI", "POP-SF59-2016-GUI\POP-SF59-2016-GUI.csproj", "{304795EE-3C42-40E2-B9E7-DD688B7DE9B7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataBindingTest", "..\..\DataBindingTest\DataBindingTest\DataBindingTest.csproj", "{70196AEA-C352-4763-9167-294CC6C592F1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,12 +31,6 @@ Global
 		{304795EE-3C42-40E2-B9E7-DD688B7DE9B7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{304795EE-3C42-40E2-B9E7-DD688B7DE9B7}.Release|x86.ActiveCfg = Release|Any CPU
 		{304795EE-3C42-40E2-B9E7-DD688B7DE9B7}.Release|x86.Build.0 = Release|Any CPU
-		{70196AEA-C352-4763-9167-294CC6C592F1}.Debug|Any CPU.ActiveCfg = Debug|x86
-		{70196AEA-C352-4763-9167-294CC6C592F1}.Debug|x86.ActiveCfg = Debug|x86
-		{70196AEA-C352-4763-9167-294CC6C592F1}.Debug|x86.Build.0 = Debug|x86
-		{70196AEA-C352-4763-9167-294CC6C592F1}.Release|Any CPU.ActiveCfg = Release|x86
-		{70196AEA-C352-4763-9167-294CC6C592F1}.Release|x86.ActiveCfg = Release|x86
-		{70196AEA-C352-4763-9167-294CC6C592F1}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

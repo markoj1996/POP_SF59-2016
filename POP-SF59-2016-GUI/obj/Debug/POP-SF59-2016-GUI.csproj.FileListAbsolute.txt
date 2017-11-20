@@ -50,3 +50,17 @@ C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\Pr
 C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\PretragaTipaNamestajaWindow.baml
 C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\DodajNamestajNaAkciju.g.cs
 C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\DodajNamestajNaAkciju.baml
+S:\New folder\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\AkcijaWindow.g.cs
+S:\New folder\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\DodajNamestajNaAkciju.g.cs
+S:\New folder\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\GlavniWindow.g.cs
+S:\New folder\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\KorisnikWindow.g.cs
+S:\New folder\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\PretragaKorsnikaWindow.g.cs
+S:\New folder\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\PretragaNamestajaWindow.g.cs
+S:\New folder\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\PretragaTipaNamestajaWindow.g.cs
+S:\New folder\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\AkcijaWindow.baml
+S:\New folder\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\DodajNamestajNaAkciju.baml
+S:\New folder\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\GlavniWindow.baml
+S:\New folder\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\KorisnikWindow.baml
+S:\New folder\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\PretragaKorsnikaWindow.baml
+S:\New folder\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\PretragaNamestajaWindow.baml
+S:\New folder\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\PretragaTipaNamestajaWindow.baml

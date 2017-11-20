@@ -1,4 +1,5 @@
 ﻿using POP_SF59_2016.Model;
+using POP_SF59_2016.Util1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,11 +21,7 @@ namespace POP_SF59_2016_GUI.UI
     /// </summary>
     public partial class GlavniWindow : Window
     {
-        private Namestaj namestaj;
-        private Korisnik korisnik;
-        private Akcija akcija;
-        private TipNamestaja tipNamestaja;
-        private Operacija operacija;
+        public Namestaj izabraniNamestaj { get; set; }
 
         public enum Operacija
         {
@@ -34,56 +31,10 @@ namespace POP_SF59_2016_GUI.UI
         public GlavniWindow()
         {
             InitializeComponent();
-            OsveziPrikaz(Projekat.Instance.Namestaj,Projekat.Instance.Korisnik,Projekat.Instance.Akcija,Projekat.Instance.TipNamestaja);
-        }
 
- 
-        public void OsveziPrikaz(List<Namestaj>namestaj,List<Korisnik>korisnik, List<Akcija>akcija ,List<TipNamestaja>tip)
-        {
-            lbNamestaj.Items.Clear();
-
-            foreach (var n in namestaj)
-            {
-                if (n.Obrisan == false)
-                {
-                    lbNamestaj.Items.Add(n);
-                }
-
-            }
-            lbNamestaj.SelectedIndex = 0;
-
-            lbKorisnici.Items.Clear();
-            foreach (var k in korisnik)
-            {
-                if (k.Obrisan == false)
-                {
-                    lbKorisnici.Items.Add(k);
-                }
-
-            }
-            lbKorisnici.SelectedIndex = 0;
-
-            lbAkcije.Items.Clear();
-            foreach (var a in akcija)
-            {
-                if (a.Obrisan == false)
-                {
-                    lbAkcije.Items.Add(a);
-                }
-
-            }
-            lbAkcije.SelectedIndex = 0;
-
-            lbTipNamestaja.Items.Clear();
-            foreach (var t in tip)
-            {
-                if (t.Obrisan == false)
-                {
-                    lbTipNamestaja.Items.Add(t);
-                }
-
-            }
-            lbTipNamestaja.SelectedIndex = 0;
+            dgNamestaj.IsSynchronizedWithCurrentItem = true;
+            dgNamestaj.DataContext = this;
+            dgNamestaj.ItemsSource = Projekat.Instance.Namestaj;
         }
 
         private void DodajN_Click(object sender, RoutedEventArgs e)
@@ -94,33 +45,31 @@ namespace POP_SF59_2016_GUI.UI
             };
             var NamestajProzor = new NamestajWindow(noviNamestaj, NamestajWindow.Operacija.Dodavanje);
             NamestajProzor.ShowDialog();
-            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
         }
 
         private void IzmeniN_Click(object sender, RoutedEventArgs e)
         {
-            var izabraniNamestaj = (Namestaj)lbNamestaj.SelectedItem;
-            var NamestajProzor = new NamestajWindow(izabraniNamestaj, NamestajWindow.Operacija.Izmena);
+
+            Namestaj kopija = (Namestaj)izabraniNamestaj.Clone();
+            var NamestajProzor = new NamestajWindow(kopija, NamestajWindow.Operacija.Izmena);
             NamestajProzor.ShowDialog();
-            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
         }
 
         private void ObrisiN_Click(object sender, RoutedEventArgs e)
         {
-            var izabranNamestaj = (Namestaj)lbNamestaj.SelectedItem;
             var listaNamestaja = Projekat.Instance.Namestaj;
 
-            if (MessageBox.Show($"Da li zelite da obrisete: {izabranNamestaj.Naziv}", "Brisanje", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (MessageBox.Show($"Da li zelite da obrisete: {izabraniNamestaj.Naziv}", "Brisanje", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 foreach (var n in listaNamestaja)
                 {
-                    if (n.Id == izabranNamestaj.Id)
+                    if (n.Id == izabraniNamestaj.Id)
                     {
                         n.Obrisan = true;
+                        break;
                     }
                 }
-                Projekat.Instance.Namestaj = listaNamestaja;
-                OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
+                GenericSerialize.Serialize("namestaj.xml", listaNamestaja);
             }
         }
 
@@ -131,7 +80,7 @@ namespace POP_SF59_2016_GUI.UI
             PretragaProzor.ShowDialog();
             
         }
-
+        /*
         private void SortirajN_Click(object sender, RoutedEventArgs e)
         {
             string tip = cbTipSortiranjaN.Text;
@@ -389,7 +338,7 @@ namespace POP_SF59_2016_GUI.UI
         private void Izadji_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }
+        }*/
 
     }
 }

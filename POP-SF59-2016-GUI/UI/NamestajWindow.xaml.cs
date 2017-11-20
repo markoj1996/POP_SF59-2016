@@ -1,4 +1,5 @@
 ﻿using POP_SF59_2016.Model;
+using POP_SF59_2016.Util1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,32 +34,13 @@ namespace POP_SF59_2016_GUI.UI
         {
             InitializeComponent();
 
-            InicijalizujVrednosti(namestaj, operacija);
-        }
-
-        private void InicijalizujVrednosti(Namestaj namestaj, Operacija operacija)
-        {
             this.namestaj = namestaj;
             this.operacija = operacija;
 
-            this.tbNaziv.Text = namestaj.Naziv;
-            this.tbSifra.Text = namestaj.Sifra;
-            this.tbCena.Text = namestaj.JedinicnaCena.ToString();
-            this.tbKolicina.Text = namestaj.KolicinaUMagacinu.ToString();
+            cbTipNamestaja.ItemsSource = Projekat.Instance.TipNamestaja;
 
-            foreach (var tipNamestaja in Projekat.Instance.TipNamestaja)
-            {
-                cbTipNamestaja.Items.Add(tipNamestaja);
-            }
-
-            foreach (TipNamestaja tipNamestaja in cbTipNamestaja.Items)
-            {
-                if (tipNamestaja.Id == namestaj.Id)
-                {
-                    cbTipNamestaja.SelectedItem = tipNamestaja;
-                    break;
-                }
-            }
+            tbNaziv.DataContext = namestaj;
+            cbTipNamestaja.DataContext = namestaj;
         }
 
         private void SacuvajIzmene(object sender, RoutedEventArgs e)
@@ -72,22 +54,8 @@ namespace POP_SF59_2016_GUI.UI
 
 
                 case Operacija.Dodavanje:
-
-                    String cenas = tbCena.Text;
-                    double cena = double.Parse(cenas);
-                    String kolicinas = tbKolicina.Text;
-                    int kolicina = int.Parse(kolicinas);
-
-                    var noviNamestaj = new Namestaj()
-                    {
-                        Id = listaNamestaja.Count + 1,
-                        Naziv = this.tbNaziv.Text,
-                        Sifra = this.tbSifra.Text,
-                        JedinicnaCena = cena,
-                        KolicinaUMagacinu = kolicina,
-                        TipNamestajaId = izabraniTipNamestaja.Id
-                    };
-                    listaNamestaja.Add(noviNamestaj);
+                    namestaj.Id = listaNamestaja.Count + 1;
+                    listaNamestaja.Add(namestaj);
                     break;
                 case Operacija.Izmena:
 
@@ -99,11 +67,11 @@ namespace POP_SF59_2016_GUI.UI
                     {
                         if (n.Id == namestaj.Id)
                         {
-                            n.Naziv = this.tbNaziv.Text;
-                            n.Sifra = this.tbSifra.Text;
-                            n.JedinicnaCena = cenaa;
-                            n.KolicinaUMagacinu = kolicinaa;
-                            n.TipNamestajaId = izabraniTipNamestaja.Id;
+                            n.Naziv = namestaj.Naziv;
+                            n.Sifra = namestaj.Sifra;
+                            n.JedinicnaCena = namestaj.JedinicnaCena;
+                            n.KolicinaUMagacinu = namestaj.KolicinaUMagacinu;
+                            n.TipNamestaja = namestaj.TipNamestaja;
                             break;
                         }
                     }
@@ -111,7 +79,7 @@ namespace POP_SF59_2016_GUI.UI
                 default:
                     break;
             }
-            Projekat.Instance.Namestaj = listaNamestaja;
+            GenericSerialize.Serialize("namestaj.xml", listaNamestaja);
             Close();
         }
 
