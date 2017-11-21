@@ -1,6 +1,7 @@
 ﻿using POP_SF59_2016.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,9 +29,8 @@ namespace POP_SF59_2016_GUI.UI
 
         private void PretragaNaziva(object sender, RoutedEventArgs e)
         {
-            var listaNamestaja = Projekat.Instance.Namestaj;
             string tip = cbTipPretrage.Text;
-            List<Namestaj> namestaj = new List<Namestaj>();
+            ObservableCollection<Namestaj> namestaj = new ObservableCollection<Namestaj>();
 
             if (tip == "Po nazivu")
             {
@@ -40,12 +40,11 @@ namespace POP_SF59_2016_GUI.UI
                     if (n.Naziv.Contains(naziv))
                     {
                         namestaj.Add(n);
-                        GlavniWindow g = new GlavniWindow();
-                        this.Close();
-                        g.Show();
-                        g.OsveziPrikaz(namestaj, Projekat.Instance.Korisnik,Projekat.Instance.Akcija ,Projekat.Instance.TipNamestaja);
                     }
                 }
+                GlavniWindow g = new GlavniWindow(namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
+                this.Close();
+                g.Show();
             }
             else if(tip == "Po sifri")
             {
@@ -55,12 +54,11 @@ namespace POP_SF59_2016_GUI.UI
                     if (n.Sifra.Contains(sifra))
                     {
                         namestaj.Add(n);
-                        GlavniWindow g = new GlavniWindow();
-                        this.Close();
-                        g.Show();
-                        g.OsveziPrikaz(namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
                     }
                 }
+                GlavniWindow g = new GlavniWindow(namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
+                this.Close();
+                g.Show();
             }
             else if (tip == "Po tipu")
             {
@@ -72,13 +70,13 @@ namespace POP_SF59_2016_GUI.UI
                         if (n.TipNamestajaId == t.Id && t.Naziv.Contains(tipN))
                         {
                             namestaj.Add(n);
-                            GlavniWindow g = new GlavniWindow();
-                            this.Close();
-                            g.Show();
-                            g.OsveziPrikaz(namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
+                            
                         }
                     }   
                 }
+                GlavniWindow g = new GlavniWindow(namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
+                this.Close();
+                g.Show();
             }
         }
     }

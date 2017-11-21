@@ -1,4 +1,5 @@
 ﻿using POP_SF59_2016.Model;
+using POP_SF59_2016.Util1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,19 +34,14 @@ namespace POP_SF59_2016_GUI.UI
         public KorisnikWindow(Korisnik korisnik,OperacijaK operacija)
         {
             InitializeComponent();
-            InicijalizujVrednosti(korisnik, operacija);
-        }
-
-        private void InicijalizujVrednosti(Korisnik korisnik, OperacijaK operacija)
-        {
             this.korisnik = korisnik;
             this.operacija = operacija;
 
-            this.tbIme.Text = korisnik.Ime;
-            this.tbPrezime.Text = korisnik.Prezime;
-            this.tbKorisnickoIme.Text = korisnik.KorisnickoIme;
-            this.tbLozinka.Text = korisnik.Lozinka;
-            this.cbTipKorisnika.Text = korisnik.TipKorisnika;
+            tbIme.DataContext = korisnik;
+            tbPrezime.DataContext = korisnik;
+            tbKorisnickoIme.DataContext = korisnik;
+            tbLozinka.DataContext = korisnik;
+            cbTipKorisnika.DataContext = korisnik;
         }
 
         private void SacuvajIzmene(object sender, RoutedEventArgs e)
@@ -57,27 +53,20 @@ namespace POP_SF59_2016_GUI.UI
             switch (operacija)
             {
                 case OperacijaK.Dodavanje:
-                    var noviKorisnik = new Korisnik()
-                    {
-                        Id = listaKorisnika.Count + 1,
-                        Ime = this.tbIme.Text,
-                        Prezime = this.tbPrezime.Text,
-                        KorisnickoIme = this.tbKorisnickoIme.Text,
-                        Lozinka = this.tbLozinka.Text,
-                        TipKorisnika = izabraniTipKorisnika
-                    };
-                    listaKorisnika.Add(noviKorisnik);
+                    korisnik.Id = listaKorisnika.Count + 1;
+                    korisnik.TipKorisnika = izabraniTipKorisnika;
+                    listaKorisnika.Add(korisnik);
                     break;
                 case OperacijaK.Izmena:
                     foreach (var k in listaKorisnika)
                     {
                         if (k.Id == korisnik.Id)
                         {
-                            k.Ime = this.tbIme.Text;
-                            k.Prezime = this.tbPrezime.Text;
-                            k.KorisnickoIme = this.tbKorisnickoIme.Text;
-                            k.Lozinka = this.tbLozinka.Text;
-                            k.TipKorisnika = izabraniTipKorisnika;
+                            k.Ime = korisnik.Ime;
+                            k.Prezime = korisnik.Prezime;
+                            k.KorisnickoIme = korisnik.KorisnickoIme;
+                            k.Lozinka = korisnik.Lozinka;
+                            k.TipKorisnika = korisnik.TipKorisnika;
                             break;
                         }
                     }
@@ -85,7 +74,7 @@ namespace POP_SF59_2016_GUI.UI
                 default:
                     break;
             }
-            Projekat.Instance.Korisnik = listaKorisnika;
+            GenericSerialize.Serialize("korisnici.xml", listaKorisnika);
             Close();
         }
 

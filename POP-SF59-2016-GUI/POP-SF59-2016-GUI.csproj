@@ -60,6 +60,9 @@
     <Compile Include="UI\DodajNamestajNaAkciju.xaml.cs">
       <DependentUpon>DodajNamestajNaAkciju.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\DodajNamestajZaProdaju.xaml.cs">
+      <DependentUpon>DodajNamestajZaProdaju.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\GlavniWindow.xaml.cs">
       <DependentUpon>GlavniWindow.xaml</DependentUpon>
     </Compile>
@@ -75,8 +78,17 @@
     <Compile Include="UI\PretragaNamestajaWindow.xaml.cs">
       <DependentUpon>PretragaNamestajaWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\PretragaProdajaWindow.xaml.cs">
+      <DependentUpon>PretragaProdajaWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\PretragaTipaNamestajaWindow.xaml.cs">
       <DependentUpon>PretragaTipaNamestajaWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ProdajaWindow.xaml.cs">
+      <DependentUpon>ProdajaWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ProdavacGlavniWindow.xaml.cs">
+      <DependentUpon>ProdavacGlavniWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\TipNamestajaWindow.xaml.cs">
       <DependentUpon>TipNamestajaWindow.xaml</DependentUpon>
@@ -102,6 +114,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\DodajNamestajZaProdaju.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\GlavniWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -122,9 +138,21 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\PretragaProdajaWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\PretragaTipaNamestajaWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\ProdajaWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\ProdavacGlavniWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\TipNamestajaWindow.xaml">
       <SubType>Designer</SubType>

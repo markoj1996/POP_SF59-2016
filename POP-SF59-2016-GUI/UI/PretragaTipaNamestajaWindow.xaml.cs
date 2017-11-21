@@ -1,6 +1,7 @@
 ﻿using POP_SF59_2016.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,9 +28,8 @@ namespace POP_SF59_2016_GUI.UI
 
         private void PretragaNaziva(object sender, RoutedEventArgs e)
         {
-            var listaTipaNamestaja = Projekat.Instance.TipNamestaja;
             string tip = cbTipPretrage.Text;
-            List<TipNamestaja> tipNamestaja = new List<TipNamestaja>();
+            ObservableCollection<TipNamestaja> tipNamestaja = new ObservableCollection<TipNamestaja>();
 
             if (tip == "Po nazivu")
             {
@@ -39,12 +39,12 @@ namespace POP_SF59_2016_GUI.UI
                     if (t.Naziv.Contains(naziv))
                     {
                         tipNamestaja.Add(t);
-                        GlavniWindow g = new GlavniWindow();
-                        this.Close();
-                        g.Show();
-                        g.OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija,tipNamestaja);
+                        
                     }
                 }
+                GlavniWindow g = new GlavniWindow(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, tipNamestaja);
+                this.Close();
+                g.Show();
             }
         }
     }

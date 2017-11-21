@@ -118,7 +118,7 @@ namespace POP_SF59_2016.Model
             {
                 if (tip.Id == TipNamestajaId)
                 {
-                    return $"{Naziv},{Sifra},{JedinicnaCena},{tip.Naziv}";
+                    return $"{Id},{Naziv},{Sifra},{JedinicnaCena},{tip.Naziv}";
                 }
             }
             return $"{Naziv},{Sifra},{JedinicnaCena}";

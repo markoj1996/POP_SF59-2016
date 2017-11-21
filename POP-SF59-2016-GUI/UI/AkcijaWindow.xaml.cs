@@ -1,4 +1,5 @@
 ﻿using POP_SF59_2016.Model;
+using POP_SF59_2016.Util1;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -21,6 +22,7 @@ namespace POP_SF59_2016_GUI.UI
     /// </summary>
     public partial class AkcijaWindow : Window
     {
+        public Namestaj izabraniNamestaj { get; set; }
 
         public enum OperacijaA
         {
@@ -34,99 +36,61 @@ namespace POP_SF59_2016_GUI.UI
         public AkcijaWindow(Akcija akcija,OperacijaA operacija)
         {
             InitializeComponent();
-            InicijalizujVrednosti(akcija,operacija);
-            OsveziAkcije();
-        }
-
-        public void OsveziAkcije()
-        {
-            lbNamestaj.Items.Clear();
-            foreach (var id in akcija.NamestajNaPopustuId)
-            {
-                foreach (var n in Projekat.Instance.Namestaj)
-                {
-                    if (id == n.Id)
-                    {
-                        lbNamestaj.Items.Add(n);
-                    }
-                }
-            }
-        }
-
-        private void InicijalizujVrednosti(Akcija akcija, OperacijaA operacija)
-        {
             this.akcija = akcija;
             this.operacija = operacija;
 
-            this.tbDatumPocetka.Text = akcija.DatumPocetka.ToString();
-            this.tbDatumZavrsetka.Text = akcija.DatumZavrsetka.ToString();
-            this.tbPopust.Text = akcija.Popust.ToString("0.##");
-            foreach (var name in Projekat.Instance.Namestaj)
+            tbDatumPocetka.DataContext = akcija;
+            tbDatumZavrsetka.DataContext = akcija;
+            tbPopust.DataContext = akcija;
+            dgNamestaj.DataContext = akcija;
+
+            NamestajKolone();
+        }
+
+        private void NamestajKolone()
+        {
+            List<Namestaj> nadjeni= new List<Namestaj>();
+            foreach (var a in akcija.NamestajNaPopustuId)
             {
-                foreach (var id in akcija.NamestajNaPopustuId)
-                {
-                    if (name.Id == id)
-                    {
-                        this.lbNamestaj.Items.Add(name);
-                    }
-                }          
+                nadjeni.Add(Namestaj.GetById(a));     
             }
+            DataGridTextColumn column1 = new DataGridTextColumn();
+            column1.Header = "Id";
+            column1.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            column1.Binding = new Binding("Id");
+            dgNamestaj.Columns.Add(column1);
+
+            DataGridTextColumn column2 = new DataGridTextColumn();
+            column2.Header = "Naziv";
+            column2.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            column2.Binding = new Binding("Naziv");
+            dgNamestaj.Columns.Add(column2);
+
+            dgNamestaj.ItemsSource = nadjeni;
+            dgNamestaj.IsSynchronizedWithCurrentItem = true;
+            dgNamestaj.DataContext = this;
         }
 
         private void SacuvajIzmene(object sender, RoutedEventArgs e)
         {
-            List<Namestaj> namestaj = new List<Namestaj>();
-            List<int> naPopustu = new List<int>();
             var listaAkcija = Projekat.Instance.Akcija;
-
-
-            foreach (var n in lbNamestaj.Items)
-            {
-                Namestaj nam = (Namestaj)n;
-                namestaj.Add(nam);
-
-            }
 
             switch (operacija)
             {
-
                 case OperacijaA.Dodavanje:
-                    string datumPocetka = tbDatumPocetka.Text;
-                    string datumZavrsetka = tbDatumZavrsetka.Text;
-                    string popust = tbPopust.Text;
-                    foreach (var n in namestaj)
-                    {
-                        naPopustu.Add(n.Id);
-                    }
-                    
-
-                    var novaAkcija = new Akcija()
-                    {
-                        Id = listaAkcija.Count + 1,
-                        DatumPocetka = DateTime.Parse(datumPocetka),
-                        DatumZavrsetka = DateTime.Parse(datumZavrsetka),
-                        Popust = Decimal.Parse(popust),
-                        NamestajNaPopustuId = naPopustu
-                    };
-                    listaAkcija.Add(novaAkcija);
+                    akcija.Id = listaAkcija.Count + 1;
+                    listaAkcija.Add(akcija);
                     break;
                 case OperacijaA.Izmena:
-                    string datumPocetkai = tbDatumPocetka.Text;
-                    string datumZavrsetkai = tbDatumZavrsetka.Text;
-                    string popusti = tbPopust.Text;
-                    foreach (var n in namestaj)
-                    {
-                        naPopustu.Add(n.Id);
-                    }
-
                     foreach (var a in listaAkcija)
                     {
                         if (a.Id == akcija.Id)
                         {
-                            a.DatumPocetka = DateTime.Parse(datumPocetkai);
-                            a.DatumZavrsetka = DateTime.Parse(datumZavrsetkai);
-                            a.Popust = Decimal.Parse(popusti);
-                            a.NamestajNaPopustuId = naPopustu;
+                            a.Obrisan = akcija.Obrisan;
+                            a.DatumPocetka = akcija.DatumPocetka;
+                            a.DatumZavrsetka = akcija.DatumZavrsetka;
+                            a.Popust = akcija.Popust;
+                            a.NamestajNaPopustuId = akcija.NamestajNaPopustuId;
                             break;
                         }
                     }
@@ -134,7 +98,7 @@ namespace POP_SF59_2016_GUI.UI
                 default:
                     break;
             }
-            Projekat.Instance.Akcija = listaAkcija;
+            GenericSerialize.Serialize("akcije.xml", listaAkcija);
             Close();
         }
 
@@ -147,7 +111,6 @@ namespace POP_SF59_2016_GUI.UI
         {
             DodajNamestajNaAkciju dna = new DodajNamestajNaAkciju(akcija);
             dna.ShowDialog();
-            OsveziAkcije();
         }
     }
 }

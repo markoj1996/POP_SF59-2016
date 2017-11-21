@@ -16,7 +16,7 @@ namespace POP_SF59_2016.Util1
         {
             try
             {
-                var serializer = new XmlSerializer(typeof(List<T>));
+                var serializer = new XmlSerializer(typeof(ObservableCollection<T>));
                 using (var sw = new StreamWriter($@"../../Data/{fileName}"))
                 {
                     serializer.Serialize(sw, listToSerialize);

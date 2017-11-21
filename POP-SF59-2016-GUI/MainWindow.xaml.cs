@@ -37,10 +37,21 @@ namespace POP_SF59_2016_GUI
                 {
                     if (korisnici[i].KorisnickoIme == tbUsername.Text && korisnici[i].Lozinka == pwPassword.Password)
                     {
-                        GlavniWindow g = new GlavniWindow();
-                        g.Show();
-                        this.Close();
-                        break;
+                        if (korisnici[i].TipKorisnika == "Administrator")
+                        {
+                            GlavniWindow g = new GlavniWindow(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
+                            g.Show();
+                            this.Close();
+                            break;
+                        }
+                        else
+                        {
+                            ProdavacGlavniWindow pgw = new ProdavacGlavniWindow(Projekat.Instance.Prodaja);
+                            pgw.Show();
+                            this.Close();
+                            break;
+                        }
+                        
                     }
                     else
                     {

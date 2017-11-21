@@ -1,39 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfNamestaj xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Namestaj>
-    <Id>1</Id>
+    <KolicinaUMagacinu>1</KolicinaUMagacinu>
     <Obrisan>false</Obrisan>
-    <Naziv>b</Naziv>
+    <TipNamestajaId>0</TipNamestajaId>
+    <JedinicnaCena>1</JedinicnaCena>
     <Sifra>b</Sifra>
-    <JedinicnaCena>1</JedinicnaCena>
-    <KolicinaUMagacinu>1</KolicinaUMagacinu>
-    <TipNamestajaId>0</TipNamestajaId>
+    <Naziv>b</Naziv>
+    <Id>1</Id>
   </Namestaj>
   <Namestaj>
-    <Id>2</Id>
-    <Obrisan>false</Obrisan>
-    <Naziv>namestaj</Naziv>
-    <Sifra>a</Sifra>
-    <JedinicnaCena>50</JedinicnaCena>
     <KolicinaUMagacinu>50</KolicinaUMagacinu>
+    <Obrisan>false</Obrisan>
     <TipNamestajaId>0</TipNamestajaId>
+    <JedinicnaCena>50</JedinicnaCena>
+    <Sifra>a</Sifra>
+    <Naziv>namestaj</Naziv>
+    <Id>2</Id>
   </Namestaj>
   <Namestaj>
-    <Id>3</Id>
-    <Obrisan>false</Obrisan>
-    <Naziv>f</Naziv>
-    <Sifra>f</Sifra>
-    <JedinicnaCena>1</JedinicnaCena>
     <KolicinaUMagacinu>1</KolicinaUMagacinu>
+    <Obrisan>true</Obrisan>
     <TipNamestajaId>0</TipNamestajaId>
+    <JedinicnaCena>1</JedinicnaCena>
+    <Sifra>f</Sifra>
+    <Naziv>f</Naziv>
+    <Id>3</Id>
   </Namestaj>
   <Namestaj>
-    <Id>4</Id>
-    <Obrisan>false</Obrisan>
-    <Naziv>c</Naziv>
-    <Sifra>c</Sifra>
-    <JedinicnaCena>55</JedinicnaCena>
     <KolicinaUMagacinu>5</KolicinaUMagacinu>
+    <Obrisan>true</Obrisan>
     <TipNamestajaId>0</TipNamestajaId>
+    <JedinicnaCena>55</JedinicnaCena>
+    <Sifra>c</Sifra>
+    <Naziv>c</Naziv>
+    <Id>4</Id>
+  </Namestaj>
+  <Namestaj>
+    <KolicinaUMagacinu>10</KolicinaUMagacinu>
+    <Obrisan>false</Obrisan>
+    <TipNamestajaId>0</TipNamestajaId>
+    <JedinicnaCena>10</JedinicnaCena>
+    <Sifra>stolica</Sifra>
+    <Naziv>stolica</Naziv>
+    <Id>5</Id>
+  </Namestaj>
+  <Namestaj>
+    <KolicinaUMagacinu>110</KolicinaUMagacinu>
+    <Obrisan>true</Obrisan>
+    <TipNamestajaId>0</TipNamestajaId>
+    <JedinicnaCena>110</JedinicnaCena>
+    <Sifra>1proba</Sifra>
+    <Naziv>proba1</Naziv>
+    <Id>6</Id>
   </Namestaj>
 </ArrayOfNamestaj>

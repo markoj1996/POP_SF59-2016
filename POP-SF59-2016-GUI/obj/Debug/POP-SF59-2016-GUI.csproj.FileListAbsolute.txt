@@ -64,3 +64,11 @@ S:\New folder\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\KorisnikWindow.baml
 S:\New folder\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\PretragaKorsnikaWindow.baml
 S:\New folder\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\PretragaNamestajaWindow.baml
 S:\New folder\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\PretragaTipaNamestajaWindow.baml
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\PretragaProdajaWindow.g.cs
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\ProdajaWindow.g.cs
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\ProdavacGlavniWindow.g.cs
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\PretragaProdajaWindow.baml
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\ProdajaWindow.baml
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\ProdavacGlavniWindow.baml
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\DodajNamestajZaProdaju.g.cs
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\DodajNamestajZaProdaju.baml

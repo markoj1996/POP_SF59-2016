@@ -14,18 +14,9 @@
                         <RowDefinition Height="183*"/>
                         <RowDefinition Height="38*"/>
                     </Grid.RowDefinitions>
-                    <DataGrid Grid.Row="0" FontSize="20" Name="dgNamestaj" Margin="0,35,0,0" Width="606" Height="347" SelectedItem="{Binding Path=izabraniNamestaj}" />
-                    <ComboBox x:Name="cbTipSortiranjaN" Margin="367,7,73,355" Width="166" Height="20">
-                        <ComboBoxItem Content="Po ID" Height="22"/>
-                        <ComboBoxItem Content="Po nazivu" Height="22"/>
-                        <ComboBoxItem Content="Po sifri" Height="22"/>
-                        <ComboBoxItem Content="Po ceni" Height="22"/>
-                        <ComboBoxItem Content="Po kolicini" Height="22"/>
-                        <ComboBoxItem Content="Po tipu" Height="22"/>
-                    </ComboBox>
-                    <Button Content="Sortiraj" Grid.Row="0" Margin="538,7,0,355" Height="20" Click="SortirajN_Click" Width="68"/>
-                    <Button Content="Pretraga" Grid.Row="0" Margin="15,7,523,355" Click="PretraziN_Click" Height="20" Width="68"/>
-                    <Button Content="Refresh" Grid.Row="0" Margin="100,7,438,355" Click="Osvezi_Click" Height="20" Width="68"/>
+                    <DataGrid AutoGenerateColumns="False" Grid.Row="0" FontSize="20" Name="dgNamestaj" Margin="0,35,0,0" Width="606" Height="347" SelectedItem="{Binding Path=izabraniNamestaj}" />
+                    <Button Content="Pretraga" Grid.Row="0" Margin="15,7,523,355"  Height="20" Width="68" Click="PretraziN_Click"/>
+                    <Button Content="Refresh" Grid.Row="0" Margin="100,7,438,355"  Height="20" Width="68" Click="Osvezi_Click"/>
                     <Button Content="Dodaj" Margin="25,20,463,21" Grid.Row="1" Click="DodajN_Click"/>
                     <Button Content="Izmeni" Margin="171,20,317,21" Grid.Row="1" Width="108" Click="IzmeniN_Click"/>
                     <Button Content="Obrisi" Margin="319,20,169,21" Grid.Row="1" Width="108" Click="ObrisiN_Click"/>
@@ -38,16 +29,8 @@
                         <RowDefinition Height="183*"/>
                         <RowDefinition Height="38*"/>
                     </Grid.RowDefinitions>
-                    <ListBox Grid.Row="0" FontSize="20" Name="lbKorisnici" Margin="0,35,0,0"/>
-                    <ComboBox x:Name="cbTipSortiranjaK" Margin="367,7,73,355" Width="166" Height="20">
-                        <ComboBoxItem Content="Po ID" Height="22"/>
-                        <ComboBoxItem Content="Po imenu" Height="22"/>
-                        <ComboBoxItem Content="Po prezimenu" Height="22"/>
-                        <ComboBoxItem Content="Po korisnickom imenu" Height="22"/>
-                        <ComboBoxItem Content="Po lozinci" Height="22"/>
-                    </ComboBox>
-                    <Button Content="Sortiraj" Grid.Row="0" Margin="538,7,0,355" Height="20" Click="SortirajK_Click" Width="68"/>
-                    <Button Content="Pretraga" Grid.Row="0" Margin="15,7,523,355" Height="20" Click="PretraziK_Click"/>
+                    <DataGrid AutoGenerateColumns="False" Grid.Row="0" FontSize="20" Name="dgKorisnici" Margin="0,35,0,0" SelectedItem="{Binding Path=izabraniKorisnik}"/>
+                    <Button Content="Pretraga" Grid.Row="0" Margin="15,7,523,355" Height="20" Click="PretraziK_Click" />
                     <Button Content="Refresh" Grid.Row="0" Margin="100,7,438,355" Height="20" Click="Osvezi_Click"/>
                     <Button Content="Dodaj" Margin="25,20,463,21" Grid.Row="1" Click="DodajK_Click"/>
                     <Button Content="Izmeni" Margin="171,20,317,21" Grid.Row="1" Width="108" Click="IzmeniK_Click"/>
@@ -61,15 +44,8 @@
                         <RowDefinition Height="183*"/>
                         <RowDefinition Height="38*"/>
                     </Grid.RowDefinitions>
-                    <ListBox Grid.Row="0" FontSize="20" Name="lbAkcije" Margin="0,35,0,0"/>
-                    <ComboBox x:Name="cbTipSortiranjaA" Margin="367,7,73,355" Width="166" Height="20">
-                        <ComboBoxItem Content="Po ID" Height="22"/>
-                        <ComboBoxItem Content="Po datumu pocetka" Height="22"/>
-                        <ComboBoxItem Content="Po datumu zavrsetka" Height="22"/>
-                        <ComboBoxItem Content="Po popustu" Height="22"/>
-                    </ComboBox>
-                    <Button Content="Sortiraj" Grid.Row="0" Margin="538,7,0,355" Height="20" Click="SortirajA_Click" Width="68"/>
-                    <Button Content="Refresh" Grid.Row="0" Margin="15,7,523,355" Height="20"/>
+                    <DataGrid Grid.Row="0" AutoGenerateColumns="False" FontSize="20" Name="dgAkcije" Margin="0,35,0,0" SelectedItem="{Binding Path=izabranaAkcija}"/>
+                    <Button Content="Refresh" Grid.Row="0" Margin="15,7,523,355" Height="20" Click="Osvezi_Click"/>
                     <Button Content="Dodaj" Margin="25,20,463,21" Grid.Row="1" Click="DodajA_Click"/>
                     <Button Content="Izmeni" Margin="171,20,317,21" Grid.Row="1" Width="108" Click="IzmeniA_Click"/>
                     <Button Content="Obrisi" Margin="319,20,169,21" Grid.Row="1" Width="108" Click="ObrisiA_Click"/>
@@ -82,12 +58,7 @@
                         <RowDefinition Height="183*"/>
                         <RowDefinition Height="38*"/>
                     </Grid.RowDefinitions>
-                    <ListBox Grid.Row="0" FontSize="20" Name="lbTipNamestaja" Margin="0,35,0,0"/>
-                    <ComboBox x:Name="cbTipSortiranjaT" Margin="367,7,73,355" Width="166" Height="20">
-                        <ComboBoxItem Content="Po ID" Height="22"/>
-                        <ComboBoxItem Content="Po nazivu" Height="22"/>
-                    </ComboBox>
-                    <Button Content="Sortiraj" Grid.Row="0" Margin="538,7,0,355" Height="20" Click="SortirajT_Click" Width="68"/>
+                    <DataGrid AutoGenerateColumns="False" Grid.Row="0" FontSize="20" Name="dgTipNamestaja" Margin="0,35,0,0" SelectedItem="{Binding Path=izabraniTip}"/>
                     <Button Content="Pretraga" Grid.Row="0" Margin="15,7,523,355" Height="20" Click="PretraziT_Click"/>
                     <Button Content="Refresh" Grid.Row="0" Margin="100,7,438,355" Height="20" Click="Osvezi_Click"/>
                     <Button Content="Dodaj" Margin="25,20,463,21" Grid.Row="1" Click="DodajT_Click"/>

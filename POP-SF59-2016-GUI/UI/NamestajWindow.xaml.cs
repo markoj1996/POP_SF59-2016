@@ -40,6 +40,9 @@ namespace POP_SF59_2016_GUI.UI
             cbTipNamestaja.ItemsSource = Projekat.Instance.TipNamestaja;
 
             tbNaziv.DataContext = namestaj;
+            tbSifra.DataContext = namestaj;
+            tbCena.DataContext = namestaj;
+            tbKolicina.DataContext = namestaj;
             cbTipNamestaja.DataContext = namestaj;
         }
 
@@ -51,18 +54,11 @@ namespace POP_SF59_2016_GUI.UI
 
             switch (operacija)
             {
-
-
                 case Operacija.Dodavanje:
                     namestaj.Id = listaNamestaja.Count + 1;
                     listaNamestaja.Add(namestaj);
                     break;
                 case Operacija.Izmena:
-
-                    String cenass = tbCena.Text;
-                    double cenaa = double.Parse(cenass);
-                    String kolicinass = tbKolicina.Text;
-                    int kolicinaa = int.Parse(kolicinass);
                     foreach (var n in listaNamestaja)
                     {
                         if (n.Id == namestaj.Id)

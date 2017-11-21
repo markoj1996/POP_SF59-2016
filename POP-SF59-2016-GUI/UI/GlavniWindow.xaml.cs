@@ -2,6 +2,7 @@
 using POP_SF59_2016.Util1;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,19 +23,61 @@ namespace POP_SF59_2016_GUI.UI
     public partial class GlavniWindow : Window
     {
         public Namestaj izabraniNamestaj { get; set; }
+        public Korisnik izabraniKorisnik { get; set; }
+        public TipNamestaja izabraniTip { get; set; }
+        public Akcija izabranaAkcija { get; set; }
 
         public enum Operacija
         {
             Dodavanje,
             Izmena
         }
-        public GlavniWindow()
+        public GlavniWindow(ObservableCollection<Namestaj>namestaj, ObservableCollection<Korisnik>korisnici, ObservableCollection<Akcija>akcije, ObservableCollection<TipNamestaja>tipNamestaja)
         {
             InitializeComponent();
+            NamestajKolone(namestaj);
+            KorisnikKolone(korisnici);
+            AkcijeKolone(akcije);
+            TipKolone(tipNamestaja);
 
+        }
+
+        private void NamestajKolone(ObservableCollection<Namestaj> namestaj)
+        { 
+            DataGridTextColumn column1 = new DataGridTextColumn();
+            column1.Header = "Id";
+            column1.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            column1.Binding = new Binding("Id");
+            dgNamestaj.Columns.Add(column1);
+
+            DataGridTextColumn column2 = new DataGridTextColumn();
+            column2.Header = "Naziv";
+            column2.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            column2.Binding = new Binding("Naziv");
+            dgNamestaj.Columns.Add(column2);
+
+
+            DataGridTextColumn column3 = new DataGridTextColumn();
+            column3.Header = "Cena";
+            column3.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            column3.Binding = new Binding("JedinicnaCena");
+            dgNamestaj.Columns.Add(column3);
+
+            DataGridTextColumn column4 = new DataGridTextColumn();
+            column4.Header = "Kolicina";
+            column4.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            column4.Binding = new Binding("KolicinaUMagacinu");
+            dgNamestaj.Columns.Add(column4);
+
+            DataGridTextColumn column5 = new DataGridTextColumn();
+            column5.Header = "Tip namestaja";
+            column5.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            column5.Binding = new Binding("TipNamestaja");
+            dgNamestaj.Columns.Add(column5);
+
+            dgNamestaj.ItemsSource = namestaj;
             dgNamestaj.IsSynchronizedWithCurrentItem = true;
             dgNamestaj.DataContext = this;
-            dgNamestaj.ItemsSource = Projekat.Instance.Namestaj;
         }
 
         private void DodajN_Click(object sender, RoutedEventArgs e)
@@ -78,86 +121,73 @@ namespace POP_SF59_2016_GUI.UI
             var PretragaProzor = new PretragaNamestajaWindow();
             Close();
             PretragaProzor.ShowDialog();
-            
-        }
-        /*
-        private void SortirajN_Click(object sender, RoutedEventArgs e)
-        {
-            string tip = cbTipSortiranjaN.Text;
-
-            if (tip == "Po ID")
-            {
-                List<Namestaj> sortirana = Projekat.Instance.Namestaj.OrderBy(o => o.Id).ToList();
-                OsveziPrikaz(sortirana, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
-            }
-            else if (tip == "Po nazivu")
-            {
-                List<Namestaj> sortirana = Projekat.Instance.Namestaj.OrderBy(o => o.Naziv).ToList();
-                OsveziPrikaz(sortirana, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
-            }
-            else if (tip == "Po sifri")
-            {
-                List<Namestaj> sortirana = Projekat.Instance.Namestaj.OrderBy(o => o.Sifra).ToList();
-                OsveziPrikaz(sortirana, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
-            }
-            else if (tip == "Po ceni")
-            {
-                List<Namestaj> sortirana = Projekat.Instance.Namestaj.OrderBy(o => o.JedinicnaCena).ToList();
-                OsveziPrikaz(sortirana, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
-            }
-            else if (tip == "Po kolicini")
-            {
-                List<Namestaj> sortirana = Projekat.Instance.Namestaj.OrderBy(o => o.KolicinaUMagacinu).ToList();
-                OsveziPrikaz(sortirana, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
-            }
-            else if (tip == "Po tipu")
-            {
-                List<Namestaj> sortirana = Projekat.Instance.Namestaj.OrderBy(o => o.TipNamestajaId).ToList();
-                OsveziPrikaz(sortirana, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
-            }
 
         }
 
         private void Osvezi_Click(object sender, RoutedEventArgs e)
         {
-            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
+            dgNamestaj.Columns.Clear();
+            dgKorisnici.Columns.Clear();
+            dgAkcije.Columns.Clear();
+            dgTipNamestaja.Columns.Clear();
+            NamestajKolone(Projekat.Instance.Namestaj);
+            KorisnikKolone(Projekat.Instance.Korisnik);
+            AkcijeKolone(Projekat.Instance.Akcija);
+            TipKolone(Projekat.Instance.TipNamestaja);
         }
 
-            private void DodajT_Click(object sender, RoutedEventArgs e)
+        private void TipKolone(ObservableCollection<TipNamestaja> tipNamestaja)
         {
+            DataGridTextColumn column1 = new DataGridTextColumn();
+            column1.Header = "Id";
+            column1.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            column1.Binding = new Binding("Id");
+            dgTipNamestaja.Columns.Add(column1);
+
+            DataGridTextColumn column2 = new DataGridTextColumn();
+            column2.Header = "Naziv";
+            column2.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            column2.Binding = new Binding("Naziv");
+            dgTipNamestaja.Columns.Add(column2);
+
+            dgTipNamestaja.ItemsSource = tipNamestaja;
+            dgTipNamestaja.IsSynchronizedWithCurrentItem = true;
+            dgTipNamestaja.DataContext = this;
+        }
+
+        private void DodajT_Click(object sender, RoutedEventArgs e)
+        {
+
             var noviTipNamestaja = new TipNamestaja()
             {
                 Naziv = ""
             };
             var TipNamestajaProzor = new TipNamestajaWindow(noviTipNamestaja, TipNamestajaWindow.OperacijaT.Dodavanje);
             TipNamestajaProzor.ShowDialog();
-            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
         }
 
         private void IzmeniT_Click(object sender, RoutedEventArgs e)
         {
-            var izabraniTipNamestaja = (TipNamestaja)lbTipNamestaja.SelectedItem;
-            var TipNamestajaProzor = new TipNamestajaWindow(izabraniTipNamestaja, TipNamestajaWindow.OperacijaT.Izmena);
+            TipNamestaja kopija = (TipNamestaja)izabraniTip.Clone();
+            var TipNamestajaProzor = new TipNamestajaWindow(kopija, TipNamestajaWindow.OperacijaT.Izmena);
             TipNamestajaProzor.ShowDialog();
-            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
         }
 
         private void ObrisiT_Click(object sender, RoutedEventArgs e)
         {
-            var izabranTipNamestaja = (TipNamestaja)lbTipNamestaja.SelectedItem;
             var listaTipaNamestaja = Projekat.Instance.TipNamestaja;
 
-            if (MessageBox.Show($"Da li zelite da obrisete: {izabranTipNamestaja.Naziv}", "Brisanje", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (MessageBox.Show($"Da li zelite da obrisete: {izabraniTip.Naziv}", "Brisanje", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 foreach (var n in listaTipaNamestaja)
                 {
-                    if (n.Id == izabranTipNamestaja.Id)
+                    if (n.Id == izabraniTip.Id)
                     {
                         n.Obrisan = true;
+                        break;
                     }
                 }
-                Projekat.Instance.TipNamestaja = listaTipaNamestaja;
-                OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
+                GenericSerialize.Serialize("tipNamestaja.xml", listaTipaNamestaja);
             }
         }
 
@@ -169,63 +199,83 @@ namespace POP_SF59_2016_GUI.UI
 
         }
 
-        private void SortirajT_Click(object sender, RoutedEventArgs e)
+        private void KorisnikKolone(ObservableCollection<Korisnik> korisnici)
         {
-            string tip = cbTipSortiranjaT.Text;
+            DataGridTextColumn column1 = new DataGridTextColumn();
+            column1.Header = "Id";
+            column1.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            column1.Binding = new Binding("Id");
+            dgKorisnici.Columns.Add(column1);
 
-            if (tip == "Po ID")
-            {
-                List<TipNamestaja> sortirana = Projekat.Instance.TipNamestaja.OrderBy(o => o.Id).ToList();
-                OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, sortirana);
-            }
-            else if (tip == "Po nazivu")
-            {
-                List<TipNamestaja> sortirana = Projekat.Instance.TipNamestaja.OrderBy(o => o.Naziv).ToList();
-                OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, sortirana);
-            }
+            DataGridTextColumn column2 = new DataGridTextColumn();
+            column2.Header = "Ime";
+            column2.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            column2.Binding = new Binding("Ime");
+            dgKorisnici.Columns.Add(column2);
+
+
+            DataGridTextColumn column3 = new DataGridTextColumn();
+            column3.Header = "Prezime";
+            column3.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            column3.Binding = new Binding("Prezime");
+            dgKorisnici.Columns.Add(column3);
+
+            DataGridTextColumn column4 = new DataGridTextColumn();
+            column4.Header = "Korisnicko ime";
+            column4.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            column4.Binding = new Binding("KorisnickoIme");
+            dgKorisnici.Columns.Add(column4);
+
+            DataGridTextColumn column5 = new DataGridTextColumn();
+            column5.Header = "Lozinka";
+            column5.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            column5.Binding = new Binding("Lozinka");
+            dgKorisnici.Columns.Add(column5);
+
+            DataGridTextColumn column6 = new DataGridTextColumn();
+            column6.Header = "Tip korisnika";
+            column6.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            column6.Binding = new Binding("TipKorisnika");
+            dgKorisnici.Columns.Add(column6);
+
+            dgKorisnici.ItemsSource = korisnici;
+            dgKorisnici.IsSynchronizedWithCurrentItem = true;
+            dgKorisnici.DataContext = this;
         }
-
-            private void DodajK_Click(object sender, RoutedEventArgs e)
+        private void DodajK_Click(object sender, RoutedEventArgs e)
         {
             var noviKorisnik = new Korisnik()
             {
                 Ime = "",
-                Prezime = "",
-                KorisnickoIme = "",
-                Lozinka = "",
             };
             var KorisnikProzor = new KorisnikWindow(noviKorisnik, KorisnikWindow.OperacijaK.Dodavanje);
             KorisnikProzor.ShowDialog();
-            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
         }
 
         private void IzmeniK_Click(object sender, RoutedEventArgs e)
         {
-            var izabraniKorisnik = (Korisnik)lbKorisnici.SelectedItem;
-            var KorisnikProzor = new KorisnikWindow(izabraniKorisnik, KorisnikWindow.OperacijaK.Izmena);
+            Korisnik kopija = (Korisnik)izabraniKorisnik.Clone();
+            var KorisnikProzor = new KorisnikWindow(kopija, KorisnikWindow.OperacijaK.Izmena);
             KorisnikProzor.ShowDialog();
-            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
         }
 
         private void ObrisiK_Click(object sender, RoutedEventArgs e)
         {
-            var izabranKorisnik = (Korisnik)lbKorisnici.SelectedItem;
             var listaKorisnika = Projekat.Instance.Korisnik;
 
-            if (MessageBox.Show($"Da li zelite da obrisete: {izabranKorisnik.Ime}", "Brisanje", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (MessageBox.Show($"Da li zelite da obrisete: {izabraniKorisnik.Ime}", "Brisanje", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 foreach (var k in listaKorisnika)
                 {
-                    if (k.Id == izabranKorisnik.Id)
+                    if (k.Id == izabraniKorisnik.Id)
                     {
                         k.Obrisan = true;
+                        break;
                     }
                 }
-                Projekat.Instance.Korisnik = listaKorisnika;
-                OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
+                GenericSerialize.Serialize("korisnicij.xml", listaKorisnika);
             }
         }
-
 
         private void PretraziK_Click(object sender, RoutedEventArgs e)
         {
@@ -235,63 +285,55 @@ namespace POP_SF59_2016_GUI.UI
 
         }
 
-        private void SortirajK_Click(object sender, RoutedEventArgs e)
+        private void AkcijeKolone(ObservableCollection<Akcija> akcije)
         {
-            string tip = cbTipSortiranjaK.Text;
+            DataGridTextColumn column1 = new DataGridTextColumn();
+            column1.Header = "Id";
+            column1.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            column1.Binding = new Binding("Id");
+            dgAkcije.Columns.Add(column1);
 
-            if (tip == "Po ID")
-            {
-                List<Korisnik> sortirana = Projekat.Instance.Korisnik.OrderBy(o => o.Id).ToList();
-                OsveziPrikaz(Projekat.Instance.Namestaj, sortirana, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
-            }
-            else if (tip == "Po imenu")
-            {
-                List<Korisnik> sortirana = Projekat.Instance.Korisnik.OrderBy(o => o.Ime).ToList();
-                OsveziPrikaz(Projekat.Instance.Namestaj, sortirana, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
-            }
-            else if (tip == "Po prezimenu")
-            {
-                List<Korisnik> sortirana = Projekat.Instance.Korisnik.OrderBy(o => o.Prezime).ToList();
-                OsveziPrikaz(Projekat.Instance.Namestaj, sortirana, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
-            }
-            else if (tip == "Po korisnickom imenu")
-            {
-                List<Korisnik> sortirana = Projekat.Instance.Korisnik.OrderBy(o => o.KorisnickoIme).ToList();
-                OsveziPrikaz(Projekat.Instance.Namestaj, sortirana, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
-            }
-            else if (tip == "Po lozinci")
-            {
-                List<Korisnik> sortirana = Projekat.Instance.Korisnik.OrderBy(o => o.Lozinka).ToList();
-                OsveziPrikaz(Projekat.Instance.Namestaj, sortirana, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
-            }
+            DataGridTextColumn column2 = new DataGridTextColumn();
+            column2.Header = "Datum pocetka";
+            column2.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            column2.Binding = new Binding("DatumPocetka");
+            dgAkcije.Columns.Add(column2);
 
+            DataGridTextColumn column3 = new DataGridTextColumn();
+            column3.Header = "Datum zavrsetka";
+            column3.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            column3.Binding = new Binding("DatumZavrsetka");
+            dgAkcije.Columns.Add(column3);
+
+            DataGridTextColumn column4 = new DataGridTextColumn();
+            column4.Header = "Popust";
+            column4.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            column4.Binding = new Binding("Popust");
+            dgAkcije.Columns.Add(column4);
+
+            dgAkcije.ItemsSource = akcije;
+            dgAkcije.IsSynchronizedWithCurrentItem = true;
+            dgAkcije.DataContext = this;
         }
 
         private void DodajA_Click(object sender, RoutedEventArgs e)
         {
             var novaAkcija = new Akcija()
             {
-                DatumPocetka = new DateTime(),
-                DatumZavrsetka = new DateTime(),
-                Popust = 0,
-                NamestajNaPopustuId = new List<int>()
+                
             };
             var AkcijaProzor = new AkcijaWindow(novaAkcija, AkcijaWindow.OperacijaA.Dodavanje);
             AkcijaProzor.ShowDialog();
-            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
         }
-
         private void IzmeniA_Click(object sender, RoutedEventArgs e)
         {
-            var izabranaAkcija = (Akcija)lbAkcije.SelectedItem;
-            var AkcijaProzor = new AkcijaWindow(izabranaAkcija, AkcijaWindow.OperacijaA.Izmena);
+            Akcija kopija = (Akcija)izabranaAkcija.Clone();
+            var AkcijaProzor = new AkcijaWindow(kopija, AkcijaWindow.OperacijaA.Izmena);
             AkcijaProzor.ShowDialog();
-            OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
         }
 
         private void ObrisiA_Click(object sender, RoutedEventArgs e)
         {
-            var izabranaAkcija = (Akcija)lbAkcije.SelectedItem;
             var listaAkcija = Projekat.Instance.Akcija;
 
             if (MessageBox.Show($"Da li zelite da obrisete: {izabranaAkcija.Id}", "Brisanje", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
@@ -300,45 +342,17 @@ namespace POP_SF59_2016_GUI.UI
                 {
                     if (a.Id == izabranaAkcija.Id)
                     {
-                        a.Obrisan = true;
+                        //a.Obrisan = true;
+                        break;
                     }
                 }
-                Projekat.Instance.Akcija = listaAkcija;
-                OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
+                GenericSerialize.Serialize("akcije.xml", listaAkcija);
             }
         }
-
-        private void SortirajA_Click(object sender, RoutedEventArgs e)
-        {
-            string tip = cbTipSortiranjaA.Text;
-
-            if (tip == "Po ID")
-            {
-                List<Akcija> sortirana = Projekat.Instance.Akcija.OrderBy(o => o.Id).ToList();
-                OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, sortirana, Projekat.Instance.TipNamestaja);
-            }
-            else if (tip == "Po datumu pocetka")
-            {
-                List<Akcija> sortirana = Projekat.Instance.Akcija.OrderBy(o => o.DatumPocetka).ToList();
-                OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, sortirana, Projekat.Instance.TipNamestaja);
-            }
-            else if (tip == "Po datumu zavrsetka")
-            {
-                List<Akcija> sortirana = Projekat.Instance.Akcija.OrderBy(o => o.DatumZavrsetka).ToList();
-                OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, sortirana, Projekat.Instance.TipNamestaja);
-            }
-            else if (tip == "Po popustu")
-            {
-                List<Akcija> sortirana = Projekat.Instance.Akcija.OrderBy(o => o.Popust).ToList();
-                OsveziPrikaz(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, sortirana, Projekat.Instance.TipNamestaja);
-            }
-
-        }
-
         private void Izadji_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }*/
+        }
 
     }
 }

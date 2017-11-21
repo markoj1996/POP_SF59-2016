@@ -1,4 +1,5 @@
 ﻿using POP_SF59_2016.Model;
+using POP_SF59_2016.Util1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,23 +27,16 @@ namespace POP_SF59_2016_GUI.UI
             Izmena
         }
 
-        private TipNamestaja TipNamestaja;
-        private OperacijaT Operacija;
+        private TipNamestaja tipNamestaja;
+        private OperacijaT operacija;
 
-        public TipNamestajaWindow(TipNamestaja tip,OperacijaT operacija)
+        public TipNamestajaWindow(TipNamestaja tip, OperacijaT operacija)
         {
             InitializeComponent();
+            this.tipNamestaja = tip;
+            this.operacija = operacija;
 
-            InicijalizujVrednosti(tip, operacija);
-        }
-
-        private void InicijalizujVrednosti(TipNamestaja tipNamestaja, OperacijaT operacija)
-        {
-            this.TipNamestaja = tipNamestaja;
-            this.Operacija = operacija;
-
-            this.tbNaziv.Text = TipNamestaja.Naziv;
-
+            tbNaziv.DataContext = tip;
         }
 
         private void SacuvajIzmene(object sender, RoutedEventArgs e)
@@ -50,22 +44,18 @@ namespace POP_SF59_2016_GUI.UI
 
             var listaTipaNamestaja = Projekat.Instance.TipNamestaja;
 
-            switch (Operacija)
+            switch (operacija)
             {
                 case OperacijaT.Dodavanje:
-                    var noviTipNamestaja = new TipNamestaja()
-                    {
-                        Id = listaTipaNamestaja.Count + 1,
-                        Naziv = this.tbNaziv.Text
-                    };
-                    listaTipaNamestaja.Add(noviTipNamestaja);
+                    tipNamestaja.Id = listaTipaNamestaja.Count + 1;
+                    listaTipaNamestaja.Add(tipNamestaja);
                     break;
                 case OperacijaT.Izmena:
-                    foreach (var n in listaTipaNamestaja)
+                    foreach (var k in listaTipaNamestaja)
                     {
-                        if (n.Id == TipNamestaja.Id)
+                        if (k.Id == tipNamestaja.Id)
                         {
-                            n.Naziv = this.tbNaziv.Text;
+                            k.Naziv = tipNamestaja.Naziv;
                             break;
                         }
                     }
@@ -73,7 +63,7 @@ namespace POP_SF59_2016_GUI.UI
                 default:
                     break;
             }
-            Projekat.Instance.TipNamestaja = listaTipaNamestaja;
+            GenericSerialize.Serialize("tipNamestaja.xml", listaTipaNamestaja);
             Close();
         }
         private void Izadji(object sender, RoutedEventArgs e)
