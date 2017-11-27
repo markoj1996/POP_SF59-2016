@@ -3,6 +3,7 @@ using POP_SF59_2016.Util1;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,7 @@ namespace POP_SF59_2016_GUI.UI
     /// </summary>
     public partial class GlavniWindow : Window
     {
+        ICollectionView view;
         public Namestaj izabraniNamestaj { get; set; }
         public Korisnik izabraniKorisnik { get; set; }
         public TipNamestaja izabraniTip { get; set; }
@@ -35,6 +37,7 @@ namespace POP_SF59_2016_GUI.UI
         public GlavniWindow(ObservableCollection<Namestaj>namestaj, ObservableCollection<Korisnik>korisnici, ObservableCollection<Akcija>akcije, ObservableCollection<TipNamestaja>tipNamestaja)
         {
             InitializeComponent();
+            
             NamestajKolone(namestaj);
             KorisnikKolone(korisnici);
             AkcijeKolone(akcije);
@@ -75,9 +78,22 @@ namespace POP_SF59_2016_GUI.UI
             column5.Binding = new Binding("TipNamestaja");
             dgNamestaj.Columns.Add(column5);
 
-            dgNamestaj.ItemsSource = namestaj;
+            DataGridTextColumn column6 = new DataGridTextColumn();
+            column6.Header = "Akcija Id";
+            column6.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            column6.Binding = new Binding("AkcijaId");
+            dgNamestaj.Columns.Add(column6);
+
+            view = CollectionViewSource.GetDefaultView(Projekat.Instance.Namestaj);
+            view.Filter = NamestajFilter;
+            dgNamestaj.ItemsSource = view;
             dgNamestaj.IsSynchronizedWithCurrentItem = true;
             dgNamestaj.DataContext = this;
+        }
+
+        private bool NamestajFilter(object obj)
+        {
+            return !((Namestaj)obj).Obrisan;
         }
 
         private void DodajN_Click(object sender, RoutedEventArgs e)
@@ -109,6 +125,7 @@ namespace POP_SF59_2016_GUI.UI
                     if (n.Id == izabraniNamestaj.Id)
                     {
                         n.Obrisan = true;
+                        view.Refresh();
                         break;
                     }
                 }
@@ -150,9 +167,15 @@ namespace POP_SF59_2016_GUI.UI
             column2.Binding = new Binding("Naziv");
             dgTipNamestaja.Columns.Add(column2);
 
+            view = CollectionViewSource.GetDefaultView(Projekat.Instance.TipNamestaja);
+            view.Filter = tipNamestajaFilter;
             dgTipNamestaja.ItemsSource = tipNamestaja;
             dgTipNamestaja.IsSynchronizedWithCurrentItem = true;
             dgTipNamestaja.DataContext = this;
+        }
+        private bool tipNamestajaFilter(object obj)
+        {
+            return !((TipNamestaja)obj).Obrisan;
         }
 
         private void DodajT_Click(object sender, RoutedEventArgs e)
@@ -184,6 +207,7 @@ namespace POP_SF59_2016_GUI.UI
                     if (n.Id == izabraniTip.Id)
                     {
                         n.Obrisan = true;
+                        view.Refresh();
                         break;
                     }
                 }
@@ -238,10 +262,19 @@ namespace POP_SF59_2016_GUI.UI
             column6.Binding = new Binding("TipKorisnika");
             dgKorisnici.Columns.Add(column6);
 
+
+            view = CollectionViewSource.GetDefaultView(Projekat.Instance.Korisnik);
+
+            view.Filter = KorisnikFilter;
             dgKorisnici.ItemsSource = korisnici;
             dgKorisnici.IsSynchronizedWithCurrentItem = true;
             dgKorisnici.DataContext = this;
         }
+        private bool KorisnikFilter(object obj)
+        {
+            return !((Korisnik)obj).Obrisan;
+        }
+
         private void DodajK_Click(object sender, RoutedEventArgs e)
         {
             var noviKorisnik = new Korisnik()
@@ -270,10 +303,11 @@ namespace POP_SF59_2016_GUI.UI
                     if (k.Id == izabraniKorisnik.Id)
                     {
                         k.Obrisan = true;
+                        view.Refresh();
                         break;
                     }
                 }
-                GenericSerialize.Serialize("korisnicij.xml", listaKorisnika);
+                GenericSerialize.Serialize("korisnici.xml", listaKorisnika);
             }
         }
 
@@ -311,9 +345,16 @@ namespace POP_SF59_2016_GUI.UI
             column4.Binding = new Binding("Popust");
             dgAkcije.Columns.Add(column4);
 
+            view = CollectionViewSource.GetDefaultView(Projekat.Instance.Akcija);
+
+            view.Filter = AkcijaFilter;
             dgAkcije.ItemsSource = akcije;
             dgAkcije.IsSynchronizedWithCurrentItem = true;
             dgAkcije.DataContext = this;
+        }
+        private bool AkcijaFilter(object obj)
+        {
+            return !((Akcija)obj).Obrisan;
         }
 
         private void DodajA_Click(object sender, RoutedEventArgs e)
@@ -342,7 +383,8 @@ namespace POP_SF59_2016_GUI.UI
                 {
                     if (a.Id == izabranaAkcija.Id)
                     {
-                        //a.Obrisan = true;
+                        a.Obrisan = true;
+                        view.Refresh();
                         break;
                     }
                 }

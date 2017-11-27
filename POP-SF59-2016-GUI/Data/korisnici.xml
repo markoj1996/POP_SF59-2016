@@ -33,7 +33,7 @@
     <KorisnickoIme>n</KorisnickoIme>
     <Prezime>n</Prezime>
     <Ime>n</Ime>
-    <Obrisan>false</Obrisan>
+    <Obrisan>true</Obrisan>
     <Id>4</Id>
   </Korisnik>
   <Korisnik>
@@ -42,7 +42,7 @@
     <KorisnickoIme>fggf</KorisnickoIme>
     <Prezime>uh</Prezime>
     <Ime>af</Ime>
-    <Obrisan>false</Obrisan>
+    <Obrisan>true</Obrisan>
     <Id>5</Id>
   </Korisnik>
 </ArrayOfKorisnik>

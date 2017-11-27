@@ -13,7 +13,7 @@
         <TextBox Name="tbKupac" Margin="127,86,10,283" Width="242" Height="37" Text="{Binding Path=Kupac}"/>
         <Label Grid.Row="0" Grid.Column="0" Content="Broj racuna" Margin="8,140,0,217" HorizontalAlignment="Left" VerticalAlignment="Center" Height="49" Width="117"/>
         <TextBox Name="tbBrojRacuna" Margin="127,135,10,234" Width="242" Height="37" Text="{Binding Path=BrojRacuna}"></TextBox>
-        <Label Grid.Row="0" Grid.Column="0" Content="Namestaj na popustu" Margin="8,194,0,163" HorizontalAlignment="Left" VerticalAlignment="Center" Height="49" Width="117"/>
+        <Label Grid.Row="0" Grid.Column="0" Content="Namestaj za prodaju" Margin="8,194,0,163" HorizontalAlignment="Left" VerticalAlignment="Center" Height="49" Width="117"/>
         <DataGrid AutoGenerateColumns="False" Grid.Row="0" Name="dgNamestaj" Margin="127,194,10,78" SelectedItem="{Binding Path=NamestajZaProdajuId}" />
         <Button Content="Dodaj" Margin="36,224,295,156" FontSize="10" Click="Dodaj_Click"/>
         <Button Content="Sacuvaj" Height="40" Width="80" Margin="155,356,144,10" Click="SacuvajIzmene"/>

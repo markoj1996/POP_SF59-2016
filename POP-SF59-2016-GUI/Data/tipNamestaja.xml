@@ -11,7 +11,7 @@
     <Id>1</Id>
   </TipNamestaja>
   <TipNamestaja>
-    <Obrisan>false</Obrisan>
+    <Obrisan>true</Obrisan>
     <Naziv>asf</Naziv>
     <Id>3</Id>
   </TipNamestaja>

@@ -1,16 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfAkcija xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Akcija>
-    <NamestajNaPopustuId>
-      <int>1</int>
-      <int>2</int>
-      <int>2</int>
-      <int>3</int>
-    </NamestajNaPopustuId>
     <Popust>0</Popust>
     <DatumZavrsetka>0001-01-01T00:00:00</DatumZavrsetka>
     <DatumPocetka>0001-01-01T00:00:00</DatumPocetka>
     <Obrisan>false</Obrisan>
     <Id>1</Id>
+  </Akcija>
+  <Akcija>
+    <Popust>5</Popust>
+    <DatumZavrsetka>0001-01-01T00:00:00</DatumZavrsetka>
+    <DatumPocetka>0001-01-01T00:00:00</DatumPocetka>
+    <Obrisan>false</Obrisan>
+    <Id>2</Id>
+  </Akcija>
+  <Akcija>
+    <Popust>0</Popust>
+    <DatumZavrsetka>0001-01-01T00:00:00</DatumZavrsetka>
+    <DatumPocetka>0001-01-01T00:00:00</DatumPocetka>
+    <Obrisan>true</Obrisan>
+    <Id>3</Id>
+  </Akcija>
+  <Akcija>
+    <Popust>0</Popust>
+    <DatumZavrsetka>0001-01-01T00:00:00</DatumZavrsetka>
+    <DatumPocetka>0001-01-01T00:00:00</DatumPocetka>
+    <Obrisan>true</Obrisan>
+    <Id>4</Id>
+  </Akcija>
+  <Akcija>
+    <Popust>10</Popust>
+    <DatumZavrsetka>0001-01-01T00:00:00</DatumZavrsetka>
+    <DatumPocetka>0001-01-01T00:00:00</DatumPocetka>
+    <Obrisan>false</Obrisan>
+    <Id>5</Id>
   </Akcija>
 </ArrayOfAkcija>

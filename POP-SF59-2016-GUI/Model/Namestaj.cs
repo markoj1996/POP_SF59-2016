@@ -17,6 +17,7 @@ namespace POP_SF59_2016.Model
         private int tipNamestajaId;
         private bool obrisan;
         private int kolicinaUMagacinu;
+        private int akcijaId;
         private TipNamestaja tipNamestaja;
 
         [XmlIgnore]
@@ -35,6 +36,16 @@ namespace POP_SF59_2016.Model
                 tipNamestaja = value;
                 TipNamestajaId = tipNamestaja.Id;
                 OnPropertyChanged("TipNamestaja");
+            }
+        }
+
+        public int AkcijaId
+        {
+            get { return akcijaId; }
+            set
+            {
+                akcijaId = value;
+                OnPropertyChanged("AkcijaId");
             }
         }
 

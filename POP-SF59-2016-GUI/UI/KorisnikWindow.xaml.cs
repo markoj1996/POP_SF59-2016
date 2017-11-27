@@ -28,6 +28,8 @@ namespace POP_SF59_2016_GUI.UI
             Izmena
         }
 
+        //combobox.ItemSource = Enum.GetValues(typeOf(effectStyle)).cast<EffectStyle>();
+
         private Korisnik korisnik;
         private OperacijaK operacija;
 

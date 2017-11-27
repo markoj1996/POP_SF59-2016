@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -15,43 +16,41 @@ namespace POP_SF59_2016.Model
         private DateTime datumPocetka;
         private DateTime date;
         private decimal popust;
-        private List<int> namestajNaPopustuId = new List<int>();
-        //private List<Namestaj> namestajNaPopustu = new List<Namestaj>();
 
 
-        /*[XmlIgnore]
-        public List<Namestaj> NamestajNaPopustu
-        {
-            get
-            {
-                foreach (var id in namestajNaPopustuId)
-                {
-                    namestajNaPopustu.Add(Namestaj.GetById(id)); 
-                }
-                return namestajNaPopustu;
-            }
-            set
-            {
-                namestajNaPopustu = value;
-                foreach (var namestaj in namestajNaPopustu)
-                {
-                    NamestajNaPopustuId.Add(namestaj.Id);
-                    OnPropertyChanged("NamestajNaPopustu");
-                }
+        //[XmlIgnore]
+        //public ObservableCollection<Namestaj> NamestajNaPopustu
+        //{
+        //    get
+        //    {
+        //        foreach (var id in namestajNaPopustuId)
+        //        {
+        //            namestajNaPopustu.Add(Namestaj.GetById(id)); 
+        //        }
+        //        return namestajNaPopustu;
+        //    }
+        //    set
+        //    {
+        //        namestajNaPopustu = value;
+        //        foreach (var namestaj in namestajNaPopustu)
+        //        {
+        //            NamestajNaPopustuId.Add(namestaj.Id);
+        //            OnPropertyChanged("NamestajNaPopustu");
+        //        }
                 
-            }
-        }*/
+        //    }
+        //}
 
 
-        public List<int> NamestajNaPopustuId
-        {
-            get { return namestajNaPopustuId; }
-            set
-            {
-                namestajNaPopustuId = value;
-                OnPropertyChanged("NamestajNaPopustu");
-            }
-        }
+        //public ObservableCollection<int> NamestajNaPopustuId
+        //{
+        //    get { return namestajNaPopustuId; }
+        //    set
+        //    {
+        //        namestajNaPopustuId = value;
+        //        OnPropertyChanged("NamestajNaPopustuId");
+        //    }
+        //}
 
 
         public decimal Popust
@@ -128,7 +127,7 @@ namespace POP_SF59_2016.Model
                 DatumPocetka = datumPocetka,
                 DatumZavrsetka = DatumZavrsetka,
                 Popust = popust,
-                NamestajNaPopustuId = namestajNaPopustuId
+                //NamestajNaPopustuId = namestajNaPopustuId
             };
         }
 

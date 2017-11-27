@@ -42,12 +42,14 @@ namespace POP_SF59_2016_GUI.UI
             tbDatumPocetka.DataContext = akcija;
             tbDatumZavrsetka.DataContext = akcija;
             tbPopust.DataContext = akcija;
+
+            //dgNamestaj.ItemsSource = akcija.NamestajNaPopustu;
             dgNamestaj.DataContext = akcija;
 
-            NamestajKolone();
+            //NamestajKolone();
         }
 
-        private void NamestajKolone()
+        /*private void NamestajKolone()
         {
             List<Namestaj> nadjeni= new List<Namestaj>();
             foreach (var a in akcija.NamestajNaPopustuId)
@@ -69,7 +71,7 @@ namespace POP_SF59_2016_GUI.UI
             dgNamestaj.ItemsSource = nadjeni;
             dgNamestaj.IsSynchronizedWithCurrentItem = true;
             dgNamestaj.DataContext = this;
-        }
+        }*/
 
         private void SacuvajIzmene(object sender, RoutedEventArgs e)
         {
@@ -90,7 +92,7 @@ namespace POP_SF59_2016_GUI.UI
                             a.DatumPocetka = akcija.DatumPocetka;
                             a.DatumZavrsetka = akcija.DatumZavrsetka;
                             a.Popust = akcija.Popust;
-                            a.NamestajNaPopustuId = akcija.NamestajNaPopustuId;
+                            //a.NamestajNaPopustuId = akcija.NamestajNaPopustuId;
                             break;
                         }
                     }

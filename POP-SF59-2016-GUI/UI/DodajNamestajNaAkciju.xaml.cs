@@ -70,7 +70,7 @@ namespace POP_SF59_2016_GUI.UI
 
         private void Potvrdi_Click(object sender, RoutedEventArgs e)
         {
-            akcija.NamestajNaPopustuId.Add(izabraniNamestaj.Id);
+            izabraniNamestaj.AkcijaId = akcija.Id;
             Close();
         }
 
