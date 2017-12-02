@@ -19,6 +19,43 @@ namespace POP_SF59_2016.Model
         private int kolicinaUMagacinu;
         private int akcijaId;
         private TipNamestaja tipNamestaja;
+        private Akcija akcija;
+
+        public double CenaSaAkcijom()
+        {
+            double Cena = 0;
+            var akcije = Projekat.Instance.Akcija;
+            foreach (var a in akcije)
+            {
+                if (akcijaId == a.Id)
+                {
+                    double popust = (a.Popust / 100) * jedinicnaCena;
+                    Cena = jedinicnaCena - popust;
+                    return Cena;
+                }
+            }
+            return Cena;
+        }
+
+
+        [XmlIgnore]
+        public Akcija Akcija
+        {
+            get
+            {
+                if (akcija == null)
+                {
+                    akcija = Akcija.GetById(AkcijaId);
+                }
+                return akcija;
+            }
+            set
+            {
+                akcija = value;
+                AkcijaId = akcija.Id;
+                OnPropertyChanged("Akcija");
+            }
+        }
 
         [XmlIgnore]
         public TipNamestaja TipNamestaja
@@ -164,8 +201,9 @@ namespace POP_SF59_2016.Model
                 JedinicnaCena = jedinicnaCena,
                 Sifra = sifra,
                 Obrisan = obrisan,
+                KolicinaUMagacinu = kolicinaUMagacinu,
                 TipNamestaja = tipNamestaja,
-                TipNamestajaId = tipNamestajaId
+                TipNamestajaId = tipNamestajaId,
             };
         }
     }

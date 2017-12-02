@@ -4,45 +4,18 @@
     <TipKorisnika>Administrator</TipKorisnika>
     <Lozinka>m</Lozinka>
     <KorisnickoIme>m</KorisnickoIme>
-    <Prezime>Marko</Prezime>
-    <Ime>Marko</Ime>
+    <Prezime>Admin</Prezime>
+    <Ime>Admin</Ime>
     <Obrisan>false</Obrisan>
-    <Id>1</Id>
+    <Id>0</Id>
   </Korisnik>
   <Korisnik>
     <TipKorisnika>Prodavac</TipKorisnika>
-    <Lozinka>j</Lozinka>
-    <KorisnickoIme>j</KorisnickoIme>
-    <Prezime>Marko</Prezime>
-    <Ime>Marko</Ime>
+    <Lozinka>a</Lozinka>
+    <KorisnickoIme>a</KorisnickoIme>
+    <Prezime>Prodavac</Prezime>
+    <Ime>Prodavac</Ime>
     <Obrisan>false</Obrisan>
     <Id>2</Id>
-  </Korisnik>
-  <Korisnik>
-    <TipKorisnika>Administrator</TipKorisnika>
-    <Lozinka>marko</Lozinka>
-    <KorisnickoIme>marko</KorisnickoIme>
-    <Prezime>m</Prezime>
-    <Ime>m</Ime>
-    <Obrisan>true</Obrisan>
-    <Id>3</Id>
-  </Korisnik>
-  <Korisnik>
-    <TipKorisnika>Administrator</TipKorisnika>
-    <Lozinka>b</Lozinka>
-    <KorisnickoIme>n</KorisnickoIme>
-    <Prezime>n</Prezime>
-    <Ime>n</Ime>
-    <Obrisan>true</Obrisan>
-    <Id>4</Id>
-  </Korisnik>
-  <Korisnik>
-    <TipKorisnika>Prodavac</TipKorisnika>
-    <Lozinka>gdfdh</Lozinka>
-    <KorisnickoIme>fggf</KorisnickoIme>
-    <Prezime>uh</Prezime>
-    <Ime>af</Ime>
-    <Obrisan>true</Obrisan>
-    <Id>5</Id>
   </Korisnik>
 </ArrayOfKorisnik>

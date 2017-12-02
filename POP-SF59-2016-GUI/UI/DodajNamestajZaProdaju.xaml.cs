@@ -1,6 +1,7 @@
 ﻿using POP_SF59_2016.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace POP_SF59_2016_GUI.UI
     /// </summary>
     public partial class DodajNamestajZaProdaju : Window
     {
+        ICollectionView view;
         public Namestaj izabraniNamestaj { get; set; }
         ProdajaNamestaja prodaja;
 
@@ -63,9 +65,16 @@ namespace POP_SF59_2016_GUI.UI
             column5.Binding = new Binding("TipNamestaja");
             dgNamestaj.Columns.Add(column5);
 
+            view = CollectionViewSource.GetDefaultView(Projekat.Instance.Namestaj);
+            view.Filter = NamestajFilter;
             dgNamestaj.ItemsSource = Projekat.Instance.Namestaj;
             dgNamestaj.IsSynchronizedWithCurrentItem = true;
             dgNamestaj.DataContext = this;
+        }
+
+        private bool NamestajFilter(object obj)
+        {
+            return !((Namestaj)obj).Obrisan;
         }
 
         private void Potvrdi_Click(object sender, RoutedEventArgs e)

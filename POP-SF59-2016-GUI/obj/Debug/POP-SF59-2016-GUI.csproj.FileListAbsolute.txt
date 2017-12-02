@@ -113,3 +113,11 @@ S:\New folder (2)\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\POP-SF59-2016-GUI.cs
 S:\New folder (2)\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\POP-SF59-2016-GUI.csproj.CoreCompileInputs.cache
 S:\New folder (2)\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\POP-SF59-2016-GUI.exe
 S:\New folder (2)\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\POP-SF59-2016-GUI.pdb
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\UslugaWindow.g.cs
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\UslugaWindow.baml
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\DodajUsluguZaProdaju.g.cs
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\DodajUsluguZaProdaju.baml
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\DetaljiWindow.g.cs
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\DetaljiWindow.baml
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\PretragaUslugaWindow.g.cs
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\PretragaUslugaWindow.baml

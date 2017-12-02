@@ -33,46 +33,46 @@ namespace POP_SF59_2016_GUI.UI
 
             if (tip == "Po imenu")
             {
-                string ime = tbPronadji.Text;
+                string ime = tbPronadji.Text.ToLower();
                 foreach (var k in Projekat.Instance.Korisnik)
                 {
-                    if (k.Ime.Contains(ime))
+                    if (k.Ime.ToLower().Contains(ime))
                     {
                         korisnici.Add(k);
                         
                     }
                 }
-                GlavniWindow g = new GlavniWindow(Projekat.Instance.Namestaj, korisnici, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
+                GlavniWindow g = new GlavniWindow(Projekat.Instance.Namestaj, korisnici, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja, Projekat.Instance.DodatnaUsluga);
                 this.Close();
                 g.Show();
             }
             else if (tip == "Po prezimenu")
             {
-                string prezime = tbPronadji.Text;
+                string prezime = tbPronadji.Text.ToLower();
                 foreach (var k in Projekat.Instance.Korisnik)
                 {
-                    if (k.Prezime.Contains(prezime))
+                    if (k.Prezime.ToLower().Contains(prezime))
                     {
                         korisnici.Add(k);
                         
                     }
                 }
-                GlavniWindow g = new GlavniWindow(Projekat.Instance.Namestaj, korisnici, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
+                GlavniWindow g = new GlavniWindow(Projekat.Instance.Namestaj, korisnici, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja, Projekat.Instance.DodatnaUsluga);
                 this.Close();
                 g.Show();
             }
             else if (tip == "Po korisnickom imenu")
             {
-                string korisnickoIme = tbPronadji.Text;
+                string korisnickoIme = tbPronadji.Text.ToLower();
                 foreach (var k in Projekat.Instance.Korisnik)
                 {
-                    if (k.KorisnickoIme.Contains(korisnickoIme))
+                    if (k.KorisnickoIme.ToLower().Contains(korisnickoIme))
                     {
                         korisnici.Add(k);
                         
                     }
                 }
-                GlavniWindow g = new GlavniWindow(Projekat.Instance.Namestaj, korisnici, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
+                GlavniWindow g = new GlavniWindow(Projekat.Instance.Namestaj, korisnici, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja, Projekat.Instance.DodatnaUsluga);
                 this.Close();
                 g.Show();
             }

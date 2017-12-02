@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace POP_SF59_2016.Model
 {
@@ -11,10 +13,50 @@ namespace POP_SF59_2016.Model
     {
         private int id;
         private bool obrisan;
-        private List<int> namestajZaProdajuId = new List<int>();
+        private ObservableCollection<int> namestajZaProdajuId = new ObservableCollection<int>();
         private DateTime datumProdaje;
         private string brojRacuna;
         private string kupac;
+        private ObservableCollection<int> dodatneUsluge = new ObservableCollection<int>();
+        private ObservableCollection<Namestaj> namestajZaProdaju = new ObservableCollection<Namestaj>();
+
+       [XmlIgnore]
+        public ObservableCollection<Namestaj> NamestajZaProdaju
+        {
+            get
+            {
+                Namestaj namestaj=null;
+                foreach (var id in NamestajZaProdajuId)
+                {
+                    namestaj = Namestaj.GetById(id);
+                    
+                }
+                namestajZaProdaju.Add(namestaj);
+                return namestajZaProdaju;
+            }
+            set
+            {
+
+                namestajZaProdaju = value;
+                foreach (var n in namestajZaProdaju)
+                {
+                    NamestajZaProdajuId.Add(n.Id);
+                }
+                OnPropertyChanged("NamestajZaProdaju");
+            }
+        }
+
+
+        public ObservableCollection<int> DodatneUsluge
+        {
+            get { return dodatneUsluge; }
+            set
+            {
+                dodatneUsluge = value;
+                OnPropertyChanged("DodatneUsluge");
+            }
+        }
+
 
         public string Kupac
         {
@@ -48,7 +90,7 @@ namespace POP_SF59_2016.Model
         }
 
 
-        public List<int> NamestajZaProdajuId
+        public ObservableCollection<int> NamestajZaProdajuId
         {
             get { return namestajZaProdajuId; }
             set

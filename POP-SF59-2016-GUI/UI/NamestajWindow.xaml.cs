@@ -38,12 +38,14 @@ namespace POP_SF59_2016_GUI.UI
             this.operacija = operacija;
 
             cbTipNamestaja.ItemsSource = Projekat.Instance.TipNamestaja;
+            cbAkcija.ItemsSource = Projekat.Instance.Akcija;
 
             tbNaziv.DataContext = namestaj;
             tbSifra.DataContext = namestaj;
             tbCena.DataContext = namestaj;
             tbKolicina.DataContext = namestaj;
             cbTipNamestaja.DataContext = namestaj;
+            cbAkcija.DataContext = namestaj;
         }
 
         private void SacuvajIzmene(object sender, RoutedEventArgs e)
@@ -51,6 +53,7 @@ namespace POP_SF59_2016_GUI.UI
 
             var listaNamestaja = Projekat.Instance.Namestaj;
             var izabraniTipNamestaja = (TipNamestaja) cbTipNamestaja.SelectedItem;
+            var izabranaAkcija = (Akcija)cbAkcija.SelectedItem;
 
             switch (operacija)
             {
@@ -68,6 +71,7 @@ namespace POP_SF59_2016_GUI.UI
                             n.JedinicnaCena = namestaj.JedinicnaCena;
                             n.KolicinaUMagacinu = namestaj.KolicinaUMagacinu;
                             n.TipNamestaja = namestaj.TipNamestaja;
+                            //n.Akcija = namestaj.Akcija;
                             break;
                         }
                     }

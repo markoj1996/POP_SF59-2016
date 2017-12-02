@@ -34,10 +34,10 @@ namespace POP_SF59_2016_GUI.UI
 
             if (tip == "Po kupcu")
             {
-                string ime = tbPronadji.Text;
+                string ime = tbPronadji.Text.ToLower();
                 foreach (var p in Projekat.Instance.Prodaja)
                 {
-                    if (p.Kupac.Contains(ime))
+                    if (p.Kupac.ToLower().Contains(ime))
                     {
                         prodaje.Add(p);
                         
@@ -49,10 +49,10 @@ namespace POP_SF59_2016_GUI.UI
             }
             else if (tip == "Po broju racuna")
             {
-                string br = tbPronadji.Text;
+                string br = tbPronadji.Text.ToLower();
                 foreach (var p in Projekat.Instance.Prodaja)
                 {
-                    if (p.BrojRacuna.Contains(br))
+                    if (p.BrojRacuna.ToLower().Contains(br))
                     {
                         prodaje.Add(p);
                         
@@ -64,7 +64,7 @@ namespace POP_SF59_2016_GUI.UI
             }
             else if (tip == "Po datumu prodaje")
             {
-                string datum = tbPronadji.Text;
+                string datum = tbPronadji.Text.ToLower();
                 foreach (var p in Projekat.Instance.Prodaja)
                 {
                     if (p.DatumProdaje.ToString() == datum)
@@ -79,10 +79,21 @@ namespace POP_SF59_2016_GUI.UI
             }
             else if (tip == "Po prodatom komadu")
             {
-                string prodatiKomad = tbPronadji.Text;
+                string prodatiKomad = tbPronadji.Text.ToLower();
                 foreach (var p in Projekat.Instance.Prodaja)
                 {
+                    foreach (var n in p.NamestajZaProdaju)
+                    {
+                        if (n.Naziv.ToLower().Contains(prodatiKomad))
+                        {
+                            prodaje.Add(p);
+                            break;
+                        }
+                    }
                 }
+                ProdavacGlavniWindow pg = new ProdavacGlavniWindow(prodaje);
+                this.Close();
+                pg.Show();
             }
         }
     }

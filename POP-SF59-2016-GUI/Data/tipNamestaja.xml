@@ -3,16 +3,6 @@
   <TipNamestaja>
     <Obrisan>false</Obrisan>
     <Naziv>Tip1</Naziv>
-    <Id>0</Id>
-  </TipNamestaja>
-  <TipNamestaja>
-    <Obrisan>false</Obrisan>
-    <Naziv>novi</Naziv>
     <Id>1</Id>
-  </TipNamestaja>
-  <TipNamestaja>
-    <Obrisan>true</Obrisan>
-    <Naziv>asf</Naziv>
-    <Id>3</Id>
   </TipNamestaja>
 </ArrayOfTipNamestaja>

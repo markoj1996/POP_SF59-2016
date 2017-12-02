@@ -2,6 +2,7 @@
 using POP_SF59_2016.Util1;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,7 +31,7 @@ namespace POP_SF59_2016_GUI.UI
             Izmena
         }
 
-        private Namestaj izabraniNamestaj;
+        public Namestaj izabraniNamestaj { get; set; }
 
         public ProdajaWindow(ProdajaNamestaja prodaja, Operacija operacija)
         {
@@ -39,28 +40,55 @@ namespace POP_SF59_2016_GUI.UI
             this.prodaja = prodaja;
             this.operacija = operacija;
 
-            tbDatumProdaje.DataContext = prodaja;
             tbKupac.DataContext = prodaja;
             tbBrojRacuna.DataContext = prodaja;
             dgNamestaj.DataContext = prodaja;
 
             NamestajKolone();
+            UslugeKolone();
+            
+        }
+
+        private void UslugeKolone()
+        {
+
+            DataGridTextColumn column1 = new DataGridTextColumn();
+            column1.Header = "Id";
+            column1.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            column1.Binding = new Binding();
+            dgUsluge.Columns.Add(column1);
+
+            /*DataGridTextColumn column2 = new DataGridTextColumn();
+            column2.Header = "Naziv";
+            column2.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            column2.Binding = new Binding("Naziv");
+            dgUsluge.Columns.Add(column2);
+
+
+            DataGridTextColumn column3 = new DataGridTextColumn();
+            column3.Header = "Cena";
+            column3.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            column3.Binding = new Binding("UkupanIznos");
+            dgUsluge.Columns.Add(column3);*/
+
+            dgUsluge.ItemsSource = prodaja.DodatneUsluge;
+            dgUsluge.IsSynchronizedWithCurrentItem = true;
+            dgUsluge.DataContext = this;
         }
 
         private void NamestajKolone()
         {
-            List<Namestaj> nadjeni = new List<Namestaj>();
-            foreach (var a in prodaja.NamestajZaProdajuId)
-            {
-                nadjeni.Add(Namestaj.GetById(a));
-            }
+            dgNamestaj.ItemsSource = prodaja.NamestajZaProdajuId;
+            dgNamestaj.IsSynchronizedWithCurrentItem = true;
+            dgNamestaj.DataContext = this;
+
             DataGridTextColumn column1 = new DataGridTextColumn();
             column1.Header = "Id";
             column1.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
-            column1.Binding = new Binding("Id");
+            column1.Binding = new Binding();
             dgNamestaj.Columns.Add(column1);
 
-            DataGridTextColumn column2 = new DataGridTextColumn();
+            /*DataGridTextColumn column2 = new DataGridTextColumn();
             column2.Header = "Naziv";
             column2.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
             column2.Binding = new Binding("Naziv");
@@ -69,22 +97,22 @@ namespace POP_SF59_2016_GUI.UI
             DataGridTextColumn column3 = new DataGridTextColumn();
             column3.Header = "Cena";
             column3.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
-            column3.Binding = new Binding("JedinicnaCena");
-            dgNamestaj.Columns.Add(column3);
+            column3.Binding = new Binding("Cena");
+            dgNamestaj.Columns.Add(column3);*/
 
-            dgNamestaj.ItemsSource = nadjeni;
-            dgNamestaj.IsSynchronizedWithCurrentItem = true;
-            dgNamestaj.DataContext = this;
+            
         }
 
         private void SacuvajIzmene(object sender, RoutedEventArgs e)
         {
+            DateTime datum = DateTime.Now;
             var listaProdaja = Projekat.Instance.Prodaja;
 
             switch (operacija)
             {
                 case Operacija.Dodavanje:
                     prodaja.Id = listaProdaja.Count + 1;
+                    prodaja.DatumProdaje = datum;
                     listaProdaja.Add(prodaja);
                     break;
                 case Operacija.Izmena:
@@ -108,10 +136,16 @@ namespace POP_SF59_2016_GUI.UI
             Close();
         }
 
-        private void Dodaj_Click(object sender, RoutedEventArgs e)
+        private void DodajN_Click(object sender, RoutedEventArgs e)
         {
             DodajNamestajZaProdaju dnp = new DodajNamestajZaProdaju(prodaja);
             dnp.ShowDialog();
+        }
+
+        private void DodajU_Click(object sender, RoutedEventArgs e)
+        {
+            DodajUsluguZaProdaju dnp = new DodajUsluguZaProdaju(prodaja);
+            dnp.ShowDialog();          
         }
 
         private void Izadji(object sender, RoutedEventArgs e)

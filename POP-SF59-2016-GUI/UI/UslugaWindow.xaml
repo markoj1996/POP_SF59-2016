@@ -1,0 +1,23 @@
+﻿<Window x:Class="POP_SF59_2016_GUI.UI.UslugaWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:POP_SF59_2016_GUI.UI"
+        mc:Ignorable="d"
+        Title="UslugaWindow" Height="393.055" Width="387">
+    <Grid>
+        <Label Grid.Row="0" Grid.Column="0" Content="Naziv" Margin="8,19,0,294" HorizontalAlignment="Left" VerticalAlignment="Center" Height="49" Width="117"/>
+        <TextBox x:Name="tbNaziv"  Margin="127,19,10,306" Width="242" Height="37" Text="{Binding Path=Naziv}" HorizontalAlignment="Left"/>
+        <Label Grid.Row="0" Grid.Column="0" Content="Cena" Margin="8,73,0,240" HorizontalAlignment="Left" VerticalAlignment="Center" Height="49" Width="117"/>
+        <TextBox x:Name="tbCena" Margin="127,73,10,252" Width="242" Height="37" Text="{Binding Path=Cena}" HorizontalAlignment="Left"/>
+        <Label Grid.Row="0" Grid.Column="0" Content="PDV" Margin="8,127,0,186" HorizontalAlignment="Left" VerticalAlignment="Center" Height="49" Width="117"/>
+        <TextBox x:Name="tbPDV" Margin="127,122,10,203" Width="242" Height="37" Text="{Binding Path=PDV}" HorizontalAlignment="Left"/>
+        <Button Content="Sacuvaj" Height="40" Width="80" Margin="155,295,144,27" Click="SacuvajIzmene"/>
+        <Button Content="Izadji" Height="40" Width="80" Margin="278,295,21,27" Click="Izadji"/>
+        <Label Grid.Row="0" Grid.Column="0" Content="Ukupna cena" Margin="8,182,0,131" HorizontalAlignment="Left" VerticalAlignment="Center" Height="49" Width="117"/>
+        <TextBox x:Name="tbUkupnaCena" Margin="127,177,10,148" Width="242" Height="37" Text="{Binding Path=UkupanIznos}" IsReadOnly="True" HorizontalAlignment="Left"/>
+        <Label Content="Akcija" Margin="10,231,268,85" Width="101" Height="46"/>
+        <ComboBox x:Name="cbAkcija" Margin="126,231,0,94" HorizontalAlignment="Left" Width="242" Height="37" SelectedItem="{Binding Path=Akcija}"/>
+    </Grid>
+</Window>

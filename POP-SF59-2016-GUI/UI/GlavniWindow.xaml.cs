@@ -28,13 +28,14 @@ namespace POP_SF59_2016_GUI.UI
         public Korisnik izabraniKorisnik { get; set; }
         public TipNamestaja izabraniTip { get; set; }
         public Akcija izabranaAkcija { get; set; }
+        public DodatnaUsluga izabranaUsluga { get; set; }
 
         public enum Operacija
         {
             Dodavanje,
             Izmena
         }
-        public GlavniWindow(ObservableCollection<Namestaj>namestaj, ObservableCollection<Korisnik>korisnici, ObservableCollection<Akcija>akcije, ObservableCollection<TipNamestaja>tipNamestaja)
+        public GlavniWindow(ObservableCollection<Namestaj>namestaj, ObservableCollection<Korisnik>korisnici, ObservableCollection<Akcija>akcije, ObservableCollection<TipNamestaja>tipNamestaja, ObservableCollection<DodatnaUsluga> usluga)
         {
             InitializeComponent();
             
@@ -42,6 +43,7 @@ namespace POP_SF59_2016_GUI.UI
             KorisnikKolone(korisnici);
             AkcijeKolone(akcije);
             TipKolone(tipNamestaja);
+            UslugeKolone(usluga);
 
         }
 
@@ -84,7 +86,7 @@ namespace POP_SF59_2016_GUI.UI
             column6.Binding = new Binding("AkcijaId");
             dgNamestaj.Columns.Add(column6);
 
-            view = CollectionViewSource.GetDefaultView(Projekat.Instance.Namestaj);
+            view = CollectionViewSource.GetDefaultView(namestaj);
             view.Filter = NamestajFilter;
             dgNamestaj.ItemsSource = view;
             dgNamestaj.IsSynchronizedWithCurrentItem = true;
@@ -130,6 +132,7 @@ namespace POP_SF59_2016_GUI.UI
                     }
                 }
                 GenericSerialize.Serialize("namestaj.xml", listaNamestaja);
+                
             }
         }
 
@@ -147,10 +150,12 @@ namespace POP_SF59_2016_GUI.UI
             dgKorisnici.Columns.Clear();
             dgAkcije.Columns.Clear();
             dgTipNamestaja.Columns.Clear();
+            dgDodatneUsluge.Columns.Clear();
             NamestajKolone(Projekat.Instance.Namestaj);
             KorisnikKolone(Projekat.Instance.Korisnik);
             AkcijeKolone(Projekat.Instance.Akcija);
             TipKolone(Projekat.Instance.TipNamestaja);
+            UslugeKolone(Projekat.Instance.DodatnaUsluga);
         }
 
         private void TipKolone(ObservableCollection<TipNamestaja> tipNamestaja)
@@ -167,7 +172,7 @@ namespace POP_SF59_2016_GUI.UI
             column2.Binding = new Binding("Naziv");
             dgTipNamestaja.Columns.Add(column2);
 
-            view = CollectionViewSource.GetDefaultView(Projekat.Instance.TipNamestaja);
+            view = CollectionViewSource.GetDefaultView(tipNamestaja);
             view.Filter = tipNamestajaFilter;
             dgTipNamestaja.ItemsSource = tipNamestaja;
             dgTipNamestaja.IsSynchronizedWithCurrentItem = true;
@@ -263,7 +268,7 @@ namespace POP_SF59_2016_GUI.UI
             dgKorisnici.Columns.Add(column6);
 
 
-            view = CollectionViewSource.GetDefaultView(Projekat.Instance.Korisnik);
+            view = CollectionViewSource.GetDefaultView(korisnici);
 
             view.Filter = KorisnikFilter;
             dgKorisnici.ItemsSource = korisnici;
@@ -345,7 +350,7 @@ namespace POP_SF59_2016_GUI.UI
             column4.Binding = new Binding("Popust");
             dgAkcije.Columns.Add(column4);
 
-            view = CollectionViewSource.GetDefaultView(Projekat.Instance.Akcija);
+            view = CollectionViewSource.GetDefaultView(akcije);
 
             view.Filter = AkcijaFilter;
             dgAkcije.ItemsSource = akcije;
@@ -391,10 +396,93 @@ namespace POP_SF59_2016_GUI.UI
                 GenericSerialize.Serialize("akcije.xml", listaAkcija);
             }
         }
+
+        private void UslugeKolone(ObservableCollection<DodatnaUsluga> usluga)
+        {
+            DataGridTextColumn column1 = new DataGridTextColumn();
+            column1.Header = "Id";
+            column1.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            column1.Binding = new Binding("Id");
+            dgDodatneUsluge.Columns.Add(column1);
+
+            DataGridTextColumn column2 = new DataGridTextColumn();
+            column2.Header = "Naziv";
+            column2.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            column2.Binding = new Binding("Naziv");
+            dgDodatneUsluge.Columns.Add(column2);
+
+            DataGridTextColumn column3 = new DataGridTextColumn();
+            column3.Header = "Ukupna cena";
+            column3.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            column3.Binding = new Binding("UkupanIznos");
+            dgDodatneUsluge.Columns.Add(column3);
+
+            view = CollectionViewSource.GetDefaultView(usluga);
+
+            view.Filter = UslugaFilter;
+            dgDodatneUsluge.ItemsSource = usluga;
+            dgDodatneUsluge.IsSynchronizedWithCurrentItem = true;
+            dgDodatneUsluge.DataContext = this;
+        }
+
+        private bool UslugaFilter(object obj)
+        {
+            return !((DodatnaUsluga)obj).Obrisan;
+        }
+
+        private void DodajU_Click(object sender, RoutedEventArgs e)
+        {
+            var novaUsluga = new DodatnaUsluga()
+            {
+
+            };
+            var UslugaProzor = new UslugaWindow(novaUsluga, UslugaWindow.OperacijaU.Dodavanje);
+            UslugaProzor.ShowDialog();
+        }
+        private void IzmeniU_Click(object sender, RoutedEventArgs e)
+        {
+            DodatnaUsluga kopija = (DodatnaUsluga)izabranaUsluga.Clone();
+            var UslugaProzor = new UslugaWindow(kopija, UslugaWindow.OperacijaU.Izmena);
+            UslugaProzor.ShowDialog();
+        }
+
+        private void ObrisiU_Click(object sender, RoutedEventArgs e)
+        {
+            var listaUsluga = Projekat.Instance.DodatnaUsluga;
+
+            if (MessageBox.Show($"Da li zelite da obrisete: {izabranaUsluga.Naziv}", "Brisanje", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                foreach (var u in listaUsluga)
+                {
+                    if (u.Id == izabranaUsluga.Id)
+                    {
+                        u.Obrisan = true;
+                        view.Refresh();
+                        break;
+                    }
+                }
+                GenericSerialize.Serialize("usluge.xml", listaUsluga);
+            }
+        }
+
+        private void PretraziU_Click(object sender, RoutedEventArgs e)
+        {
+            var PretragaProzor = new PretragaUslugaWindow();
+            Close();
+            PretragaProzor.ShowDialog();
+
+        }
+
         private void Izadji_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mw = new MainWindow();
+            mw.ShowDialog();
+            this.Close();
+        }
     }
 }

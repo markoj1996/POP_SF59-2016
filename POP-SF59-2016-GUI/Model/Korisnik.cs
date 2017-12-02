@@ -117,7 +117,8 @@ namespace POP_SF59_2016.Model
                 Prezime = prezime,
                 KorisnickoIme = korisnickoIme,
                 Lozinka = lozinka,
-                Obrisan = obrisan
+                Obrisan = obrisan,
+                TipKorisnika = tipKorisnika
             };
         }
 

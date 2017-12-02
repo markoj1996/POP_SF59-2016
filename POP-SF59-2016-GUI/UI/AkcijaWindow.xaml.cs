@@ -39,39 +39,12 @@ namespace POP_SF59_2016_GUI.UI
             this.akcija = akcija;
             this.operacija = operacija;
 
+
             tbDatumPocetka.DataContext = akcija;
             tbDatumZavrsetka.DataContext = akcija;
             tbPopust.DataContext = akcija;
 
-            //dgNamestaj.ItemsSource = akcija.NamestajNaPopustu;
-            dgNamestaj.DataContext = akcija;
-
-            //NamestajKolone();
         }
-
-        /*private void NamestajKolone()
-        {
-            List<Namestaj> nadjeni= new List<Namestaj>();
-            foreach (var a in akcija.NamestajNaPopustuId)
-            {
-                nadjeni.Add(Namestaj.GetById(a));     
-            }
-            DataGridTextColumn column1 = new DataGridTextColumn();
-            column1.Header = "Id";
-            column1.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
-            column1.Binding = new Binding("Id");
-            dgNamestaj.Columns.Add(column1);
-
-            DataGridTextColumn column2 = new DataGridTextColumn();
-            column2.Header = "Naziv";
-            column2.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
-            column2.Binding = new Binding("Naziv");
-            dgNamestaj.Columns.Add(column2);
-
-            dgNamestaj.ItemsSource = nadjeni;
-            dgNamestaj.IsSynchronizedWithCurrentItem = true;
-            dgNamestaj.DataContext = this;
-        }*/
 
         private void SacuvajIzmene(object sender, RoutedEventArgs e)
         {
@@ -92,7 +65,6 @@ namespace POP_SF59_2016_GUI.UI
                             a.DatumPocetka = akcija.DatumPocetka;
                             a.DatumZavrsetka = akcija.DatumZavrsetka;
                             a.Popust = akcija.Popust;
-                            //a.NamestajNaPopustuId = akcija.NamestajNaPopustuId;
                             break;
                         }
                     }
@@ -107,12 +79,6 @@ namespace POP_SF59_2016_GUI.UI
         private void Izadji(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }
-
-        private void Dodaj_Click(object sender, RoutedEventArgs e)
-        {
-            DodajNamestajNaAkciju dna = new DodajNamestajNaAkciju(akcija);
-            dna.ShowDialog();
         }
     }
 }

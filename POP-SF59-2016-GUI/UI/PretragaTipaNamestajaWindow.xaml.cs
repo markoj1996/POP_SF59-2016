@@ -33,16 +33,16 @@ namespace POP_SF59_2016_GUI.UI
 
             if (tip == "Po nazivu")
             {
-                string naziv = tbPronadji.Text;
+                string naziv = tbPronadji.Text.ToLower();
                 foreach (var t in Projekat.Instance.TipNamestaja)
                 {
-                    if (t.Naziv.Contains(naziv))
+                    if (t.Naziv.ToLower().Contains(naziv))
                     {
                         tipNamestaja.Add(t);
                         
                     }
                 }
-                GlavniWindow g = new GlavniWindow(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, tipNamestaja);
+                GlavniWindow g = new GlavniWindow(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, tipNamestaja, Projekat.Instance.DodatnaUsluga);
                 this.Close();
                 g.Show();
             }

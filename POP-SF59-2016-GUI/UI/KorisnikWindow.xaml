@@ -8,13 +8,13 @@
         Title="KorisnikWindow" Height="319.149" Width="387.234">
     <Grid>
         <Label Content="Ime" Margin="10,10,272,234"/>
-        <TextBox Grid.Row="0" Name="tbIme" Margin="110,10,6,248" HorizontalContentAlignment="Center" Text="{Binding Path=Ime}"/>
+        <TextBox Grid.Row="0" Name="tbIme" Margin="110,10,6,248" HorizontalContentAlignment="Center" Text="{Binding Path=Ime}" Width="263" Height="30" HorizontalAlignment="Left"/>
         <Label Content="Prezime" Margin="10,54,272,190"/>
-        <TextBox Grid.Row="0" Name="tbPrezime" Margin="110,54,6,204" HorizontalContentAlignment="Center" Text="{Binding Path=Prezime}"/>
+        <TextBox Grid.Row="0" Name="tbPrezime" Margin="110,54,6,204" HorizontalContentAlignment="Center" Text="{Binding Path=Prezime}" Width="263" Height="30" HorizontalAlignment="Left"/>
         <Label Content="Korisnicko ime" Margin="10,98,272,146"/>
-        <TextBox Grid.Row="0" Name="tbKorisnickoIme" Margin="110,98,6,160" HorizontalContentAlignment="Center" Text="{Binding Path=KorisnickoIme}"/>
+        <TextBox Grid.Row="0" Name="tbKorisnickoIme" Margin="110,98,6,160" HorizontalContentAlignment="Center" Text="{Binding Path=KorisnickoIme}" Width="263" Height="30" HorizontalAlignment="Left"/>
         <Label Content="Lozinka" Margin="10,147,272,97" />
-        <TextBox Grid.Row="0" Name="tbLozinka" Margin="110,147,6,111" HorizontalContentAlignment="Center" Text="{Binding Path=Lozinka}"/>
+        <TextBox Grid.Row="0" Name="tbLozinka" Margin="110,147,6,111" HorizontalContentAlignment="Center" Text="{Binding Path=Lozinka}" Width="263" Height="30" HorizontalAlignment="Left"/>
         <Label Content="Tip korisnika" Margin="10,191,272,53"/>
         <ComboBox x:Name="cbTipKorisnika" Margin="110,191,6,68" Text="{Binding Path=TipKorisnika}">
             <ComboBoxItem Content="Administrator"/>

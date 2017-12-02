@@ -14,46 +14,11 @@ namespace POP_SF59_2016.Model
         private int id;
         private bool obrisan;
         private DateTime datumPocetka;
-        private DateTime date;
-        private decimal popust;
+        private DateTime datumZavrsetka;
+        private double popust;
 
 
-        //[XmlIgnore]
-        //public ObservableCollection<Namestaj> NamestajNaPopustu
-        //{
-        //    get
-        //    {
-        //        foreach (var id in namestajNaPopustuId)
-        //        {
-        //            namestajNaPopustu.Add(Namestaj.GetById(id)); 
-        //        }
-        //        return namestajNaPopustu;
-        //    }
-        //    set
-        //    {
-        //        namestajNaPopustu = value;
-        //        foreach (var namestaj in namestajNaPopustu)
-        //        {
-        //            NamestajNaPopustuId.Add(namestaj.Id);
-        //            OnPropertyChanged("NamestajNaPopustu");
-        //        }
-                
-        //    }
-        //}
-
-
-        //public ObservableCollection<int> NamestajNaPopustuId
-        //{
-        //    get { return namestajNaPopustuId; }
-        //    set
-        //    {
-        //        namestajNaPopustuId = value;
-        //        OnPropertyChanged("NamestajNaPopustuId");
-        //    }
-        //}
-
-
-        public decimal Popust
+        public double Popust
         {
             get { return popust; }
             set
@@ -66,10 +31,10 @@ namespace POP_SF59_2016.Model
 
         public DateTime DatumZavrsetka
         {
-            get { return date; }
+            get { return datumZavrsetka; }
             set
             {
-                date = value;
+                datumZavrsetka = value;
                 OnPropertyChanged("DatumZavrsetka");
             }
         }
@@ -127,8 +92,19 @@ namespace POP_SF59_2016.Model
                 DatumPocetka = datumPocetka,
                 DatumZavrsetka = DatumZavrsetka,
                 Popust = popust,
-                //NamestajNaPopustuId = namestajNaPopustuId
             };
+        }
+
+        public static Akcija GetById(int id)
+        {
+            foreach (var akcija in Projekat.Instance.Akcija)
+            {
+                if (akcija.Id == id)
+                {
+                    return akcija;
+                }
+            }
+            return null;
         }
 
         public Namestaj nadji(int id)
@@ -145,7 +121,7 @@ namespace POP_SF59_2016.Model
 
         public override string ToString()
         {
-            return $"{DatumPocetka},{DatumZavrsetka},{Popust}";
+            return $"Pocetak: {DatumPocetka.ToShortDateString()} Zavrsetak: {DatumZavrsetka.ToShortDateString()} Popust: {Popust}";
         }
 
     }

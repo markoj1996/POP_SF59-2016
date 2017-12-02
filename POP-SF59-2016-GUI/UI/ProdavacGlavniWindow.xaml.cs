@@ -63,6 +63,7 @@ namespace POP_SF59_2016_GUI.UI
             column4.Binding = new Binding("BrojRacuna");
             dgProdaje.Columns.Add(column4);
 
+
             dgProdaje.ItemsSource = prodaja;
             dgProdaje.IsSynchronizedWithCurrentItem = true;
             dgProdaje.DataContext = this;
@@ -71,7 +72,7 @@ namespace POP_SF59_2016_GUI.UI
          {
              var novaProdaja = new ProdajaNamestaja()
              {
-                 Kupac = ""
+                 
              };
              var ProdajaProzor = new ProdajaWindow(novaProdaja, ProdajaWindow.Operacija.Dodavanje);
              ProdajaProzor.ShowDialog();
@@ -84,7 +85,7 @@ namespace POP_SF59_2016_GUI.UI
              ProdajaProzor.ShowDialog();
          }
 
-         private void ObrisiP_Click(object sender, RoutedEventArgs e)
+         /*private void ObrisiP_Click(object sender, RoutedEventArgs e)
          {
              var listaProdaja = Projekat.Instance.Prodaja;
 
@@ -99,16 +100,23 @@ namespace POP_SF59_2016_GUI.UI
                  }
                  GenericSerialize.Serialize("prodaje.xml", listaProdaja);
              }
-         }
+         }*/
 
         private void PretraziP_Click(object sender, RoutedEventArgs e)
-         {
+        {
              var PretragaProzor = new PretragaProdajaWindow();
              Close();
              PretragaProzor.ShowDialog();
 
-         }
-         private void Osvezi_Click(object sender, RoutedEventArgs e)
+        }
+
+        private void Detalji_Click(object sender, RoutedEventArgs e)
+        {
+            DetaljiWindow dw = new DetaljiWindow(izabranaProdaja);
+            dw.Show();
+        }
+
+        private void Osvezi_Click(object sender, RoutedEventArgs e)
          {
              dgProdaje.Columns.Clear();
              ProdajeKolone(Projekat.Instance.Prodaja);

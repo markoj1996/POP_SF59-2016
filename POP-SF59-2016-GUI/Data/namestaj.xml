@@ -2,22 +2,12 @@
 <ArrayOfNamestaj xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Namestaj>
     <AkcijaId>0</AkcijaId>
-    <KolicinaUMagacinu>1</KolicinaUMagacinu>
-    <Obrisan>false</Obrisan>
-    <TipNamestajaId>0</TipNamestajaId>
-    <JedinicnaCena>1</JedinicnaCena>
-    <Sifra>b</Sifra>
-    <Naziv>b</Naziv>
-    <Id>1</Id>
-  </Namestaj>
-  <Namestaj>
-    <AkcijaId>0</AkcijaId>
     <KolicinaUMagacinu>10</KolicinaUMagacinu>
     <Obrisan>false</Obrisan>
-    <TipNamestajaId>0</TipNamestajaId>
-    <JedinicnaCena>10</JedinicnaCena>
-    <Sifra>novi</Sifra>
-    <Naziv>novi</Naziv>
-    <Id>2</Id>
+    <TipNamestajaId>1</TipNamestajaId>
+    <JedinicnaCena>100</JedinicnaCena>
+    <Sifra>Namestaj1</Sifra>
+    <Naziv>Namestaj1</Naziv>
+    <Id>1</Id>
   </Namestaj>
 </ArrayOfNamestaj>

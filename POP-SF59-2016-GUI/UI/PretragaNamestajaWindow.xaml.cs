@@ -34,47 +34,46 @@ namespace POP_SF59_2016_GUI.UI
 
             if (tip == "Po nazivu")
             {
-                string naziv = tbPronadji.Text;
+                string naziv = tbPronadji.Text.ToLower();
                 foreach (var n in Projekat.Instance.Namestaj)
                 {
-                    if (n.Naziv.Contains(naziv))
+                    if (n.Naziv.ToLower().Contains(naziv))
                     {
                         namestaj.Add(n);
                     }
                 }
-                GlavniWindow g = new GlavniWindow(namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
+                GlavniWindow g = new GlavniWindow(namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja, Projekat.Instance.DodatnaUsluga);
                 this.Close();
                 g.Show();
             }
             else if(tip == "Po sifri")
             {
-                string sifra = tbPronadji.Text;
+                string sifra = tbPronadji.Text.ToLower();
                 foreach (var n in Projekat.Instance.Namestaj)
                 {
-                    if (n.Sifra.Contains(sifra))
+                    if (n.Sifra.ToLower().Contains(sifra))
                     {
                         namestaj.Add(n);
                     }
                 }
-                GlavniWindow g = new GlavniWindow(namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
+                GlavniWindow g = new GlavniWindow(namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja, Projekat.Instance.DodatnaUsluga);
                 this.Close();
                 g.Show();
             }
             else if (tip == "Po tipu")
             {
-                string tipN = tbPronadji.Text;
+                string tipN = tbPronadji.Text.ToLower();
                 foreach (var n in Projekat.Instance.Namestaj)
                 {
                     foreach (var t in Projekat.Instance.TipNamestaja)
                     {
-                        if (n.TipNamestajaId == t.Id && t.Naziv.Contains(tipN))
+                        if (n.TipNamestajaId == t.Id && t.Naziv.ToLower().Contains(tipN))
                         {
                             namestaj.Add(n);
-                            
                         }
                     }   
                 }
-                GlavniWindow g = new GlavniWindow(namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja);
+                GlavniWindow g = new GlavniWindow(namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja,Projekat.Instance.DodatnaUsluga);
                 this.Close();
                 g.Show();
             }

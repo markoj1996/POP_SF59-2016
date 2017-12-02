@@ -5,34 +5,13 @@
     <DatumZavrsetka>0001-01-01T00:00:00</DatumZavrsetka>
     <DatumPocetka>0001-01-01T00:00:00</DatumPocetka>
     <Obrisan>false</Obrisan>
-    <Id>1</Id>
-  </Akcija>
-  <Akcija>
-    <Popust>5</Popust>
-    <DatumZavrsetka>0001-01-01T00:00:00</DatumZavrsetka>
-    <DatumPocetka>0001-01-01T00:00:00</DatumPocetka>
-    <Obrisan>false</Obrisan>
-    <Id>2</Id>
-  </Akcija>
-  <Akcija>
-    <Popust>0</Popust>
-    <DatumZavrsetka>0001-01-01T00:00:00</DatumZavrsetka>
-    <DatumPocetka>0001-01-01T00:00:00</DatumPocetka>
-    <Obrisan>true</Obrisan>
-    <Id>3</Id>
-  </Akcija>
-  <Akcija>
-    <Popust>0</Popust>
-    <DatumZavrsetka>0001-01-01T00:00:00</DatumZavrsetka>
-    <DatumPocetka>0001-01-01T00:00:00</DatumPocetka>
-    <Obrisan>true</Obrisan>
-    <Id>4</Id>
+    <Id>0</Id>
   </Akcija>
   <Akcija>
     <Popust>10</Popust>
-    <DatumZavrsetka>0001-01-01T00:00:00</DatumZavrsetka>
-    <DatumPocetka>0001-01-01T00:00:00</DatumPocetka>
+    <DatumZavrsetka>2017-12-05T00:00:00</DatumZavrsetka>
+    <DatumPocetka>2017-12-02T00:00:00</DatumPocetka>
     <Obrisan>false</Obrisan>
-    <Id>5</Id>
+    <Id>2</Id>
   </Akcija>
 </ArrayOfAkcija>

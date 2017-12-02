@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-S:\New folder (2)\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\
 POP_SF59_2016_GUI
 none
 false
 DEBUG;TRACE
-S:\New folder (2)\POP_SF59-2016\POP-SF59-2016-GUI\App.xaml
-14-809700936
+C:\Users\Marko\Desktop\Platforme\POP_SF59-2016\POP-SF59-2016-GUI\App.xaml
+18-128890213
 
-271691084688
+31231163671
 131569487696
-MainWindow.xaml;UI\AkcijaWindow.xaml;UI\DodajNamestajNaAkciju.xaml;UI\DodajNamestajZaProdaju.xaml;UI\GlavniWindow.xaml;UI\KorisnikWindow.xaml;UI\NamestajWindow.xaml;UI\PretragaKorsnikaWindow.xaml;UI\PretragaNamestajaWindow.xaml;UI\PretragaProdajaWindow.xaml;UI\PretragaTipaNamestajaWindow.xaml;UI\ProdajaWindow.xaml;UI\ProdavacGlavniWindow.xaml;UI\TipNamestajaWindow.xaml;
+MainWindow.xaml;UI\AkcijaWindow.xaml;UI\DetaljiWindow.xaml;UI\DodajNamestajNaAkciju.xaml;UI\DodajNamestajZaProdaju.xaml;UI\DodajUsluguZaProdaju.xaml;UI\GlavniWindow.xaml;UI\KorisnikWindow.xaml;UI\NamestajWindow.xaml;UI\PretragaKorsnikaWindow.xaml;UI\PretragaNamestajaWindow.xaml;UI\PretragaProdajaWindow.xaml;UI\PretragaTipaNamestajaWindow.xaml;UI\PretragaUslugaWindow.xaml;UI\ProdajaWindow.xaml;UI\ProdavacGlavniWindow.xaml;UI\TipNamestajaWindow.xaml;UI\UslugaWindow.xaml;
 
 False
 

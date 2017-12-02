@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="DodajNamestajNaAkciju" Height="330.451" Width="373.308">
     <Grid>
-        <DataGrid AutoGenerateColumns="False" Grid.Row="0" FontSize="20" Name="dgNamestaj" Margin="10,10,10,65" SelectedItem="{Binding Path=izabraniNamestaj}" />
+        <DataGrid CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" Grid.Row="0" FontSize="20" Name="dgNamestaj" Margin="10,10,10,65" SelectedItem="{Binding Path=izabraniNamestaj}" />
         <Button Content="Potvrdi" Margin="186,259,116,10" Click="Potvrdi_Click" />
         <Button Content="Odustani" Margin="279,259,23,10" Click="Izadji_Click" />
     </Grid>

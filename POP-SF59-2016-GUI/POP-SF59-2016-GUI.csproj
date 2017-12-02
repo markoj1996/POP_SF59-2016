@@ -57,11 +57,17 @@
     <Compile Include="UI\AkcijaWindow.xaml.cs">
       <DependentUpon>AkcijaWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\DetaljiWindow.xaml.cs">
+      <DependentUpon>DetaljiWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\DodajNamestajNaAkciju.xaml.cs">
       <DependentUpon>DodajNamestajNaAkciju.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\DodajNamestajZaProdaju.xaml.cs">
       <DependentUpon>DodajNamestajZaProdaju.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\DodajUsluguZaProdaju.xaml.cs">
+      <DependentUpon>DodajUsluguZaProdaju.xaml</DependentUpon>
     </Compile>
     <Compile Include="UI\GlavniWindow.xaml.cs">
       <DependentUpon>GlavniWindow.xaml</DependentUpon>
@@ -84,6 +90,9 @@
     <Compile Include="UI\PretragaTipaNamestajaWindow.xaml.cs">
       <DependentUpon>PretragaTipaNamestajaWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\PretragaUslugaWindow.xaml.cs">
+      <DependentUpon>PretragaUslugaWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\ProdajaWindow.xaml.cs">
       <DependentUpon>ProdajaWindow.xaml</DependentUpon>
     </Compile>
@@ -92,6 +101,9 @@
     </Compile>
     <Compile Include="UI\TipNamestajaWindow.xaml.cs">
       <DependentUpon>TipNamestajaWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UslugaWindow.xaml.cs">
+      <DependentUpon>UslugaWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utils\GenericSerialize.cs" />
     <Page Include="MainWindow.xaml">
@@ -110,11 +122,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\DetaljiWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\DodajNamestajNaAkciju.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\DodajNamestajZaProdaju.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\DodajUsluguZaProdaju.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -146,6 +166,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UI\PretragaUslugaWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UI\ProdajaWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -155,6 +179,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="UI\TipNamestajaWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\UslugaWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -203,6 +231,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Data\tipNamestaja.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Data\usluge.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

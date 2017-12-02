@@ -16,6 +16,7 @@ namespace POP_SF59_2016.Model
         public ObservableCollection<TipNamestaja> TipNamestaja;
         public ObservableCollection<Korisnik> Korisnik;
         public ObservableCollection<Akcija> Akcija;
+        public ObservableCollection<DodatnaUsluga> DodatnaUsluga;
         public ObservableCollection<ProdajaNamestaja> Prodaja;
 
         private Projekat()
@@ -25,6 +26,7 @@ namespace POP_SF59_2016.Model
             Namestaj = GenericSerialize.Deserialize<Namestaj>("namestaj.xml");
             Akcija = GenericSerialize.Deserialize<Akcija>("akcije.xml");
             Prodaja = GenericSerialize.Deserialize<ProdajaNamestaja>("prodaje.xml");
+            DodatnaUsluga = GenericSerialize.Deserialize<DodatnaUsluga>("usluge.xml");
         }
     }
 }

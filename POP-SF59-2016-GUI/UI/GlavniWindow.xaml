@@ -8,13 +8,13 @@
         Title="GlavniWindow" Height="530" Width="630">
     <Grid>
         <TabControl >
-            <TabItem Header="Namestaj" Width="147">
+            <TabItem Header="Namestaj" Margin="0,-2,-38,0">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="183*"/>
                         <RowDefinition Height="38*"/>
                     </Grid.RowDefinitions>
-                    <DataGrid AutoGenerateColumns="False" Grid.Row="0" FontSize="20" Name="dgNamestaj" Margin="0,35,0,0" Width="606" Height="347" SelectedItem="{Binding Path=izabraniNamestaj}" />
+                    <DataGrid CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" Grid.Row="0" FontSize="20" Name="dgNamestaj" Margin="0,35,0,0" Width="606" Height="347" SelectedItem="{Binding Path=izabraniNamestaj}" />
                     <Button Content="Pretraga" Grid.Row="0" Margin="15,7,523,355"  Height="20" Width="68" Click="PretraziN_Click"/>
                     <Button Content="Refresh" Grid.Row="0" Margin="100,7,438,355"  Height="20" Width="68" Click="Osvezi_Click"/>
                     <Button Content="Dodaj" Margin="25,20,463,21" Grid.Row="1" Click="DodajN_Click"/>
@@ -23,13 +23,13 @@
                     <Button Content="Izadji" Margin="463,20,25,21" Grid.Row="1" Width="108" Click="Izadji_Click"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Korisnici" Width="147">
+            <TabItem Header="Korisnici" Margin="37,-2,-81,0">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="183*"/>
                         <RowDefinition Height="38*"/>
                     </Grid.RowDefinitions>
-                    <DataGrid AutoGenerateColumns="False" Grid.Row="0" FontSize="20" Name="dgKorisnici" Margin="0,35,0,0" SelectedItem="{Binding Path=izabraniKorisnik}"/>
+                    <DataGrid CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" Grid.Row="0" FontSize="20" Name="dgKorisnici" Margin="0,35,0,0" SelectedItem="{Binding Path=izabraniKorisnik}"/>
                     <Button Content="Pretraga" Grid.Row="0" Margin="15,7,523,355" Height="20" Click="PretraziK_Click" />
                     <Button Content="Refresh" Grid.Row="0" Margin="100,7,438,355" Height="20" Click="Osvezi_Click"/>
                     <Button Content="Dodaj" Margin="25,20,463,21" Grid.Row="1" Click="DodajK_Click"/>
@@ -38,13 +38,13 @@
                     <Button Content="Izadji" Margin="463,20,25,21" Grid.Row="1" Width="108" Click="Izadji_Click"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Akcije" Width="147">
+            <TabItem Header="Akcije" Margin="81,-2,-126,0">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="183*"/>
                         <RowDefinition Height="38*"/>
                     </Grid.RowDefinitions>
-                    <DataGrid Grid.Row="0" AutoGenerateColumns="False" FontSize="20" Name="dgAkcije" Margin="0,35,0,0" SelectedItem="{Binding Path=izabranaAkcija}"/>
+                    <DataGrid Grid.Row="0" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" FontSize="20" Name="dgAkcije" Margin="0,35,0,0" SelectedItem="{Binding Path=izabranaAkcija}"/>
                     <Button Content="Refresh" Grid.Row="0" Margin="15,7,523,355" Height="20" Click="Osvezi_Click"/>
                     <Button Content="Dodaj" Margin="25,20,463,21" Grid.Row="1" Click="DodajA_Click"/>
                     <Button Content="Izmeni" Margin="171,20,317,21" Grid.Row="1" Width="108" Click="IzmeniA_Click"/>
@@ -52,18 +52,33 @@
                     <Button Content="Izadji" Margin="463,20,25,21" Grid.Row="1" Width="108" Click="Izadji_Click"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Tip namestaja" Width="147">
+            <TabItem Header="Tip namestaja" Margin="126,-2,-141,0">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="183*"/>
                         <RowDefinition Height="38*"/>
                     </Grid.RowDefinitions>
-                    <DataGrid AutoGenerateColumns="False" Grid.Row="0" FontSize="20" Name="dgTipNamestaja" Margin="0,35,0,0" SelectedItem="{Binding Path=izabraniTip}"/>
+                    <DataGrid CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" Grid.Row="0" FontSize="20" Name="dgTipNamestaja" Margin="0,35,0,0" SelectedItem="{Binding Path=izabraniTip}"/>
                     <Button Content="Pretraga" Grid.Row="0" Margin="15,7,523,355" Height="20" Click="PretraziT_Click"/>
                     <Button Content="Refresh" Grid.Row="0" Margin="100,7,438,355" Height="20" Click="Osvezi_Click"/>
                     <Button Content="Dodaj" Margin="25,20,463,21" Grid.Row="1" Click="DodajT_Click"/>
                     <Button Content="Izmeni" Margin="171,20,317,21" Grid.Row="1" Width="108" Click="IzmeniT_Click"/>
                     <Button Content="Obrisi" Margin="319,20,169,21" Grid.Row="1" Width="108" Click="ObrisiT_Click"/>
+                    <Button Content="Izadji" Margin="463,20,25,21" Grid.Row="1" Width="108" Click="Izadji_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Dodatne usluge" Margin="141,-2,-156,0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="183*"/>
+                        <RowDefinition Height="38*"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" Grid.Row="0" FontSize="20" Name="dgDodatneUsluge" Margin="0,35,0,0" SelectedItem="{Binding Path=izabranaUsluga}"/>
+                    <Button Content="Pretraga" Grid.Row="0" Margin="15,7,523,355" Height="20" Click="PretraziU_Click"/>
+                    <Button Content="Refresh" Grid.Row="0" Margin="100,7,438,355" Height="20" Click="Osvezi_Click"/>
+                    <Button Content="Dodaj" Margin="25,20,463,21" Grid.Row="1" Click="DodajU_Click"/>
+                    <Button Content="Izmeni" Margin="171,20,317,21" Grid.Row="1" Width="108" Click="IzmeniU_Click"/>
+                    <Button Content="Obrisi" Margin="319,20,169,21" Grid.Row="1" Width="108" Click="ObrisiU_Click"/>
                     <Button Content="Izadji" Margin="463,20,25,21" Grid.Row="1" Width="108" Click="Izadji_Click"/>
                 </Grid>
             </TabItem>

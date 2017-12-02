@@ -9,7 +9,7 @@
     <Grid>
         <Label Content="Pronadji" Margin="20,28,207,125" FontSize="18"/>
         <Label Content="Tip pretrage" Margin="20,89,202,64" FontSize="18"/>
-        <TextBox Name="tbPronadji" Margin="141,34,20,141"/>
+        <TextBox Name="tbPronadji" Margin="141,34,20,141" HorizontalAlignment="Left" Width="177" Height="34"/>
         <ComboBox x:Name="cbTipPretrage" Margin="141,95,20,80">
             <ComboBoxItem Content="Po nazivu"/>
         </ComboBox>
