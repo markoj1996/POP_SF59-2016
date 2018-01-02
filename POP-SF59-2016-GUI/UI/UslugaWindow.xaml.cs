@@ -1,5 +1,6 @@
 ﻿using POP_SF59_2016.Model;
 using POP_SF59_2016.Util1;
+using POP_SF59_2016_GUI.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,26 +38,23 @@ namespace POP_SF59_2016_GUI.UI
             this.usluga = usluga;
             this.operacija = operacija;
 
-            cbAkcija.ItemsSource = Projekat.Instance.Akcija;
-
             tbNaziv.DataContext = usluga;
             tbCena.DataContext = usluga;
             tbPDV.DataContext = usluga;
             tbUkupnaCena.DataContext = usluga;
-            cbAkcija.DataContext = usluga;
         }
 
         private void SacuvajIzmene(object sender, RoutedEventArgs e)
         {
             var listaUsluga = Projekat.Instance.DodatnaUsluga;
-            var izabranaAkcija = (Akcija)cbAkcija.SelectedItem;
 
             switch (operacija)
             {
                 case OperacijaU.Dodavanje:
-                    usluga.Id = listaUsluga.Count + 1;
+                    usluga.Id = Aplikacija.Instance.DodatnaUsluga.Count + 1;
                     usluga.UkupanIznos = usluga.UkupnaCena(usluga);
-                    listaUsluga.Add(usluga);
+                    Aplikacija.Instance.DodatnaUsluga.Add(usluga);
+                    DodatnaUsluga.DodajUslugu(usluga);
                     break;
                 case OperacijaU.Izmena:
                     foreach (var a in listaUsluga)
@@ -68,7 +66,6 @@ namespace POP_SF59_2016_GUI.UI
                             a.Cena = usluga.Cena;
                             a.PDV = usluga.PDV;
                             a.UkupanIznos = usluga.UkupnaCena(a);
-                            //a.Akcija = usluga.Akcija;
                             break;
                         }
                     }

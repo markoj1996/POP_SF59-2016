@@ -1,5 +1,6 @@
 ﻿using POP_SF59_2016.Model;
 using POP_SF59_2016.Util1;
+using POP_SF59_2016_GUI.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,8 +38,10 @@ namespace POP_SF59_2016_GUI.UI
             this.namestaj = namestaj;
             this.operacija = operacija;
 
-            cbTipNamestaja.ItemsSource = Projekat.Instance.TipNamestaja;
-            cbAkcija.ItemsSource = Projekat.Instance.Akcija;
+            cbTipNamestaja.ItemsSource = Aplikacija.Instance.TipNamestaja;
+            cbAkcija.ItemsSource = Aplikacija.Instance.Akcija;
+
+
 
             tbNaziv.DataContext = namestaj;
             tbSifra.DataContext = namestaj;
@@ -58,8 +61,9 @@ namespace POP_SF59_2016_GUI.UI
             switch (operacija)
             {
                 case Operacija.Dodavanje:
-                    namestaj.Id = listaNamestaja.Count + 1;
-                    listaNamestaja.Add(namestaj);
+                    namestaj.Id = Aplikacija.Instance.Namestaj.Count + 1;
+                    Aplikacija.Instance.Namestaj.Add(namestaj);
+                    Namestaj.DodajNamestaj(namestaj);
                     break;
                 case Operacija.Izmena:
                     foreach (var n in listaNamestaja)

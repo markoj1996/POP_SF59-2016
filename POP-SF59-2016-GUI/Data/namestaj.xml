@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfNamestaj xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Namestaj>
-    <AkcijaId>0</AkcijaId>
+    <AkcijaId>2</AkcijaId>
     <KolicinaUMagacinu>10</KolicinaUMagacinu>
     <Obrisan>false</Obrisan>
     <TipNamestajaId>1</TipNamestajaId>
@@ -9,5 +9,25 @@
     <Sifra>Namestaj1</Sifra>
     <Naziv>Namestaj1</Naziv>
     <Id>1</Id>
+  </Namestaj>
+  <Namestaj>
+    <AkcijaId>2</AkcijaId>
+    <KolicinaUMagacinu>20</KolicinaUMagacinu>
+    <Obrisan>true</Obrisan>
+    <TipNamestajaId>1</TipNamestajaId>
+    <JedinicnaCena>1000</JedinicnaCena>
+    <Sifra>12</Sifra>
+    <Naziv>asfkj</Naziv>
+    <Id>2</Id>
+  </Namestaj>
+  <Namestaj>
+    <AkcijaId>0</AkcijaId>
+    <KolicinaUMagacinu>100</KolicinaUMagacinu>
+    <Obrisan>true</Obrisan>
+    <TipNamestajaId>1</TipNamestajaId>
+    <JedinicnaCena>1000</JedinicnaCena>
+    <Sifra>454</Sifra>
+    <Naziv>af</Naziv>
+    <Id>3</Id>
   </Namestaj>
 </ArrayOfNamestaj>

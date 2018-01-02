@@ -1,5 +1,6 @@
 ﻿using POP_SF59_2016.Model;
 using POP_SF59_2016.Util1;
+using POP_SF59_2016_GUI.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -47,8 +48,9 @@ namespace POP_SF59_2016_GUI.UI
             switch (operacija)
             {
                 case OperacijaT.Dodavanje:
-                    tipNamestaja.Id = listaTipaNamestaja.Count + 1;
-                    listaTipaNamestaja.Add(tipNamestaja);
+                    tipNamestaja.Id = Aplikacija.Instance.TipNamestaja.Count + 1;
+                    Aplikacija.Instance.TipNamestaja.Add(tipNamestaja);
+                    TipNamestaja.DodajTipNamestaja(tipNamestaja);
                     break;
                 case OperacijaT.Izmena:
                     foreach (var k in listaTipaNamestaja)

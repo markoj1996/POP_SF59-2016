@@ -1,5 +1,6 @@
 ﻿using POP_SF59_2016.Model;
 using POP_SF59_2016.Util1;
+using POP_SF59_2016_GUI.Model;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -53,8 +54,9 @@ namespace POP_SF59_2016_GUI.UI
             switch (operacija)
             {
                 case OperacijaA.Dodavanje:
-                    akcija.Id = listaAkcija.Count + 1;
-                    listaAkcija.Add(akcija);
+                    akcija.Id = Aplikacija.Instance.Akcija.Count + 1;
+                    Aplikacija.Instance.Akcija.Add(akcija);
+                    Akcija.DodajAkciju(akcija);
                     break;
                 case OperacijaA.Izmena:
                     foreach (var a in listaAkcija)

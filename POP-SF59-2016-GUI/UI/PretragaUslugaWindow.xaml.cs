@@ -42,7 +42,7 @@ namespace POP_SF59_2016_GUI.UI
 
                     }
                 }
-                GlavniWindow g = new GlavniWindow(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja, usluga);
+                GlavniWindow g = new GlavniWindow();
                 this.Close();
                 g.Show();
             }

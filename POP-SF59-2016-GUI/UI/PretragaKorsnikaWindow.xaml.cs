@@ -42,7 +42,7 @@ namespace POP_SF59_2016_GUI.UI
                         
                     }
                 }
-                GlavniWindow g = new GlavniWindow(Projekat.Instance.Namestaj, korisnici, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja, Projekat.Instance.DodatnaUsluga);
+                GlavniWindow g = new GlavniWindow();
                 this.Close();
                 g.Show();
             }
@@ -57,7 +57,7 @@ namespace POP_SF59_2016_GUI.UI
                         
                     }
                 }
-                GlavniWindow g = new GlavniWindow(Projekat.Instance.Namestaj, korisnici, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja, Projekat.Instance.DodatnaUsluga);
+                GlavniWindow g = new GlavniWindow();
                 this.Close();
                 g.Show();
             }
@@ -72,7 +72,7 @@ namespace POP_SF59_2016_GUI.UI
                         
                     }
                 }
-                GlavniWindow g = new GlavniWindow(Projekat.Instance.Namestaj, korisnici, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja, Projekat.Instance.DodatnaUsluga);
+                GlavniWindow g = new GlavniWindow();
                 this.Close();
                 g.Show();
             }

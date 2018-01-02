@@ -2,20 +2,20 @@
 <ArrayOfKorisnik xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Korisnik>
     <TipKorisnika>Administrator</TipKorisnika>
-    <Lozinka>m</Lozinka>
-    <KorisnickoIme>m</KorisnickoIme>
-    <Prezime>Admin</Prezime>
-    <Ime>Admin</Ime>
+    <Lozinka>a</Lozinka>
+    <KorisnickoIme>a</KorisnickoIme>
+    <Prezime>a</Prezime>
+    <Ime>a</Ime>
     <Obrisan>false</Obrisan>
-    <Id>0</Id>
+    <Id>1</Id>
   </Korisnik>
   <Korisnik>
     <TipKorisnika>Prodavac</TipKorisnika>
-    <Lozinka>a</Lozinka>
-    <KorisnickoIme>a</KorisnickoIme>
-    <Prezime>Prodavac</Prezime>
-    <Ime>Prodavac</Ime>
-    <Obrisan>false</Obrisan>
+    <Lozinka>m</Lozinka>
+    <KorisnickoIme>m</KorisnickoIme>
+    <Prezime>m</Prezime>
+    <Ime>m</Ime>
+    <Obrisan>true</Obrisan>
     <Id>2</Id>
   </Korisnik>
 </ArrayOfKorisnik>

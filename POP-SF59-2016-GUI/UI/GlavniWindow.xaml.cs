@@ -1,5 +1,6 @@
 ﻿using POP_SF59_2016.Model;
 using POP_SF59_2016.Util1;
+using POP_SF59_2016_GUI.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -35,19 +36,19 @@ namespace POP_SF59_2016_GUI.UI
             Dodavanje,
             Izmena
         }
-        public GlavniWindow(ObservableCollection<Namestaj>namestaj, ObservableCollection<Korisnik>korisnici, ObservableCollection<Akcija>akcije, ObservableCollection<TipNamestaja>tipNamestaja, ObservableCollection<DodatnaUsluga> usluga)
+        public GlavniWindow()
         {
             InitializeComponent();
             
-            NamestajKolone(namestaj);
-            KorisnikKolone(korisnici);
-            AkcijeKolone(akcije);
-            TipKolone(tipNamestaja);
-            UslugeKolone(usluga);
+            NamestajKolone();
+            KorisnikKolone();
+            AkcijeKolone();
+            TipKolone();
+            UslugeKolone();
 
         }
 
-        private void NamestajKolone(ObservableCollection<Namestaj> namestaj)
+        private void NamestajKolone()
         { 
             DataGridTextColumn column1 = new DataGridTextColumn();
             column1.Header = "Id";
@@ -86,7 +87,8 @@ namespace POP_SF59_2016_GUI.UI
             column6.Binding = new Binding("AkcijaId");
             dgNamestaj.Columns.Add(column6);
 
-            view = CollectionViewSource.GetDefaultView(namestaj);
+
+            view = CollectionViewSource.GetDefaultView(Aplikacija.Instance.Namestaj);
             view.Filter = NamestajFilter;
             dgNamestaj.ItemsSource = view;
             dgNamestaj.IsSynchronizedWithCurrentItem = true;
@@ -144,7 +146,7 @@ namespace POP_SF59_2016_GUI.UI
 
         }
 
-        private void Osvezi_Click(object sender, RoutedEventArgs e)
+        /*private void Osvezi_Click(object sender, RoutedEventArgs e)
         {
             dgNamestaj.Columns.Clear();
             dgKorisnici.Columns.Clear();
@@ -156,9 +158,9 @@ namespace POP_SF59_2016_GUI.UI
             AkcijeKolone(Projekat.Instance.Akcija);
             TipKolone(Projekat.Instance.TipNamestaja);
             UslugeKolone(Projekat.Instance.DodatnaUsluga);
-        }
+        }*/
 
-        private void TipKolone(ObservableCollection<TipNamestaja> tipNamestaja)
+        private void TipKolone()
         {
             DataGridTextColumn column1 = new DataGridTextColumn();
             column1.Header = "Id";
@@ -172,9 +174,9 @@ namespace POP_SF59_2016_GUI.UI
             column2.Binding = new Binding("Naziv");
             dgTipNamestaja.Columns.Add(column2);
 
-            view = CollectionViewSource.GetDefaultView(tipNamestaja);
+            view = CollectionViewSource.GetDefaultView(Aplikacija.Instance.TipNamestaja);
             view.Filter = tipNamestajaFilter;
-            dgTipNamestaja.ItemsSource = tipNamestaja;
+            dgTipNamestaja.ItemsSource = view;
             dgTipNamestaja.IsSynchronizedWithCurrentItem = true;
             dgTipNamestaja.DataContext = this;
         }
@@ -203,7 +205,7 @@ namespace POP_SF59_2016_GUI.UI
 
         private void ObrisiT_Click(object sender, RoutedEventArgs e)
         {
-            var listaTipaNamestaja = Projekat.Instance.TipNamestaja;
+            var listaTipaNamestaja = Aplikacija.Instance.TipNamestaja;
 
             if (MessageBox.Show($"Da li zelite da obrisete: {izabraniTip.Naziv}", "Brisanje", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
@@ -212,6 +214,7 @@ namespace POP_SF59_2016_GUI.UI
                     if (n.Id == izabraniTip.Id)
                     {
                         n.Obrisan = true;
+                        TipNamestaja.ObrisiTip(izabraniTip);
                         view.Refresh();
                         break;
                     }
@@ -228,7 +231,7 @@ namespace POP_SF59_2016_GUI.UI
 
         }
 
-        private void KorisnikKolone(ObservableCollection<Korisnik> korisnici)
+        private void KorisnikKolone()
         {
             DataGridTextColumn column1 = new DataGridTextColumn();
             column1.Header = "Id";
@@ -268,10 +271,10 @@ namespace POP_SF59_2016_GUI.UI
             dgKorisnici.Columns.Add(column6);
 
 
-            view = CollectionViewSource.GetDefaultView(korisnici);
+            view = CollectionViewSource.GetDefaultView(Aplikacija.Instance.Korisnik);
 
             view.Filter = KorisnikFilter;
-            dgKorisnici.ItemsSource = korisnici;
+            dgKorisnici.ItemsSource = view;
             dgKorisnici.IsSynchronizedWithCurrentItem = true;
             dgKorisnici.DataContext = this;
         }
@@ -299,7 +302,7 @@ namespace POP_SF59_2016_GUI.UI
 
         private void ObrisiK_Click(object sender, RoutedEventArgs e)
         {
-            var listaKorisnika = Projekat.Instance.Korisnik;
+            var listaKorisnika = Aplikacija.Instance.Korisnik;
 
             if (MessageBox.Show($"Da li zelite da obrisete: {izabraniKorisnik.Ime}", "Brisanje", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
@@ -308,6 +311,7 @@ namespace POP_SF59_2016_GUI.UI
                     if (k.Id == izabraniKorisnik.Id)
                     {
                         k.Obrisan = true;
+                        Korisnik.ObrisiKorisnika(izabraniKorisnik);
                         view.Refresh();
                         break;
                     }
@@ -324,7 +328,7 @@ namespace POP_SF59_2016_GUI.UI
 
         }
 
-        private void AkcijeKolone(ObservableCollection<Akcija> akcije)
+        private void AkcijeKolone()
         {
             DataGridTextColumn column1 = new DataGridTextColumn();
             column1.Header = "Id";
@@ -350,10 +354,10 @@ namespace POP_SF59_2016_GUI.UI
             column4.Binding = new Binding("Popust");
             dgAkcije.Columns.Add(column4);
 
-            view = CollectionViewSource.GetDefaultView(akcije);
+            view = CollectionViewSource.GetDefaultView(Aplikacija.Instance.Akcija);
 
             view.Filter = AkcijaFilter;
-            dgAkcije.ItemsSource = akcije;
+            dgAkcije.ItemsSource = view;
             dgAkcije.IsSynchronizedWithCurrentItem = true;
             dgAkcije.DataContext = this;
         }
@@ -380,7 +384,7 @@ namespace POP_SF59_2016_GUI.UI
 
         private void ObrisiA_Click(object sender, RoutedEventArgs e)
         {
-            var listaAkcija = Projekat.Instance.Akcija;
+            var listaAkcija = Aplikacija.Instance.Akcija;
 
             if (MessageBox.Show($"Da li zelite da obrisete: {izabranaAkcija.Id}", "Brisanje", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
@@ -389,6 +393,7 @@ namespace POP_SF59_2016_GUI.UI
                     if (a.Id == izabranaAkcija.Id)
                     {
                         a.Obrisan = true;
+                        Akcija.ObrisiAkciju(izabranaAkcija);
                         view.Refresh();
                         break;
                     }
@@ -397,7 +402,7 @@ namespace POP_SF59_2016_GUI.UI
             }
         }
 
-        private void UslugeKolone(ObservableCollection<DodatnaUsluga> usluga)
+        private void UslugeKolone()
         {
             DataGridTextColumn column1 = new DataGridTextColumn();
             column1.Header = "Id";
@@ -417,10 +422,10 @@ namespace POP_SF59_2016_GUI.UI
             column3.Binding = new Binding("UkupanIznos");
             dgDodatneUsluge.Columns.Add(column3);
 
-            view = CollectionViewSource.GetDefaultView(usluga);
+            view = CollectionViewSource.GetDefaultView(Aplikacija.Instance.DodatnaUsluga);
 
             view.Filter = UslugaFilter;
-            dgDodatneUsluge.ItemsSource = usluga;
+            dgDodatneUsluge.ItemsSource = view;
             dgDodatneUsluge.IsSynchronizedWithCurrentItem = true;
             dgDodatneUsluge.DataContext = this;
         }
@@ -448,7 +453,7 @@ namespace POP_SF59_2016_GUI.UI
 
         private void ObrisiU_Click(object sender, RoutedEventArgs e)
         {
-            var listaUsluga = Projekat.Instance.DodatnaUsluga;
+            var listaUsluga = Aplikacija.Instance.DodatnaUsluga;
 
             if (MessageBox.Show($"Da li zelite da obrisete: {izabranaUsluga.Naziv}", "Brisanje", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
@@ -457,6 +462,7 @@ namespace POP_SF59_2016_GUI.UI
                     if (u.Id == izabranaUsluga.Id)
                     {
                         u.Obrisan = true;
+                        DodatnaUsluga.ObrisiUslugu(izabranaUsluga);
                         view.Refresh();
                         break;
                     }

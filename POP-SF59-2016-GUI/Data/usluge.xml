@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfDodatnaUsluga xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <DodatnaUsluga>
-    <AkcijaId>0</AkcijaId>
-    <UkupanIznos>110.00000000000001</UkupanIznos>
+    <UkupanIznos>110</UkupanIznos>
     <PDV>10</PDV>
     <Cena>100</Cena>
-    <Naziv>Prevoz</Naziv>
+    <Naziv>prevoz</Naziv>
     <Obrisan>false</Obrisan>
     <Id>1</Id>
+  </DodatnaUsluga>
+  <DodatnaUsluga>
+    <UkupanIznos>120</UkupanIznos>
+    <PDV>20</PDV>
+    <Cena>100</Cena>
+    <Naziv>nova</Naziv>
+    <Obrisan>true</Obrisan>
+    <Id>2</Id>
   </DodatnaUsluga>
 </ArrayOfDodatnaUsluga>

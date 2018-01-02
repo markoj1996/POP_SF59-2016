@@ -1,4 +1,5 @@
 ﻿using POP_SF59_2016.Model;
+using POP_SF59_2016_GUI.Model;
 using POP_SF59_2016_GUI.UI;
 using System;
 using System.Collections.Generic;
@@ -25,11 +26,17 @@ namespace POP_SF59_2016_GUI
         public MainWindow()
         {
             InitializeComponent();
+
+            Namestaj.UcitajNamestaj();
+            TipNamestaja.UcitajTipNamestaja();
+            Akcija.UcitajAkcije();
+            Korisnik.UcitajKorisnike();
+            DodatnaUsluga.UcitajUsluge();
         }
 
         private void login_Click(object sender, RoutedEventArgs e)
         {
-            var korisnici = Projekat.Instance.Korisnik;
+            var korisnici = Aplikacija.Instance.Korisnik;
 
             if (tbUsername.Text != "" && pwPassword.Password != "")
             {
@@ -41,7 +48,7 @@ namespace POP_SF59_2016_GUI
                         {
                             if (korisnici[i].TipKorisnika == "Administrator")
                             {
-                                GlavniWindow g = new GlavniWindow(Projekat.Instance.Namestaj, Projekat.Instance.Korisnik, Projekat.Instance.Akcija, Projekat.Instance.TipNamestaja, Projekat.Instance.DodatnaUsluga);
+                                GlavniWindow g = new GlavniWindow();
                                 g.Show();
                                 this.Close();
                                 break;

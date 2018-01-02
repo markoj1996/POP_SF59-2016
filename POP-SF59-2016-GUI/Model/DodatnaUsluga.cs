@@ -1,6 +1,9 @@
-﻿using System;
+﻿using POP_SF59_2016_GUI.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,53 +19,7 @@ namespace POP_SF59_2016.Model
         private double cena;
         private double pdv;
         private double ukupanIznos;
-        private int akcijaId;
-        private Akcija akcija;
 
-        public double CenaSaAkcijom()
-        {
-            double Ukupno = 0;
-            var akcije = Projekat.Instance.Akcija;
-            foreach (var a in akcije)
-            {
-                if (akcijaId == a.Id)
-                {
-                    double popust = (a.Popust / 100) * Cena;
-                    Ukupno = Cena - popust;
-                    return Ukupno;
-                }
-            }
-            return Ukupno;
-        }
-
-        [XmlIgnore]
-        public Akcija Akcija
-        {
-            get
-            {
-                if (akcija == null)
-                {
-                    akcija = Akcija.GetById(AkcijaId);
-                }
-                return akcija;
-            }
-            set
-            {
-                akcija = value;
-                AkcijaId = akcija.Id;
-                OnPropertyChanged("Akcija");
-            }
-        }
-
-        public int AkcijaId
-        {
-            get { return akcijaId; }
-            set
-            {
-                akcijaId = value;
-                OnPropertyChanged("AkcijaId");
-            }
-        }
 
         public double UkupanIznos
         {
@@ -149,5 +106,72 @@ namespace POP_SF59_2016.Model
                 UkupanIznos = ukupanIznos,
             };
         }
+
+        public static void UcitajUsluge()
+        {
+            using (SqlConnection connection = new SqlConnection(Aplikacija.CONNECTION_STRING))
+            {
+                connection.Open();
+
+                DataSet ds = new DataSet();
+
+                SqlCommand uslugaCommand = connection.CreateCommand();
+                uslugaCommand.CommandText = @"SELECT * FROM DODATNEUSLUGE";
+                SqlDataAdapter daUsluge = new SqlDataAdapter();
+                daUsluge.SelectCommand = uslugaCommand;
+                daUsluge.Fill(ds, "DodatneUsluge");
+
+                foreach (DataRow row in ds.Tables["DodatneUsluge"].Rows)
+                {
+                    DodatnaUsluga k = new DodatnaUsluga();
+                    k.Id = (int)row["Id"];
+                    k.Obrisan = (bool)row["Obrisan"];
+                    k.Naziv = (string)row["Naziv"];
+                    k.Cena = (double)row["Cena"];
+                    k.PDV = (double)row["PDV"];
+                    k.UkupanIznos = (double)row["UkupanIznos"];
+
+                    Aplikacija.Instance.DodatnaUsluga.Add(k);
+                }
+            }
+        }
+        public static void DodajUslugu(DodatnaUsluga n)
+        {
+            using (SqlConnection conn = new SqlConnection(Aplikacija.CONNECTION_STRING))
+            {
+                conn.Open();
+
+                SqlCommand command = conn.CreateCommand();
+                command.CommandText = @"INSERT INTO DODATNEUSLUGE (ID,NAZIV,OBRISAN,CENA,PDV,UKUPANIZNOS) VALUES (@ID,@Naziv,@Obrisan,@Cena,@PDV,@UkupanIznos)";
+
+                command.Parameters.Add(new SqlParameter("@ID", n.Id));
+                command.Parameters.Add(new SqlParameter("@Naziv", n.Naziv));
+                command.Parameters.Add(new SqlParameter("@Obrisan", n.Obrisan));
+                command.Parameters.Add(new SqlParameter("@Cena", n.Cena));
+                command.Parameters.Add(new SqlParameter("@PDV", n.PDV));
+                command.Parameters.Add(new SqlParameter("@UkupanIznos", n.UkupanIznos));
+
+                command.ExecuteNonQuery();
+            }
+        }
+        public static void ObrisiUslugu(DodatnaUsluga n)
+        {
+            using (SqlConnection conn = new SqlConnection(Aplikacija.CONNECTION_STRING))
+            {
+                if (n.Id != 0)//ako postoji u bazi
+                {
+                    conn.Open();
+
+                    SqlCommand command = conn.CreateCommand();
+                    command.CommandText = @"UPDATE DODATNEUSLUGE SET OBRISAN=@Obrisan WHERE ID=@Id";
+
+                    command.Parameters.Add(new SqlParameter("@Id", n.Id));
+                    command.Parameters.Add(new SqlParameter("@Obrisan", n.Obrisan));
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
     }
 }

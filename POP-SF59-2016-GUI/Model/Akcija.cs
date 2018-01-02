@@ -1,7 +1,10 @@
-﻿using System;
+﻿using POP_SF59_2016_GUI.Model;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -122,6 +125,71 @@ namespace POP_SF59_2016.Model
         public override string ToString()
         {
             return $"Pocetak: {DatumPocetka.ToShortDateString()} Zavrsetak: {DatumZavrsetka.ToShortDateString()} Popust: {Popust}";
+        }
+
+        public static void UcitajAkcije()
+        {
+            using (SqlConnection connection = new SqlConnection(Aplikacija.CONNECTION_STRING))
+            {
+                connection.Open();
+
+                DataSet ds = new DataSet();
+
+                SqlCommand akcijaCommand = connection.CreateCommand();
+                akcijaCommand.CommandText = @"SELECT * FROM Akcija";
+                SqlDataAdapter daAkcija = new SqlDataAdapter();
+                daAkcija.SelectCommand = akcijaCommand;
+                daAkcija.Fill(ds, "Akcija");
+
+                foreach (DataRow row in ds.Tables["Akcija"].Rows)
+                {
+                    Akcija n = new Akcija();
+                    n.Id = (int)row["Id"];
+                    n.DatumPocetka = (DateTime)row["DatumPocetka"];
+                    n.DatumZavrsetka = (DateTime)row["DatumZavrsetka"];
+                    n.Obrisan = (bool)row["OObrisan"];
+                    n.Popust = (double)row["Popust"];
+
+                    Aplikacija.Instance.Akcija.Add(n);
+                }
+            }
+        }
+
+        public static void DodajAkciju(Akcija n)
+        {
+            using (SqlConnection conn = new SqlConnection(Aplikacija.CONNECTION_STRING))
+            {
+                conn.Open();
+
+                SqlCommand command = conn.CreateCommand();
+                command.CommandText = @"INSERT INTO AKCIJA (ID,OOBRISAN,DATUMPOCETKA,DATUMZAVRSETKA,POPUST) VALUES (@ID,@Obrisan, @DatumPocetka,@DatumZavrsetka,@Popust)";
+
+                command.Parameters.Add(new SqlParameter("@ID", n.Id));
+                command.Parameters.Add(new SqlParameter("@Obrisan", n.Obrisan));
+                command.Parameters.Add(new SqlParameter("@DatumPocetka", n.DatumPocetka));
+                command.Parameters.Add(new SqlParameter("@DatumZavrsetka", n.DatumZavrsetka));
+                command.Parameters.Add(new SqlParameter("@Popust", n.Popust));
+
+                command.ExecuteNonQuery();
+            }
+        }
+        public static void ObrisiAkciju(Akcija n)
+        {
+            using (SqlConnection conn = new SqlConnection(Aplikacija.CONNECTION_STRING))
+            {
+                if (n.Id != 0)//ako postoji u bazi
+                {
+                    conn.Open();
+
+                    SqlCommand command = conn.CreateCommand();
+                    command.CommandText = @"UPDATE AKCIJA SET OOBRISAN=@Obrisan WHERE ID=@Id";
+
+                    command.Parameters.Add(new SqlParameter("@Id", n.Id));
+                    command.Parameters.Add(new SqlParameter("@Obrisan", n.Obrisan));
+
+                    command.ExecuteNonQuery();
+                }
+            }
         }
 
     }

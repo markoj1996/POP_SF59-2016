@@ -107,7 +107,7 @@ namespace POP_SF59_2016_GUI.UI
                     if (id == n.Id)
                     {
                         listaUsluga.Add(n);
-                        ceneUsluga.Add(n.CenaSaAkcijom());
+                        ceneUsluga.Add(n.UkupnaCena(n));
                     }
                 }
             }

@@ -17,7 +17,5 @@
         <Button Content="Izadji" Height="40" Width="80" Margin="278,295,21,27" Click="Izadji"/>
         <Label Grid.Row="0" Grid.Column="0" Content="Ukupna cena" Margin="8,182,0,131" HorizontalAlignment="Left" VerticalAlignment="Center" Height="49" Width="117"/>
         <TextBox x:Name="tbUkupnaCena" Margin="127,177,10,148" Width="242" Height="37" Text="{Binding Path=UkupanIznos}" IsReadOnly="True" HorizontalAlignment="Left"/>
-        <Label Content="Akcija" Margin="10,231,268,85" Width="101" Height="46"/>
-        <ComboBox x:Name="cbAkcija" Margin="126,231,0,94" HorizontalAlignment="Left" Width="242" Height="37" SelectedItem="{Binding Path=Akcija}"/>
     </Grid>
 </Window>

@@ -1,6 +1,9 @@
-﻿using System;
+﻿using POP_SF59_2016_GUI.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -206,5 +209,59 @@ namespace POP_SF59_2016.Model
                 TipNamestajaId = tipNamestajaId,
             };
         }
+
+        public static void UcitajNamestaj()
+        {
+            using (SqlConnection connection = new SqlConnection(Aplikacija.CONNECTION_STRING))
+            {
+                connection.Open();
+
+                DataSet ds = new DataSet();
+
+                SqlCommand nametajCommand = connection.CreateCommand();
+                nametajCommand.CommandText = @"SELECT * FROM NAMESTAJ";
+                SqlDataAdapter daNamestaj = new SqlDataAdapter();
+                daNamestaj.SelectCommand = nametajCommand;
+                daNamestaj.Fill(ds, "Namestaj");
+
+                foreach (DataRow row in ds.Tables["Namestaj"].Rows)
+                {
+                    Namestaj n = new Namestaj();
+                    n.Id = (int)row["Id"];
+                    n.Naziv = (string)row["Naziv"];
+                    n.Sifra = (string)row["Sifra"];
+                    n.JedinicnaCena = (double)row["JedinicnaCena"];
+                    n.TipNamestajaId = (int)row["TipNamestaja"];
+                    n.Obrisan = (bool)row["Obrisan"];
+                    n.KolicinaUMagacinu = (int)row["KolicinaUMagacinu"];
+                    n.AkcijaId = (int)row["AkcijaId"];
+
+                    Aplikacija.Instance.Namestaj.Add(n);
+                }
+            }
+        }
+
+        public static void DodajNamestaj(Namestaj n)
+        {
+            using (SqlConnection conn = new SqlConnection(Aplikacija.CONNECTION_STRING))
+            {
+                conn.Open();
+
+                SqlCommand command = conn.CreateCommand();
+                command.CommandText = @"INSERT INTO NAMESTAJ (ID,NAZIV,SIFRA,JEDINICNACENA,TIPNAMESTAJA,OBRISAN,KOLICINAUMAGACINU,AKCIJAID) VALUES (@ID,@Naziv, @Sifra,@JedinicnaCena,@TipaNamestaja,@Obrisan,@KolicinaUMagacinu,@AkcijaId)";
+
+                command.Parameters.Add(new SqlParameter("@ID", n.Id));
+                command.Parameters.Add(new SqlParameter("@Naziv", n.Naziv));
+                command.Parameters.Add(new SqlParameter("@Sifra", n.Sifra));
+                command.Parameters.Add(new SqlParameter("@JedinicnaCena", n.JedinicnaCena));
+                command.Parameters.Add(new SqlParameter("@TipNamestaja", n.TipNamestaja.Id));
+                command.Parameters.Add(new SqlParameter("@Obrisan", 0));
+                command.Parameters.Add(new SqlParameter("@KolicinaUMagacinu", n.KolicinaUMagacinu));
+                command.Parameters.Add(new SqlParameter("@AkcijaId", n.Akcija.Id));
+
+                command.ExecuteNonQuery();
+            }
+        }
+
     }
 }
