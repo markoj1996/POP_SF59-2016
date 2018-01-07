@@ -49,7 +49,7 @@ namespace POP_SF59_2016_GUI.UI
 
         private void SacuvajIzmene(object sender, RoutedEventArgs e)
         {
-            var listaAkcija = Projekat.Instance.Akcija;
+            var listaAkcija = Aplikacija.Instance.Akcija;
 
             switch (operacija)
             {
@@ -67,6 +67,7 @@ namespace POP_SF59_2016_GUI.UI
                             a.DatumPocetka = akcija.DatumPocetka;
                             a.DatumZavrsetka = akcija.DatumZavrsetka;
                             a.Popust = akcija.Popust;
+                            Akcija.IzmeniAkciju(akcija);
                             break;
                         }
                     }

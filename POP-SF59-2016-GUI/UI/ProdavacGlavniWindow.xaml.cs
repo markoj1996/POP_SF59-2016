@@ -1,8 +1,10 @@
 ﻿using POP_SF59_2016.Model;
 using POP_SF59_2016.Util1;
+using POP_SF59_2016_GUI.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,13 +32,13 @@ namespace POP_SF59_2016_GUI.UI
             Izmena
         }
 
-        public ProdavacGlavniWindow(ObservableCollection<ProdajaNamestaja> prodaja)
+        public ProdavacGlavniWindow()
         {
             InitializeComponent();
-            ProdajeKolone(prodaja);
+            ProdajeKolone();
         }
 
-        private void ProdajeKolone(ObservableCollection<ProdajaNamestaja> prodaja)
+        private void ProdajeKolone()
         { 
             DataGridTextColumn column1 = new DataGridTextColumn();
             column1.Header = "Id";
@@ -63,8 +65,7 @@ namespace POP_SF59_2016_GUI.UI
             column4.Binding = new Binding("BrojRacuna");
             dgProdaje.Columns.Add(column4);
 
-
-            dgProdaje.ItemsSource = prodaja;
+            dgProdaje.ItemsSource = Aplikacija.Instance.Prodaja;
             dgProdaje.IsSynchronizedWithCurrentItem = true;
             dgProdaje.DataContext = this;
         }
@@ -85,22 +86,6 @@ namespace POP_SF59_2016_GUI.UI
              ProdajaProzor.ShowDialog();
          }
 
-         /*private void ObrisiP_Click(object sender, RoutedEventArgs e)
-         {
-             var listaProdaja = Projekat.Instance.Prodaja;
-
-             if (MessageBox.Show($"Da li zelite da obrisete: {izabranaProdaja.Id}", "Brisanje", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-             {
-                 foreach (var p in listaProdaja)
-                 {
-                     if (p.Id == izabranaProdaja.Id)
-                     {
-                         p.Obrisan = true;
-                     }
-                 }
-                 GenericSerialize.Serialize("prodaje.xml", listaProdaja);
-             }
-         }*/
 
         private void PretraziP_Click(object sender, RoutedEventArgs e)
         {
@@ -116,11 +101,11 @@ namespace POP_SF59_2016_GUI.UI
             dw.Show();
         }
 
-        private void Osvezi_Click(object sender, RoutedEventArgs e)
+        /*private void Osvezi_Click(object sender, RoutedEventArgs e)
          {
              dgProdaje.Columns.Clear();
              ProdajeKolone(Projekat.Instance.Prodaja);
-         }
+         }*/
 
          private void Izadji_Click(object sender, RoutedEventArgs e)
          {

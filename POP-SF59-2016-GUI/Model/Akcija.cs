@@ -191,6 +191,26 @@ namespace POP_SF59_2016.Model
                 }
             }
         }
+        public static void IzmeniAkciju(Akcija n)
+        {
+            using (SqlConnection conn = new SqlConnection(Aplikacija.CONNECTION_STRING))
+            {
+                if (n.Id != 0)//ako postoji u bazi
+                {
+                    conn.Open();
 
+                    SqlCommand command = conn.CreateCommand();
+                    command.CommandText = @"UPDATE AKCIJA SET OOBRISAN=@Obrisan, DATUMPOCETKA=@DatumPocetka, DATUMZAVRSETKA=@DatumZavrsetka, POPUST=@Popust WHERE ID=@Id";
+
+                    command.Parameters.Add(new SqlParameter("@Id", n.Id));
+                    command.Parameters.Add(new SqlParameter("@Obrisan", n.Obrisan));
+                    command.Parameters.Add(new SqlParameter("@DatumPOcetka", n.datumPocetka));
+                    command.Parameters.Add(new SqlParameter("@DatumZavrsetka", n.datumZavrsetka));
+                    command.Parameters.Add(new SqlParameter("@Popust", n.Popust));
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

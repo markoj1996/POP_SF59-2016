@@ -1,4 +1,5 @@
 ﻿using POP_SF59_2016.Model;
+using POP_SF59_2016_GUI.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -54,9 +55,9 @@ namespace POP_SF59_2016_GUI.UI
             column3.Binding = new Binding("UkupanIznos");
             dgUsluge.Columns.Add(column3);
 
-            view = CollectionViewSource.GetDefaultView(Projekat.Instance.DodatnaUsluga);
+            view = CollectionViewSource.GetDefaultView(Aplikacija.Instance.DodatnaUsluga);
             view.Filter = UslugaFilter;
-            dgUsluge.ItemsSource = Projekat.Instance.DodatnaUsluga;
+            dgUsluge.ItemsSource = view;
             dgUsluge.IsSynchronizedWithCurrentItem = true;
             dgUsluge.DataContext = this;
         }

@@ -16,12 +16,14 @@
         <Label Grid.Row="0" Grid.Column="0" Content="Broj racuna" Margin="8,140,0,419" HorizontalAlignment="Left" VerticalAlignment="Center" Height="49" Width="117"/>
         <TextBox x:Name="tbBrojRacuna" Margin="127,135,10,436" Width="242" Height="37" Text="{Binding BrojRacuna}" HorizontalAlignment="Left"/>
         <Label Grid.Row="0" Grid.Column="0" Content="Namestaj za prodaju" Margin="8,194,0,365" HorizontalAlignment="Left" VerticalAlignment="Center" Height="49" Width="117"/>
-        <DataGrid CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" Grid.Row="0" x:Name="dgNamestaj" Margin="127,194,10,280" SelectedItem="{Binding Path=NamestajZaProdaju}" />
+        <DataGrid CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" Grid.Row="0" x:Name="dgNamestaj" Margin="127,194,10,280" SelectedItem="{Binding Path=NamestajZaProdajuId}" />
         <Button Content="Dodaj" Margin="36,224,295,358" FontSize="10" Click="DodajN_Click"/>
         <Button Content="Sacuvaj" Height="40" Width="80" Margin="155,534,144,34" Click="SacuvajIzmene"/>
         <Button Content="Izadji" Height="40" Width="80" Margin="273,534,26,34" Click="Izadji"/>
         <Label Grid.Row="0" Grid.Column="0" Content="Dodatne usluge" Margin="8,353,0,206" HorizontalAlignment="Left" VerticalAlignment="Center" Height="49" Width="117"/>
         <DataGrid CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" Grid.Row="0" x:Name="dgUsluge" Margin="127,353,10,121" SelectedItem="{Binding NamestajZaProdajuId}" />
         <Button Content="Dodaj" Margin="36,383,295,199" FontSize="10" Click="DodajU_Click"/>
+        <Button Content="Obrisi" Margin="36,269,295,313" FontSize="10" Click="ObrisiN_Click"/>
+        <Button Content="Obrisi" Margin="36,429,295,153" FontSize="10" Click="ObrisiU_Click"/>
     </Grid>
 </Window>

@@ -198,5 +198,29 @@ namespace POP_SF59_2016.Model
                 }
             }
         }
+        public static void IzmeniKorisnika(Korisnik n)
+        {
+            using (SqlConnection conn = new SqlConnection(Aplikacija.CONNECTION_STRING))
+            {
+                if (n.Id != 0)//ako postoji u bazi
+                {
+                    conn.Open();
+
+                    SqlCommand command = conn.CreateCommand();
+                    command.CommandText = @"UPDATE KORISNICI SET OBRISAN=@Obrisan, IME=@Ime, PREZIME=@Prezime, KORISNICKOIME=@KIme, LOZINKA=@Lozinka, TIPKORISNIKA=@Tip WHERE ID=@Id";
+
+                    command.Parameters.Add(new SqlParameter("@Id", n.Id));
+                    command.Parameters.Add(new SqlParameter("@Obrisan", n.Obrisan));
+                    command.Parameters.Add(new SqlParameter("@Ime", n.Ime));
+                    command.Parameters.Add(new SqlParameter("@Prezime", n.Prezime));
+                    command.Parameters.Add(new SqlParameter("@KIme", n.KorisnickoIme));
+                    command.Parameters.Add(new SqlParameter("@Lozinka", n.Lozinka));
+                    command.Parameters.Add(new SqlParameter("@Tip", n.TipKorisnika));
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
     }
 }

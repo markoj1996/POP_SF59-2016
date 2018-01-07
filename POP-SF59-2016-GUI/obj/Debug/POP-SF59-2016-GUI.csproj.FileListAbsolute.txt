@@ -219,3 +219,7 @@ C:\Users\Marko\Desktop\New folder\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\POP-
 C:\Users\Marko\Desktop\New folder\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\POP-SF59-2016-GUI.csproj.CoreCompileInputs.cache
 C:\Users\Marko\Desktop\New folder\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\POP-SF59-2016-GUI.exe
 C:\Users\Marko\Desktop\New folder\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\POP-SF59-2016-GUI.pdb
+C:\Users\Marko\Desktop\New folder\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\ObrisiNamestajProdaje.g.cs
+C:\Users\Marko\Desktop\New folder\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\ObrisiNamestajProdaje.baml
+C:\Users\Marko\Desktop\New folder\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\ObrisiUsluguProdaje.g.cs
+C:\Users\Marko\Desktop\New folder\POP_SF59-2016\POP-SF59-2016-GUI\obj\Debug\UI\ObrisiUsluguProdaje.baml

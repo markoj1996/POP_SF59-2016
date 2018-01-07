@@ -10,4 +10,9 @@
     <Naziv>novitip</Naziv>
     <Id>4</Id>
   </TipNamestaja>
+  <TipNamestaja>
+    <Obrisan>false</Obrisan>
+    <Naziv>izmenjen</Naziv>
+    <Id>3</Id>
+  </TipNamestaja>
 </ArrayOfTipNamestaja>

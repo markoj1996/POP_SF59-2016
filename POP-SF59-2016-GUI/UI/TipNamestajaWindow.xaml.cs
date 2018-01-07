@@ -43,7 +43,7 @@ namespace POP_SF59_2016_GUI.UI
         private void SacuvajIzmene(object sender, RoutedEventArgs e)
         {
 
-            var listaTipaNamestaja = Projekat.Instance.TipNamestaja;
+            var listaTipaNamestaja = Aplikacija.Instance.TipNamestaja;
 
             switch (operacija)
             {
@@ -58,6 +58,7 @@ namespace POP_SF59_2016_GUI.UI
                         if (k.Id == tipNamestaja.Id)
                         {
                             k.Naziv = tipNamestaja.Naziv;
+                            TipNamestaja.IzmeniTip(tipNamestaja);
                             break;
                         }
                     }

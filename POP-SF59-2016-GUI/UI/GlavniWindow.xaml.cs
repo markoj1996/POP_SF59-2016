@@ -120,7 +120,7 @@ namespace POP_SF59_2016_GUI.UI
 
         private void ObrisiN_Click(object sender, RoutedEventArgs e)
         {
-            var listaNamestaja = Projekat.Instance.Namestaj;
+            var listaNamestaja = Aplikacija.Instance.Namestaj;
 
             if (MessageBox.Show($"Da li zelite da obrisete: {izabraniNamestaj.Naziv}", "Brisanje", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
@@ -129,6 +129,7 @@ namespace POP_SF59_2016_GUI.UI
                     if (n.Id == izabraniNamestaj.Id)
                     {
                         n.Obrisan = true;
+                        Namestaj.ObrisiNamestaj(izabraniNamestaj);
                         view.Refresh();
                         break;
                     }

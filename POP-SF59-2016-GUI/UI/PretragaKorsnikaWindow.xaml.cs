@@ -1,4 +1,5 @@
 ﻿using POP_SF59_2016.Model;
+using POP_SF59_2016_GUI.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -34,7 +35,7 @@ namespace POP_SF59_2016_GUI.UI
             if (tip == "Po imenu")
             {
                 string ime = tbPronadji.Text.ToLower();
-                foreach (var k in Projekat.Instance.Korisnik)
+                foreach (var k in Aplikacija.Instance.Korisnik)
                 {
                     if (k.Ime.ToLower().Contains(ime))
                     {
@@ -49,7 +50,7 @@ namespace POP_SF59_2016_GUI.UI
             else if (tip == "Po prezimenu")
             {
                 string prezime = tbPronadji.Text.ToLower();
-                foreach (var k in Projekat.Instance.Korisnik)
+                foreach (var k in Aplikacija.Instance.Korisnik)
                 {
                     if (k.Prezime.ToLower().Contains(prezime))
                     {
@@ -64,7 +65,7 @@ namespace POP_SF59_2016_GUI.UI
             else if (tip == "Po korisnickom imenu")
             {
                 string korisnickoIme = tbPronadji.Text.ToLower();
-                foreach (var k in Projekat.Instance.Korisnik)
+                foreach (var k in Aplikacija.Instance.Korisnik)
                 {
                     if (k.KorisnickoIme.ToLower().Contains(korisnickoIme))
                     {

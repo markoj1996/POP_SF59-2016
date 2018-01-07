@@ -5,8 +5,8 @@
       <int>1</int>
     </DodatneUsluge>
     <Kupac>marko</Kupac>
-    <BrojRacuna>0132456</BrojRacuna>
-    <DatumProdaje>2017-12-02T18:42:40.200907+01:00</DatumProdaje>
+    <BrojRacuna>1234-1324</BrojRacuna>
+    <DatumProdaje>2018-04-01T00:00:00</DatumProdaje>
     <NamestajZaProdajuId>
       <int>1</int>
     </NamestajZaProdajuId>
@@ -15,54 +15,15 @@
   </ProdajaNamestaja>
   <ProdajaNamestaja>
     <DodatneUsluge>
-      <int>2</int>
+      <int>1</int>
     </DodatneUsluge>
-    <Kupac>mas</Kupac>
-    <BrojRacuna>210365</BrojRacuna>
-    <DatumProdaje>2017-12-26T14:51:34.4013671+01:00</DatumProdaje>
+    <Kupac>sad</Kupac>
+    <BrojRacuna>12345</BrojRacuna>
+    <DatumProdaje>2018-01-05T18:59:49.0673512+01:00</DatumProdaje>
     <NamestajZaProdajuId>
       <int>1</int>
     </NamestajZaProdajuId>
     <Obrisan>false</Obrisan>
     <Id>2</Id>
-  </ProdajaNamestaja>
-  <ProdajaNamestaja>
-    <DodatneUsluge>
-      <int>2</int>
-    </DodatneUsluge>
-    <Kupac>ma</Kupac>
-    <BrojRacuna>3120</BrojRacuna>
-    <DatumProdaje>2017-12-26T14:53:02.7773437+01:00</DatumProdaje>
-    <NamestajZaProdajuId>
-      <int>1</int>
-    </NamestajZaProdajuId>
-    <Obrisan>false</Obrisan>
-    <Id>3</Id>
-  </ProdajaNamestaja>
-  <ProdajaNamestaja>
-    <DodatneUsluge>
-      <int>1</int>
-    </DodatneUsluge>
-    <Kupac>asd</Kupac>
-    <BrojRacuna>4506</BrojRacuna>
-    <DatumProdaje>2017-12-26T14:59:57.2226562+01:00</DatumProdaje>
-    <NamestajZaProdajuId>
-      <int>1</int>
-    </NamestajZaProdajuId>
-    <Obrisan>false</Obrisan>
-    <Id>4</Id>
-  </ProdajaNamestaja>
-  <ProdajaNamestaja>
-    <DodatneUsluge>
-      <int>1</int>
-    </DodatneUsluge>
-    <Kupac>asf</Kupac>
-    <BrojRacuna>10</BrojRacuna>
-    <DatumProdaje>2017-12-26T15:25:19.3115234+01:00</DatumProdaje>
-    <NamestajZaProdajuId>
-      <int>1</int>
-    </NamestajZaProdajuId>
-    <Obrisan>false</Obrisan>
-    <Id>5</Id>
   </ProdajaNamestaja>
 </ArrayOfProdajaNamestaja>

@@ -1,5 +1,6 @@
 ﻿using POP_SF59_2016.Model;
 using POP_SF59_2016.Util1;
+using POP_SF59_2016_GUI.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -106,14 +107,15 @@ namespace POP_SF59_2016_GUI.UI
         private void SacuvajIzmene(object sender, RoutedEventArgs e)
         {
             DateTime datum = DateTime.Now;
-            var listaProdaja = Projekat.Instance.Prodaja;
+            var listaProdaja = Aplikacija.Instance.Prodaja;
 
             switch (operacija)
             {
                 case Operacija.Dodavanje:
                     prodaja.Id = listaProdaja.Count + 1;
                     prodaja.DatumProdaje = datum;
-                    listaProdaja.Add(prodaja);
+                    Aplikacija.Instance.Prodaja.Add(prodaja);
+                    ProdajaNamestaja.DodajProdaju(prodaja);
                     break;
                 case Operacija.Izmena:
                     foreach (var a in listaProdaja)
@@ -125,6 +127,7 @@ namespace POP_SF59_2016_GUI.UI
                             a.BrojRacuna = prodaja.BrojRacuna;
                             a.Kupac = prodaja.Kupac;
                             a.NamestajZaProdajuId = prodaja.NamestajZaProdajuId;
+                            ProdajaNamestaja.IzmeniProdaju(prodaja);
                             break;
                         }
                     }
@@ -138,14 +141,27 @@ namespace POP_SF59_2016_GUI.UI
 
         private void DodajN_Click(object sender, RoutedEventArgs e)
         {
+
             DodajNamestajZaProdaju dnp = new DodajNamestajZaProdaju(prodaja);
             dnp.ShowDialog();
+        }
+
+        private void ObrisiN_Click(object sender, RoutedEventArgs e)
+        {
+            ObrisiNamestajProdaje on = new ObrisiNamestajProdaje(prodaja);
+            on.ShowDialog();
         }
 
         private void DodajU_Click(object sender, RoutedEventArgs e)
         {
             DodajUsluguZaProdaju dnp = new DodajUsluguZaProdaju(prodaja);
             dnp.ShowDialog();          
+        }
+
+        private void ObrisiU_Click(object sender, RoutedEventArgs e)
+        {
+            ObrisiUsluguProdaje op = new ObrisiUsluguProdaje(prodaja);
+            op.ShowDialog();
         }
 
         private void Izadji(object sender, RoutedEventArgs e)

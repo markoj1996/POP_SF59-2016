@@ -248,19 +248,97 @@ namespace POP_SF59_2016.Model
                 conn.Open();
 
                 SqlCommand command = conn.CreateCommand();
-                command.CommandText = @"INSERT INTO NAMESTAJ (ID,NAZIV,SIFRA,JEDINICNACENA,TIPNAMESTAJA,OBRISAN,KOLICINAUMAGACINU,AKCIJAID) VALUES (@ID,@Naziv, @Sifra,@JedinicnaCena,@TipaNamestaja,@Obrisan,@KolicinaUMagacinu,@AkcijaId)";
+                command.CommandText = @"INSERT INTO NAMESTAJ (ID,NAZIV,SIFRA,JEDINICNACENA,TIPNAMESTAJA,OBRISAN,KOLICINAUMAGACINU,AKCIJAID) VALUES (@ID,@Naziv, @Sifra,@JedinicnaCena,@TipNamestaja,@Obrisan,@KolicinaUMagacinu,@AkcijaId)";
 
                 command.Parameters.Add(new SqlParameter("@ID", n.Id));
                 command.Parameters.Add(new SqlParameter("@Naziv", n.Naziv));
                 command.Parameters.Add(new SqlParameter("@Sifra", n.Sifra));
                 command.Parameters.Add(new SqlParameter("@JedinicnaCena", n.JedinicnaCena));
                 command.Parameters.Add(new SqlParameter("@TipNamestaja", n.TipNamestaja.Id));
-                command.Parameters.Add(new SqlParameter("@Obrisan", 0));
+                command.Parameters.Add(new SqlParameter("@Obrisan", n.Obrisan));
                 command.Parameters.Add(new SqlParameter("@KolicinaUMagacinu", n.KolicinaUMagacinu));
                 command.Parameters.Add(new SqlParameter("@AkcijaId", n.Akcija.Id));
 
                 command.ExecuteNonQuery();
             }
+        }
+        public static void ObrisiNamestaj(Namestaj n)
+        {
+            using (SqlConnection conn = new SqlConnection(Aplikacija.CONNECTION_STRING))
+            {
+                if (n.Id != 0)//ako postoji u bazi
+                {
+                    conn.Open();
+
+                    SqlCommand command = conn.CreateCommand();
+                    command.CommandText = @"UPDATE NAMESTAJ SET OBRISAN=@Obrisan WHERE ID=@Id";
+
+                    command.Parameters.Add(new SqlParameter("@Id", n.Id));
+                    command.Parameters.Add(new SqlParameter("@Obrisan", n.Obrisan));
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+        public static void IzmeniNamestaj(Namestaj n)
+        {
+            using (SqlConnection conn = new SqlConnection(Aplikacija.CONNECTION_STRING))
+            {
+                if (n.Id != 0)//ako postoji u bazi
+                {
+                    conn.Open();
+
+                    SqlCommand command = conn.CreateCommand();
+                    command.CommandText = @"UPDATE NAMESTAJ SET OBRISAN=@Obrisan, NAZIV=@Naziv, SIFRA=@Sifra, JEDINICNACENA=@JedCena, TIPNAMESTAJA=@TipNamestaja, KOLICINAUMAGACINU=@Kolicina, AKCIJAID=@AkcijaId WHERE ID=@Id";
+
+                    command.Parameters.Add(new SqlParameter("@Id", n.Id));
+                    command.Parameters.Add(new SqlParameter("@Obrisan", n.Obrisan));
+                    command.Parameters.Add(new SqlParameter("@Naziv", n.Naziv));
+                    command.Parameters.Add(new SqlParameter("@Sifra", n.Sifra));
+                    command.Parameters.Add(new SqlParameter("@JedCena", n.JedinicnaCena));
+                    command.Parameters.Add(new SqlParameter("@TipNamestaja", n.TipNamestaja.Id));
+                    command.Parameters.Add(new SqlParameter("@Kolicina", n.KolicinaUMagacinu));
+                    command.Parameters.Add(new SqlParameter("@AkcijaId", n.Akcija.Id));
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static List<Namestaj> UcitajProdatiNamestaj(ProdajaNamestaja p)
+        {
+            List<Namestaj> namestaj = new List<Namestaj>();
+            using (SqlConnection connection = new SqlConnection(Aplikacija.CONNECTION_STRING))
+            {
+                connection.Open();
+
+                DataSet ds = new DataSet();
+
+                SqlCommand nametajCommand = connection.CreateCommand();
+                nametajCommand.CommandText = @"SELECT n.id,n.naziv,n.sifra,n.jedinicnaCena,n.Tipnamestaja,n.Obrisan,n.Kolicinaumagacinu,n.akcijaid FROM NAMESTAJ n,NAMESTAJZAPRODAJU nzp,PRODAJA p where p.id=@IdProdaje and p.id=nzp.prodajaid and n.Id=nzp.namestajid";
+                nametajCommand.Parameters.Add(new SqlParameter("@IdProdaje", p.Id));
+                SqlDataAdapter daNamestaj = new SqlDataAdapter();
+                daNamestaj.SelectCommand = nametajCommand;
+                daNamestaj.Fill(ds, "Namestaj");
+
+                foreach (DataRow row in ds.Tables["Namestaj"].Rows)
+                {
+                    Namestaj n = new Namestaj();
+                    n.Id = (int)row["Id"];
+                    n.Naziv = (string)row["Naziv"];
+                    n.Sifra = (string)row["Sifra"];
+                    n.JedinicnaCena = (double)row["JedinicnaCena"];
+                    n.TipNamestajaId = (int)row["TipNamestaja"];
+                    n.Obrisan = (bool)row["Obrisan"];
+                    n.KolicinaUMagacinu = (int)row["KolicinaUMagacinu"];
+                    n.AkcijaId = (int)row["AkcijaId"];
+
+                    namestaj.Add(n);
+                    
+                }
+                return namestaj;
+            }
+            return null;
         }
 
     }

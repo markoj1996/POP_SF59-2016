@@ -79,6 +79,12 @@
     <Compile Include="UI\NamestajWindow.xaml.cs">
       <DependentUpon>NamestajWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UI\ObrisiNamestajProdaje.xaml.cs">
+      <DependentUpon>ObrisiNamestajProdaje.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UI\ObrisiUsluguProdaje.xaml.cs">
+      <DependentUpon>ObrisiUsluguProdaje.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UI\PretragaKorsnikaWindow.xaml.cs">
       <DependentUpon>PretragaKorsnikaWindow.xaml</DependentUpon>
     </Compile>
@@ -148,6 +154,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UI\NamestajWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\ObrisiNamestajProdaje.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UI\ObrisiUsluguProdaje.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

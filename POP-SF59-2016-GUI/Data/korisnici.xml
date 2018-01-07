@@ -15,7 +15,7 @@
     <KorisnickoIme>m</KorisnickoIme>
     <Prezime>m</Prezime>
     <Ime>m</Ime>
-    <Obrisan>true</Obrisan>
+    <Obrisan>false</Obrisan>
     <Id>2</Id>
   </Korisnik>
 </ArrayOfKorisnik>

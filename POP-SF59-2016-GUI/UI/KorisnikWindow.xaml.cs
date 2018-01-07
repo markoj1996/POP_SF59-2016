@@ -50,7 +50,7 @@ namespace POP_SF59_2016_GUI.UI
         private void SacuvajIzmene(object sender, RoutedEventArgs e)
         {
 
-            var listaKorisnika = Projekat.Instance.Korisnik;
+            var listaKorisnika = Aplikacija.Instance.Korisnik;
             var izabraniTipKorisnika = cbTipKorisnika.Text;
 
             switch (operacija)
@@ -71,6 +71,7 @@ namespace POP_SF59_2016_GUI.UI
                             k.KorisnickoIme = korisnik.KorisnickoIme;
                             k.Lozinka = korisnik.Lozinka;
                             k.TipKorisnika = korisnik.TipKorisnika;
+                            Korisnik.IzmeniKorisnika(korisnik);
                             break;
                         }
                     }

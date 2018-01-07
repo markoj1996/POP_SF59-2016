@@ -46,7 +46,7 @@ namespace POP_SF59_2016_GUI.UI
 
         private void SacuvajIzmene(object sender, RoutedEventArgs e)
         {
-            var listaUsluga = Projekat.Instance.DodatnaUsluga;
+            var listaUsluga = Aplikacija.Instance.DodatnaUsluga;
 
             switch (operacija)
             {
@@ -65,7 +65,8 @@ namespace POP_SF59_2016_GUI.UI
                             a.Naziv = usluga.Naziv;
                             a.Cena = usluga.Cena;
                             a.PDV = usluga.PDV;
-                            a.UkupanIznos = usluga.UkupnaCena(a);
+                            a.UkupanIznos = a.UkupnaCena(usluga);
+                            DodatnaUsluga.IzmeniUslugu(usluga);
                             break;
                         }
                     }

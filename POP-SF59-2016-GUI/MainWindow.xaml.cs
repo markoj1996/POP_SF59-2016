@@ -32,6 +32,7 @@ namespace POP_SF59_2016_GUI
             Akcija.UcitajAkcije();
             Korisnik.UcitajKorisnike();
             DodatnaUsluga.UcitajUsluge();
+            ProdajaNamestaja.UcitajProdaju();
         }
 
         private void login_Click(object sender, RoutedEventArgs e)
@@ -55,7 +56,7 @@ namespace POP_SF59_2016_GUI
                             }
                             else
                             {
-                                ProdavacGlavniWindow pgw = new ProdavacGlavniWindow(Projekat.Instance.Prodaja);
+                                ProdavacGlavniWindow pgw = new ProdavacGlavniWindow();
                                 pgw.Show();
                                 this.Close();
                                 break;

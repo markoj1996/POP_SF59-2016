@@ -43,7 +43,7 @@ namespace POP_SF59_2016_GUI.UI
                         
                     }
                 }
-                ProdavacGlavniWindow pg = new ProdavacGlavniWindow(prodaje);
+                ProdavacGlavniWindow pg = new ProdavacGlavniWindow();
                 this.Close();
                 pg.Show();
             }
@@ -58,7 +58,7 @@ namespace POP_SF59_2016_GUI.UI
                         
                     }
                 }
-                ProdavacGlavniWindow pg = new ProdavacGlavniWindow(prodaje);
+                ProdavacGlavniWindow pg = new ProdavacGlavniWindow();
                 this.Close();
                 pg.Show();
             }
@@ -73,7 +73,7 @@ namespace POP_SF59_2016_GUI.UI
                         
                     }
                 }
-                ProdavacGlavniWindow pg = new ProdavacGlavniWindow(prodaje);
+                ProdavacGlavniWindow pg = new ProdavacGlavniWindow();
                 this.Close();
                 pg.Show();
             }
@@ -91,7 +91,7 @@ namespace POP_SF59_2016_GUI.UI
                         }
                     }
                 }
-                ProdavacGlavniWindow pg = new ProdavacGlavniWindow(prodaje);
+                ProdavacGlavniWindow pg = new ProdavacGlavniWindow();
                 this.Close();
                 pg.Show();
             }

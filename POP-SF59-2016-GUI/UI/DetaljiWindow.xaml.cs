@@ -1,4 +1,5 @@
 ﻿using POP_SF59_2016.Model;
+using POP_SF59_2016_GUI.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -56,21 +57,9 @@ namespace POP_SF59_2016_GUI.UI
 
         private void NamestajKolone()
         {
-            var namestaj = Projekat.Instance.Namestaj;
-            var listaProdatogNamestaja = new List<Namestaj>();
-
-            foreach (var id in prodaja.NamestajZaProdajuId)
-            {
-                foreach (var n in namestaj)
-                {
-                    if (id == n.Id)
-                    {
-                        listaProdatogNamestaja.Add(n);
-                        ceneNamestaja.Add(n.CenaSaAkcijom());
-                    }
-                }
-            }
-
+            List<Namestaj> listaProdatog = new List<Namestaj>();
+            listaProdatog=Namestaj.UcitajProdatiNamestaj(prodaja);
+         
             DataGridTextColumn column1 = new DataGridTextColumn();
             column1.Header = "Id";
             column1.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
@@ -90,27 +79,16 @@ namespace POP_SF59_2016_GUI.UI
             column3.Binding = new Binding("JedinicnaCena");
             dgNamestaj.Columns.Add(column3);
 
-            dgNamestaj.ItemsSource = listaProdatogNamestaja;
+            dgNamestaj.ItemsSource = listaProdatog;
             dgNamestaj.IsSynchronizedWithCurrentItem = true;
             dgNamestaj.DataContext = this;
         }
 
         private void UslugeKolone()
         {
-            var usluge = Projekat.Instance.DodatnaUsluga;
-            var listaUsluga = new List<DodatnaUsluga>();
 
-            foreach (var id in prodaja.DodatneUsluge)
-            {
-                foreach (var n in usluge)
-                {
-                    if (id == n.Id)
-                    {
-                        listaUsluga.Add(n);
-                        ceneUsluga.Add(n.UkupnaCena(n));
-                    }
-                }
-            }
+            List<DodatnaUsluga> listaUsluga = new List<DodatnaUsluga>();
+            listaUsluga = DodatnaUsluga.UcitajUslugeProdaje(prodaja);
 
             DataGridTextColumn column1 = new DataGridTextColumn();
             column1.Header = "Id";

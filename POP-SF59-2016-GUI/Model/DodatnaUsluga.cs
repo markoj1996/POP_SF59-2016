@@ -172,6 +172,61 @@ namespace POP_SF59_2016.Model
                 }
             }
         }
+        public static void IzmeniUslugu(DodatnaUsluga n)
+        {
+            using (SqlConnection conn = new SqlConnection(Aplikacija.CONNECTION_STRING))
+            {
+                if (n.Id != 0)//ako postoji u bazi
+                {
+                    conn.Open();
+                   
+                    SqlCommand command = conn.CreateCommand();
+                    command.CommandText = @"UPDATE DODATNEUSLUGE SET NAZIV=@Naziv, OBRISAN=@Obrisan, CENA=@Cena, PDV=@PDV, UKUPANIZNOS=@UkupanIznos WHERE ID=@Id";
+
+                    command.Parameters.Add(new SqlParameter("@Id", n.Id));
+                    command.Parameters.Add(new SqlParameter("@Naziv", n.Naziv));
+                    command.Parameters.Add(new SqlParameter("@Obrisan", n.Obrisan));
+                    command.Parameters.Add(new SqlParameter("@Cena", n.Cena));
+                    command.Parameters.Add(new SqlParameter("@PDV", n.PDV));
+                    command.Parameters.Add(new SqlParameter("@UkupanIznos", n.UkupanIznos));
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public static List<DodatnaUsluga> UcitajUslugeProdaje(ProdajaNamestaja p)
+        {
+            List<DodatnaUsluga> usluge = new List<DodatnaUsluga>();
+            using (SqlConnection connection = new SqlConnection(Aplikacija.CONNECTION_STRING))
+            {
+                connection.Open();
+
+                DataSet ds = new DataSet();
+
+                SqlCommand nametajCommand = connection.CreateCommand();
+                nametajCommand.CommandText = @"select u.id,u.naziv,u.cena,u.pdv,u.ukupanIznos from DodatneUsluge u,Prodaja p,UslugeProdaje up where p.id=@IdProdaje and p.id=up.ProdajaId and u.Id=up.DodatneUslugaId";
+                nametajCommand.Parameters.Add(new SqlParameter("@IdProdaje", p.Id));
+                SqlDataAdapter daNamestaj = new SqlDataAdapter();
+                daNamestaj.SelectCommand = nametajCommand;
+                daNamestaj.Fill(ds, "DodatneUsluge");
+
+                foreach (DataRow row in ds.Tables["DodatneUsluge"].Rows)
+                {
+                    DodatnaUsluga n = new DodatnaUsluga();
+                    n.Id = (int)row["Id"];
+                    n.Naziv = (string)row["Naziv"];
+                    n.Cena = (double)row["Cena"];
+                    n.PDV = (double)row["PDV"];
+                    n.UkupanIznos = (double)row["UkupanIznos"];
+
+                    usluge.Add(n);
+
+                }
+                return usluge;
+            }
+            return null;
+        }
 
     }
 }

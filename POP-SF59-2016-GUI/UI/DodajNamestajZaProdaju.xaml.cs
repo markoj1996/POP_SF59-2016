@@ -1,4 +1,5 @@
 ﻿using POP_SF59_2016.Model;
+using POP_SF59_2016_GUI.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -65,9 +66,9 @@ namespace POP_SF59_2016_GUI.UI
             column5.Binding = new Binding("TipNamestaja");
             dgNamestaj.Columns.Add(column5);
 
-            view = CollectionViewSource.GetDefaultView(Projekat.Instance.Namestaj);
+            view = CollectionViewSource.GetDefaultView(Aplikacija.Instance.Namestaj);
             view.Filter = NamestajFilter;
-            dgNamestaj.ItemsSource = Projekat.Instance.Namestaj;
+            dgNamestaj.ItemsSource = Aplikacija.Instance.Namestaj;
             dgNamestaj.IsSynchronizedWithCurrentItem = true;
             dgNamestaj.DataContext = this;
         }

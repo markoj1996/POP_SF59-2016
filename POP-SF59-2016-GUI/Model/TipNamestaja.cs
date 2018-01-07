@@ -148,7 +148,25 @@ namespace POP_SF59_2016.Model
                 }
             }
         }
-    }
+        public static void IzmeniTip(TipNamestaja n)
+        {
+            using (SqlConnection conn = new SqlConnection(Aplikacija.CONNECTION_STRING))
+            {
+                if (n.Id != 0)//ako postoji u bazi
+                {
+                    conn.Open();
 
-   
+                    SqlCommand command = conn.CreateCommand();
+                    command.CommandText = @"UPDATE TIPNAMESTAJA SET NAZIV=@Naziv, OBRISAN=@Obrisan WHERE ID=@Id";
+
+                    command.Parameters.Add(new SqlParameter("@Id", n.Id));
+                    command.Parameters.Add(new SqlParameter("@Naziv", n.Naziv));
+                    command.Parameters.Add(new SqlParameter("@Obrisan", n.Obrisan));
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+    }
 }
