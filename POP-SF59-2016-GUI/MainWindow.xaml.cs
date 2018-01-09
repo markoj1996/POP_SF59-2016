@@ -49,14 +49,14 @@ namespace POP_SF59_2016_GUI
                         {
                             if (korisnici[i].TipKorisnika == "Administrator")
                             {
-                                GlavniWindow g = new GlavniWindow();
+                                GlavniWindow g = new GlavniWindow(Aplikacija.Instance.Namestaj,Aplikacija.Instance.Korisnik,Aplikacija.Instance.Akcija,Aplikacija.Instance.TipNamestaja,Aplikacija.Instance.DodatnaUsluga);
                                 g.Show();
                                 this.Close();
                                 break;
                             }
                             else
                             {
-                                ProdavacGlavniWindow pgw = new ProdavacGlavniWindow();
+                                ProdavacGlavniWindow pgw = new ProdavacGlavniWindow(Aplikacija.Instance.Prodaja);
                                 pgw.Show();
                                 this.Close();
                                 break;

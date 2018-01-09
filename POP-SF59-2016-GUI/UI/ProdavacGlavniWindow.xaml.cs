@@ -32,13 +32,13 @@ namespace POP_SF59_2016_GUI.UI
             Izmena
         }
 
-        public ProdavacGlavniWindow()
+        public ProdavacGlavniWindow(ObservableCollection<ProdajaNamestaja>prodaja)
         {
             InitializeComponent();
-            ProdajeKolone();
+            ProdajeKolone(prodaja);
         }
 
-        private void ProdajeKolone()
+        private void ProdajeKolone(ObservableCollection<ProdajaNamestaja>prodaja)
         { 
             /*DataGridTextColumn column1 = new DataGridTextColumn();
             column1.Header = "Id";
@@ -65,7 +65,7 @@ namespace POP_SF59_2016_GUI.UI
             column4.Binding = new Binding("BrojRacuna");
             dgProdaje.Columns.Add(column4);
 
-            dgProdaje.ItemsSource = Aplikacija.Instance.Prodaja;
+            dgProdaje.ItemsSource = prodaja;
             dgProdaje.IsSynchronizedWithCurrentItem = true;
             dgProdaje.DataContext = this;
         }
@@ -101,11 +101,11 @@ namespace POP_SF59_2016_GUI.UI
             dw.Show();
         }
 
-        /*private void Osvezi_Click(object sender, RoutedEventArgs e)
+        private void Osvezi_Click(object sender, RoutedEventArgs e)
          {
              dgProdaje.Columns.Clear();
-             ProdajeKolone(Projekat.Instance.Prodaja);
-         }*/
+             ProdajeKolone(Aplikacija.Instance.Prodaja);
+         }
 
          private void Izadji_Click(object sender, RoutedEventArgs e)
          {

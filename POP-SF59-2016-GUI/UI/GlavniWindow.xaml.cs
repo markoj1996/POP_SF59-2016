@@ -36,19 +36,19 @@ namespace POP_SF59_2016_GUI.UI
             Dodavanje,
             Izmena
         }
-        public GlavniWindow()
+        public GlavniWindow(ObservableCollection<Namestaj>namestaj,ObservableCollection<Korisnik>korisnik,ObservableCollection<Akcija>akcija,ObservableCollection<TipNamestaja>tip,ObservableCollection<DodatnaUsluga>usluga)
         {
             InitializeComponent();
             
-            NamestajKolone();
-            KorisnikKolone();
-            AkcijeKolone();
-            TipKolone();
-            UslugeKolone();
+            NamestajKolone(namestaj);
+            KorisnikKolone(korisnik);
+            AkcijeKolone(akcija);
+            TipKolone(tip);
+            UslugeKolone(usluga);
 
         }
 
-        private void NamestajKolone()
+        private void NamestajKolone(ObservableCollection<Namestaj>namestaj)
         { 
             /*DataGridTextColumn column1 = new DataGridTextColumn();
             column1.Header = "Id";
@@ -87,7 +87,7 @@ namespace POP_SF59_2016_GUI.UI
             dgNamestaj.Columns.Add(column6);*/
 
 
-            view = CollectionViewSource.GetDefaultView(Aplikacija.Instance.Namestaj);
+            view = CollectionViewSource.GetDefaultView(namestaj);
             view.Filter = NamestajFilter;
             dgNamestaj.ItemsSource = view;
             dgNamestaj.IsSynchronizedWithCurrentItem = true;
@@ -146,21 +146,21 @@ namespace POP_SF59_2016_GUI.UI
 
         }
 
-        /*private void Osvezi_Click(object sender, RoutedEventArgs e)
+        private void Osvezi_Click(object sender, RoutedEventArgs e)
         {
             dgNamestaj.Columns.Clear();
             dgKorisnici.Columns.Clear();
             dgAkcije.Columns.Clear();
             dgTipNamestaja.Columns.Clear();
             dgDodatneUsluge.Columns.Clear();
-            NamestajKolone(Projekat.Instance.Namestaj);
-            KorisnikKolone(Projekat.Instance.Korisnik);
-            AkcijeKolone(Projekat.Instance.Akcija);
-            TipKolone(Projekat.Instance.TipNamestaja);
-            UslugeKolone(Projekat.Instance.DodatnaUsluga);
-        }*/
+            NamestajKolone(Aplikacija.Instance.Namestaj);
+            KorisnikKolone(Aplikacija.Instance.Korisnik);
+            AkcijeKolone(Aplikacija.Instance.Akcija);
+            TipKolone(Aplikacija.Instance.TipNamestaja);
+            UslugeKolone(Aplikacija.Instance.DodatnaUsluga);
+        }
 
-        private void TipKolone()
+        private void TipKolone(ObservableCollection<TipNamestaja>tip)
         {
             /*DataGridTextColumn column1 = new DataGridTextColumn();
             column1.Header = "Id";
@@ -174,7 +174,7 @@ namespace POP_SF59_2016_GUI.UI
             column2.Binding = new Binding("Naziv");
             dgTipNamestaja.Columns.Add(column2);
 
-            view = CollectionViewSource.GetDefaultView(Aplikacija.Instance.TipNamestaja);
+            view = CollectionViewSource.GetDefaultView(tip);
             view.Filter = tipNamestajaFilter;
             dgTipNamestaja.ItemsSource = view;
             dgTipNamestaja.IsSynchronizedWithCurrentItem = true;
@@ -239,7 +239,7 @@ namespace POP_SF59_2016_GUI.UI
 
         }
 
-        private void KorisnikKolone()
+        private void KorisnikKolone(ObservableCollection<Korisnik>korisnik)
         {
             /*DataGridTextColumn column1 = new DataGridTextColumn();
             column1.Header = "Id";
@@ -279,7 +279,7 @@ namespace POP_SF59_2016_GUI.UI
             dgKorisnici.Columns.Add(column6);
 
 
-            view = CollectionViewSource.GetDefaultView(Aplikacija.Instance.Korisnik);
+            view = CollectionViewSource.GetDefaultView(korisnik);
 
             view.Filter = KorisnikFilter;
             dgKorisnici.ItemsSource = view;
@@ -336,7 +336,7 @@ namespace POP_SF59_2016_GUI.UI
 
         }
 
-        private void AkcijeKolone()
+        private void AkcijeKolone(ObservableCollection<Akcija>akcija)
         {
             /*DataGridTextColumn column1 = new DataGridTextColumn();
             column1.Header = "Id";
@@ -362,7 +362,7 @@ namespace POP_SF59_2016_GUI.UI
             column4.Binding = new Binding("Popust");
             dgAkcije.Columns.Add(column4);
 
-            view = CollectionViewSource.GetDefaultView(Aplikacija.Instance.Akcija);
+            view = CollectionViewSource.GetDefaultView(akcija);
 
             view.Filter = AkcijaFilter;
             dgAkcije.ItemsSource = view;
@@ -419,7 +419,7 @@ namespace POP_SF59_2016_GUI.UI
             }
         }
 
-        private void UslugeKolone()
+        private void UslugeKolone(ObservableCollection<DodatnaUsluga>usluga)
         {
             /*DataGridTextColumn column1 = new DataGridTextColumn();
             column1.Header = "Id";
@@ -445,7 +445,7 @@ namespace POP_SF59_2016_GUI.UI
             column3.Binding = new Binding("UkupanIznos");
             dgDodatneUsluge.Columns.Add(column3);
 
-            view = CollectionViewSource.GetDefaultView(Aplikacija.Instance.DodatnaUsluga);
+            view = CollectionViewSource.GetDefaultView(usluga);
 
             view.Filter = UslugaFilter;
             dgDodatneUsluge.ItemsSource = view;

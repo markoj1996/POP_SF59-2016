@@ -16,7 +16,7 @@
                     </Grid.RowDefinitions>
                     <DataGrid IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" Grid.Row="0" FontSize="20" Name="dgProdaje" Margin="0,35,0,0" Width="606" Height="347" SelectedItem="{Binding Path=izabranaProdaja}"/>
                     <Button Content="Pretraga" Grid.Row="0" Margin="15,7,523,355" Click="PretraziP_Click" Height="20" Width="68"/>
-                    <Button Content="Refresh" Grid.Row="0" Margin="100,7,438,355"  Height="20" Width="68"/>
+                    <Button Content="Refresh" Grid.Row="0" Margin="100,7,438,355"  Height="20" Width="68" Click="Osvezi_Click"/>
                     <Button Content="Dodaj" Margin="25,20,463,21" Grid.Row="1" Click="DodajP_Click"/>
                     <Button Content="Izmeni" Margin="171,20,317,21" Grid.Row="1" Width="108" Click="IzmeniP_Click"/>
                     <Button Content="Izadji" Margin="463,20,25,21" Grid.Row="1" Width="108" Click="Izadji_Click"/>

@@ -1,4 +1,5 @@
 ﻿using POP_SF59_2016.Model;
+using POP_SF59_2016_GUI.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -34,7 +35,7 @@ namespace POP_SF59_2016_GUI.UI
             if (tip == "Po nazivu")
             {
                 string naziv = tbPronadji.Text.ToLower();
-                foreach (var t in Projekat.Instance.TipNamestaja)
+                foreach (var t in Aplikacija.Instance.TipNamestaja)
                 {
                     if (t.Naziv.ToLower().Contains(naziv))
                     {
@@ -42,7 +43,7 @@ namespace POP_SF59_2016_GUI.UI
                         
                     }
                 }
-                GlavniWindow g = new GlavniWindow();
+                GlavniWindow g = new GlavniWindow(Aplikacija.Instance.Namestaj, Aplikacija.Instance.Korisnik , Aplikacija.Instance.Akcija, tipNamestaja, Aplikacija.Instance.DodatnaUsluga);
                 this.Close();
                 g.Show();
             }

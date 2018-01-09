@@ -1,4 +1,5 @@
 ﻿using POP_SF59_2016.Model;
+using POP_SF59_2016_GUI.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -35,35 +36,35 @@ namespace POP_SF59_2016_GUI.UI
             if (tip == "Po nazivu")
             {
                 string naziv = tbPronadji.Text.ToLower();
-                foreach (var n in Projekat.Instance.Namestaj)
+                foreach (var n in Aplikacija.Instance.Namestaj)
                 {
                     if (n.Naziv.ToLower().Contains(naziv))
                     {
                         namestaj.Add(n);
                     }
                 }
-                GlavniWindow g = new GlavniWindow();
+                GlavniWindow g = new GlavniWindow(namestaj,Aplikacija.Instance.Korisnik,Aplikacija.Instance.Akcija,Aplikacija.Instance.TipNamestaja,Aplikacija.Instance.DodatnaUsluga);
                 this.Close();
                 g.Show();
             }
             else if(tip == "Po sifri")
             {
                 string sifra = tbPronadji.Text.ToLower();
-                foreach (var n in Projekat.Instance.Namestaj)
+                foreach (var n in Aplikacija.Instance.Namestaj)
                 {
                     if (n.Sifra.ToLower().Contains(sifra))
                     {
                         namestaj.Add(n);
                     }
                 }
-                GlavniWindow g = new GlavniWindow();
+                GlavniWindow g = new GlavniWindow(namestaj, Aplikacija.Instance.Korisnik, Aplikacija.Instance.Akcija, Aplikacija.Instance.TipNamestaja, Aplikacija.Instance.DodatnaUsluga);
                 this.Close();
                 g.Show();
             }
             else if (tip == "Po tipu")
             {
                 string tipN = tbPronadji.Text.ToLower();
-                foreach (var n in Projekat.Instance.Namestaj)
+                foreach (var n in Aplikacija.Instance.Namestaj)
                 {
                     foreach (var t in Projekat.Instance.TipNamestaja)
                     {
@@ -73,7 +74,7 @@ namespace POP_SF59_2016_GUI.UI
                         }
                     }   
                 }
-                GlavniWindow g = new GlavniWindow();
+                GlavniWindow g = new GlavniWindow(namestaj, Aplikacija.Instance.Korisnik, Aplikacija.Instance.Akcija, Aplikacija.Instance.TipNamestaja, Aplikacija.Instance.DodatnaUsluga);
                 this.Close();
                 g.Show();
             }

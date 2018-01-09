@@ -1,4 +1,5 @@
 ﻿using POP_SF59_2016.Model;
+using POP_SF59_2016_GUI.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -35,7 +36,7 @@ namespace POP_SF59_2016_GUI.UI
             if (tip == "Po kupcu")
             {
                 string ime = tbPronadji.Text.ToLower();
-                foreach (var p in Projekat.Instance.Prodaja)
+                foreach (var p in Aplikacija.Instance.Prodaja)
                 {
                     if (p.Kupac.ToLower().Contains(ime))
                     {
@@ -43,14 +44,14 @@ namespace POP_SF59_2016_GUI.UI
                         
                     }
                 }
-                ProdavacGlavniWindow pg = new ProdavacGlavniWindow();
+                ProdavacGlavniWindow pg = new ProdavacGlavniWindow(prodaje);
                 this.Close();
                 pg.Show();
             }
             else if (tip == "Po broju racuna")
             {
                 string br = tbPronadji.Text.ToLower();
-                foreach (var p in Projekat.Instance.Prodaja)
+                foreach (var p in Aplikacija.Instance.Prodaja)
                 {
                     if (p.BrojRacuna.ToLower().Contains(br))
                     {
@@ -58,14 +59,14 @@ namespace POP_SF59_2016_GUI.UI
                         
                     }
                 }
-                ProdavacGlavniWindow pg = new ProdavacGlavniWindow();
+                ProdavacGlavniWindow pg = new ProdavacGlavniWindow(prodaje);
                 this.Close();
                 pg.Show();
             }
             else if (tip == "Po datumu prodaje")
             {
                 string datum = tbPronadji.Text.ToLower();
-                foreach (var p in Projekat.Instance.Prodaja)
+                foreach (var p in Aplikacija.Instance.Prodaja)
                 {
                     if (p.DatumProdaje.ToString() == datum)
                     {
@@ -73,14 +74,14 @@ namespace POP_SF59_2016_GUI.UI
                         
                     }
                 }
-                ProdavacGlavniWindow pg = new ProdavacGlavniWindow();
+                ProdavacGlavniWindow pg = new ProdavacGlavniWindow(prodaje);
                 this.Close();
                 pg.Show();
             }
             else if (tip == "Po prodatom komadu")
             {
                 string prodatiKomad = tbPronadji.Text.ToLower();
-                foreach (var p in Projekat.Instance.Prodaja)
+                foreach (var p in Aplikacija.Instance.Prodaja)
                 {
                     foreach (var n in p.NamestajZaProdaju)
                     {
@@ -91,7 +92,7 @@ namespace POP_SF59_2016_GUI.UI
                         }
                     }
                 }
-                ProdavacGlavniWindow pg = new ProdavacGlavniWindow();
+                ProdavacGlavniWindow pg = new ProdavacGlavniWindow(prodaje);
                 this.Close();
                 pg.Show();
             }
