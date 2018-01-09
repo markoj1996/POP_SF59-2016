@@ -27,9 +27,9 @@ namespace POP_SF59_2016_GUI
         {
             InitializeComponent();
 
-            Namestaj.UcitajNamestaj();
-            TipNamestaja.UcitajTipNamestaja();
             Akcija.UcitajAkcije();
+            TipNamestaja.UcitajTipNamestaja();
+            Namestaj.UcitajNamestaj();
             Korisnik.UcitajKorisnike();
             DodatnaUsluga.UcitajUsluge();
             ProdajaNamestaja.UcitajProdaju();

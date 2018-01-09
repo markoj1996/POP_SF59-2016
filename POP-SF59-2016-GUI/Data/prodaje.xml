@@ -15,15 +15,39 @@
   </ProdajaNamestaja>
   <ProdajaNamestaja>
     <DodatneUsluge>
-      <int>1</int>
+      <int>2</int>
     </DodatneUsluge>
     <Kupac>sad</Kupac>
     <BrojRacuna>12345</BrojRacuna>
-    <DatumProdaje>2018-01-05T18:59:49.0673512+01:00</DatumProdaje>
+    <DatumProdaje>2018-01-05T18:59:49.067</DatumProdaje>
     <NamestajZaProdajuId>
-      <int>1</int>
+      <int>2</int>
     </NamestajZaProdajuId>
     <Obrisan>false</Obrisan>
     <Id>2</Id>
+  </ProdajaNamestaja>
+  <ProdajaNamestaja>
+    <DodatneUsluge>
+      <int>3</int>
+    </DodatneUsluge>
+    <Kupac>sad</Kupac>
+    <BrojRacuna>123</BrojRacuna>
+    <DatumProdaje>2018-01-09T16:36:22.853</DatumProdaje>
+    <NamestajZaProdajuId>
+      <int>3</int>
+    </NamestajZaProdajuId>
+    <Obrisan>false</Obrisan>
+    <Id>3</Id>
+  </ProdajaNamestaja>
+  <ProdajaNamestaja>
+    <DodatneUsluge />
+    <Kupac>novi</Kupac>
+    <BrojRacuna>12345</BrojRacuna>
+    <DatumProdaje>2018-01-09T16:56:33.6980473+01:00</DatumProdaje>
+    <NamestajZaProdajuId>
+      <int>4</int>
+    </NamestajZaProdajuId>
+    <Obrisan>false</Obrisan>
+    <Id>4</Id>
   </ProdajaNamestaja>
 </ArrayOfProdajaNamestaja>

@@ -16,8 +16,8 @@ namespace POP_SF59_2016.Model
     {
         private int id;
         private bool obrisan;
-        private DateTime datumPocetka;
-        private DateTime datumZavrsetka;
+        private DateTime datumPocetka = DateTime.Now;
+        private DateTime datumZavrsetka = DateTime.Now;
         private double popust;
 
 
@@ -100,7 +100,7 @@ namespace POP_SF59_2016.Model
 
         public static Akcija GetById(int id)
         {
-            foreach (var akcija in Projekat.Instance.Akcija)
+            foreach (var akcija in Aplikacija.Instance.Akcija)
             {
                 if (akcija.Id == id)
                 {

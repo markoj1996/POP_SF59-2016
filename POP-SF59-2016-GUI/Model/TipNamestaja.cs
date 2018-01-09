@@ -67,7 +67,7 @@ namespace POP_SF59_2016.Model
 
         public static TipNamestaja GetById(int id)
         {
-            foreach (var tipNamestaja in Projekat.Instance.TipNamestaja)
+            foreach (var tipNamestaja in Aplikacija.Instance.TipNamestaja)
             {
                 if (tipNamestaja.Id == id)
                 {

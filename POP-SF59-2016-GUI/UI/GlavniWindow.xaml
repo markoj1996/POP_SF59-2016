@@ -14,7 +14,7 @@
                         <RowDefinition Height="183*"/>
                         <RowDefinition Height="38*"/>
                     </Grid.RowDefinitions>
-                    <DataGrid CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" Grid.Row="0" FontSize="20" Name="dgNamestaj" Margin="0,35,0,0" Width="606" Height="347" SelectedItem="{Binding Path=izabraniNamestaj}" />
+                    <DataGrid CanUserAddRows="False" IsReadOnly="True" CanUserDeleteRows="False" AutoGenerateColumns="False" Grid.Row="0" FontSize="20" Name="dgNamestaj" Margin="0,35,0,0" Width="606" Height="347" SelectedItem="{Binding Path=izabraniNamestaj}" />
                     <Button Content="Pretraga" Grid.Row="0" Margin="15,7,523,355"  Height="20" Width="68" Click="PretraziN_Click"/>
                     <Button Content="Refresh" Grid.Row="0" Margin="100,7,438,355"  Height="20" Width="68" />
                     <Button Content="Dodaj" Margin="25,20,463,21" Grid.Row="1" Click="DodajN_Click"/>
@@ -29,7 +29,7 @@
                         <RowDefinition Height="183*"/>
                         <RowDefinition Height="38*"/>
                     </Grid.RowDefinitions>
-                    <DataGrid CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" Grid.Row="0" FontSize="20" Name="dgKorisnici" Margin="0,35,0,0" SelectedItem="{Binding Path=izabraniKorisnik}"/>
+                    <DataGrid CanUserAddRows="False" IsReadOnly="True" CanUserDeleteRows="False" AutoGenerateColumns="False" Grid.Row="0" FontSize="20" Name="dgKorisnici" Margin="0,35,0,0" SelectedItem="{Binding Path=izabraniKorisnik}"/>
                     <Button Content="Pretraga" Grid.Row="0" Margin="15,7,523,355" Height="20" Click="PretraziK_Click" />
                     <Button Content="Refresh" Grid.Row="0" Margin="100,7,438,355" Height="20" />
                     <Button Content="Dodaj" Margin="25,20,463,21" Grid.Row="1" Click="DodajK_Click"/>
@@ -44,7 +44,7 @@
                         <RowDefinition Height="183*"/>
                         <RowDefinition Height="38*"/>
                     </Grid.RowDefinitions>
-                    <DataGrid Grid.Row="0" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" FontSize="20" Name="dgAkcije" Margin="0,35,0,0" SelectedItem="{Binding Path=izabranaAkcija}"/>
+                    <DataGrid Grid.Row="0" IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" FontSize="20" Name="dgAkcije" Margin="0,35,0,0" SelectedItem="{Binding Path=izabranaAkcija}"/>
                     <Button Content="Refresh" Grid.Row="0" Margin="15,7,523,355" Height="20" />
                     <Button Content="Dodaj" Margin="25,20,463,21" Grid.Row="1" Click="DodajA_Click"/>
                     <Button Content="Izmeni" Margin="171,20,317,21" Grid.Row="1" Width="108" Click="IzmeniA_Click"/>
@@ -58,7 +58,7 @@
                         <RowDefinition Height="183*"/>
                         <RowDefinition Height="38*"/>
                     </Grid.RowDefinitions>
-                    <DataGrid CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" Grid.Row="0" FontSize="20" Name="dgTipNamestaja" Margin="0,35,0,0" SelectedItem="{Binding Path=izabraniTip}"/>
+                    <DataGrid IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" Grid.Row="0" FontSize="20" Name="dgTipNamestaja" Margin="0,35,0,0" SelectedItem="{Binding Path=izabraniTip}"/>
                     <Button Content="Pretraga" Grid.Row="0" Margin="15,7,523,355" Height="20" Click="PretraziT_Click"/>
                     <Button Content="Refresh" Grid.Row="0" Margin="100,7,438,355" Height="20" />
                     <Button Content="Dodaj" Margin="25,20,463,21" Grid.Row="1" Click="DodajT_Click"/>
@@ -73,7 +73,7 @@
                         <RowDefinition Height="183*"/>
                         <RowDefinition Height="38*"/>
                     </Grid.RowDefinitions>
-                    <DataGrid CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" Grid.Row="0" FontSize="20" Name="dgDodatneUsluge" Margin="0,35,0,0" SelectedItem="{Binding Path=izabranaUsluga}"/>
+                    <DataGrid IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" Grid.Row="0" FontSize="20" Name="dgDodatneUsluge" Margin="0,35,0,0" SelectedItem="{Binding Path=izabranaUsluga}"/>
                     <Button Content="Pretraga" Grid.Row="0" Margin="15,7,523,355" Height="20" Click="PretraziU_Click"/>
                     <Button Content="Refresh" Grid.Row="0" Margin="100,7,438,355" Height="20" />
                     <Button Content="Dodaj" Margin="25,20,463,21" Grid.Row="1" Click="DodajU_Click"/>

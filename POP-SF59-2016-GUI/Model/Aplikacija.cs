@@ -11,7 +11,7 @@ namespace POP_SF59_2016_GUI.Model
     class Aplikacija
     {
         public const string CONNECTION_STRING = @"Integrated Security=true;
-                                          Initial Catalog=Projekat;
+                                          Initial Catalog=SalonN;
                                           Data Source=MARKO-PC\SQLEXPRESS";
 
         public ObservableCollection<Namestaj> Namestaj { get; set; }

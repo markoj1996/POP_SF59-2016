@@ -9,11 +9,19 @@
     <Id>1</Id>
   </DodatnaUsluga>
   <DodatnaUsluga>
-    <UkupanIznos>110.00000000000001</UkupanIznos>
+    <UkupanIznos>110</UkupanIznos>
     <PDV>10</PDV>
     <Cena>100</Cena>
     <Naziv>nova</Naziv>
     <Obrisan>false</Obrisan>
     <Id>2</Id>
+  </DodatnaUsluga>
+  <DodatnaUsluga>
+    <UkupanIznos>120</UkupanIznos>
+    <PDV>20</PDV>
+    <Cena>100</Cena>
+    <Naziv>prevoz</Naziv>
+    <Obrisan>false</Obrisan>
+    <Id>3</Id>
   </DodatnaUsluga>
 </ArrayOfDodatnaUsluga>

@@ -14,9 +14,9 @@
         <Label Content="Broj racuna" Margin="10,133,267,350" Width="102" Height="36"/>
         <TextBox x:Name="tbBrojRacuna" Margin="117,136,10,353" IsReadOnly="True" Width="252" Height="30" Text="{Binding BrojRacuna}" HorizontalAlignment="Left"/>
         <Label Content="Namestaj" Margin="10,188,267,295" Width="102" Height="36"/>
-        <DataGrid CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" x:Name="dgNamestaj" Margin="117,189,10,230" Width="252" Height="100" SelectedItem="{Binding NamestajZaProdajuId}"/>
+        <DataGrid IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" x:Name="dgNamestaj" Margin="117,189,10,230" Width="252" Height="100" SelectedItem="{Binding NamestajZaProdajuId}"/>
         <Label Content="Dodatne usluge" Margin="10,310,267,173" Width="102" Height="36"/>
-        <DataGrid CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" x:Name="dgUsluge" Margin="117,311,10,108" Width="252" Height="100" SelectedItem="{Binding DodatneUsluge}"/>
+        <DataGrid IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" x:Name="dgUsluge" Margin="117,311,10,108" Width="252" Height="100" SelectedItem="{Binding DodatneUsluge}"/>
         <Label Content="Ukupna Cena" Margin="10,432,267,51" Width="102" Height="36"/>
         <TextBox x:Name="tbUkupnaCena" Margin="117,432,10,57" IsReadOnly="True" Width="252" Height="30" HorizontalAlignment="Left"/>
         <Button Content="Izadji" Margin="274,482,10,10" Click="Izadji_Click"/>

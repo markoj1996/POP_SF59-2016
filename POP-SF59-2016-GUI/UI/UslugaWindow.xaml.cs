@@ -52,7 +52,7 @@ namespace POP_SF59_2016_GUI.UI
             {
                 case OperacijaU.Dodavanje:
                     usluga.Id = Aplikacija.Instance.DodatnaUsluga.Count + 1;
-                    usluga.UkupanIznos = usluga.UkupnaCena(usluga);
+                    usluga.UkupanIznos = usluga.UkupanIznos;
                     Aplikacija.Instance.DodatnaUsluga.Add(usluga);
                     DodatnaUsluga.DodajUslugu(usluga);
                     break;
@@ -65,7 +65,7 @@ namespace POP_SF59_2016_GUI.UI
                             a.Naziv = usluga.Naziv;
                             a.Cena = usluga.Cena;
                             a.PDV = usluga.PDV;
-                            a.UkupanIznos = a.UkupnaCena(usluga);
+                            a.UkupanIznos = usluga.UkupanIznos;
                             DodatnaUsluga.IzmeniUslugu(usluga);
                             break;
                         }
@@ -74,7 +74,7 @@ namespace POP_SF59_2016_GUI.UI
                 default:
                     break;
             }
-            GenericSerialize.Serialize("usluge.xml", listaUsluga);
+            //GenericSerialize.Serialize("usluge.xml", listaUsluga);
             Close();
         }
 

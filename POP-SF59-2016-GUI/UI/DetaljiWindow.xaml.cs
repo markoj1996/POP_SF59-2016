@@ -59,6 +59,10 @@ namespace POP_SF59_2016_GUI.UI
         {
             List<Namestaj> listaProdatog = new List<Namestaj>();
             listaProdatog=Namestaj.UcitajProdatiNamestaj(prodaja);
+            foreach (var n in listaProdatog)
+            {
+                ceneNamestaja.Add(n.CenaSaAkcijom);
+            }
          
             DataGridTextColumn column1 = new DataGridTextColumn();
             column1.Header = "Id";
@@ -76,7 +80,7 @@ namespace POP_SF59_2016_GUI.UI
             DataGridTextColumn column3 = new DataGridTextColumn();
             column3.Header = "Cena";
             column3.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
-            column3.Binding = new Binding("JedinicnaCena");
+            column3.Binding = new Binding("CenaSaAkcijom");
             dgNamestaj.Columns.Add(column3);
 
             dgNamestaj.ItemsSource = listaProdatog;
@@ -89,6 +93,10 @@ namespace POP_SF59_2016_GUI.UI
 
             List<DodatnaUsluga> listaUsluga = new List<DodatnaUsluga>();
             listaUsluga = DodatnaUsluga.UcitajUslugeProdaje(prodaja);
+            foreach (var n in listaUsluga)
+            {
+                ceneUsluga.Add(n.UkupanIznos);
+            }
 
             DataGridTextColumn column1 = new DataGridTextColumn();
             column1.Header = "Id";

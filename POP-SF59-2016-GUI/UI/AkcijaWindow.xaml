@@ -8,9 +8,9 @@
         Title="AkcijaWindow" Height="365.526" Width="387">
     <Grid>
         <Label Grid.Row="0" Grid.Column="0" Content="Datum pocetka" Margin="8,42,0,244" HorizontalAlignment="Left" VerticalAlignment="Center" Height="49" Width="117"/>
-        <TextBox x:Name="tbDatumPocetka"  Margin="127,42,10,256" Width="242" Height="37" Text="{Binding Path=DatumPocetka}" HorizontalAlignment="Left"/>
+        <DatePicker Name="dpDatumPocetka" Margin="125,40,10,258" SelectedDate="{Binding Path=DatumPocetka}"/>
         <Label Grid.Row="0" Grid.Column="0" Content="Datum zavrsetka" Margin="8,96,0,190" HorizontalAlignment="Left" VerticalAlignment="Center" Height="49" Width="117"/>
-        <TextBox x:Name="tbDatumZavrsetka" Margin="127,96,10,202" Width="242" Height="37" Text="{Binding Path=DatumZavrsetka}" HorizontalAlignment="Left"/>
+        <DatePicker Name="dpDatumZavrsetka" Margin="125,91,10,207" SelectedDate="{Binding Path=DatumZavrsetka}"/>
         <Label Grid.Row="0" Grid.Column="0" Content="Popust" Margin="8,150,0,136" HorizontalAlignment="Left" VerticalAlignment="Center" Height="49" Width="117"/>
         <TextBox x:Name="tbPopust" Margin="127,145,10,153" Width="242" Height="37" Text="{Binding Path=Popust}" HorizontalAlignment="Left"/>
         <Button Content="Sacuvaj" Height="40" Width="80" Margin="155,237,144,58" Click="SacuvajIzmene"/>

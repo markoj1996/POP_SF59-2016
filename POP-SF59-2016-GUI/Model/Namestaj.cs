@@ -22,26 +22,24 @@ namespace POP_SF59_2016.Model
         private int kolicinaUMagacinu;
         private int akcijaId;
         private TipNamestaja tipNamestaja;
-        private Akcija akcija;
+        //private Akcija akcija;
+        private double cenaSaAkcijom;
 
-        public double CenaSaAkcijom()
+
+        public double CenaSaAkcijom
         {
-            double Cena = 0;
-            var akcije = Projekat.Instance.Akcija;
-            foreach (var a in akcije)
+            get { return cenaSaAkcijom; }
+            set
             {
-                if (akcijaId == a.Id)
-                {
-                    double popust = (a.Popust / 100) * jedinicnaCena;
-                    Cena = jedinicnaCena - popust;
-                    return Cena;
-                }
+                cenaSaAkcijom = value;
+                Akcija akcija = Akcija.GetById(AkcijaId);
+                double popust = (akcija.Popust / 100) * jedinicnaCena;
+                cenaSaAkcijom = jedinicnaCena - popust;
+                OnPropertyChanged("CenaSaAkcijom");
             }
-            return Cena;
         }
 
-
-        [XmlIgnore]
+        /*[XmlIgnore]
         public Akcija Akcija
         {
             get
@@ -56,9 +54,11 @@ namespace POP_SF59_2016.Model
             {
                 akcija = value;
                 AkcijaId = akcija.Id;
+                double popust = (akcija.Popust / 100) * jedinicnaCena;
+                cenaSaAkcijom = jedinicnaCena - popust;
                 OnPropertyChanged("Akcija");
             }
-        }
+        }*/
 
         [XmlIgnore]
         public TipNamestaja TipNamestaja
@@ -205,8 +205,9 @@ namespace POP_SF59_2016.Model
                 Sifra = sifra,
                 Obrisan = obrisan,
                 KolicinaUMagacinu = kolicinaUMagacinu,
-                TipNamestaja = tipNamestaja,
+                //TipNamestaja = tipNamestaja,
                 TipNamestajaId = tipNamestajaId,
+                AkcijaId = akcijaId
             };
         }
 
@@ -235,6 +236,7 @@ namespace POP_SF59_2016.Model
                     n.Obrisan = (bool)row["Obrisan"];
                     n.KolicinaUMagacinu = (int)row["KolicinaUMagacinu"];
                     n.AkcijaId = (int)row["AkcijaId"];
+                    n.CenaSaAkcijom = (double)row["CenaSaAkcijom"];
 
                     Aplikacija.Instance.Namestaj.Add(n);
                 }
@@ -248,16 +250,17 @@ namespace POP_SF59_2016.Model
                 conn.Open();
 
                 SqlCommand command = conn.CreateCommand();
-                command.CommandText = @"INSERT INTO NAMESTAJ (ID,NAZIV,SIFRA,JEDINICNACENA,TIPNAMESTAJA,OBRISAN,KOLICINAUMAGACINU,AKCIJAID) VALUES (@ID,@Naziv, @Sifra,@JedinicnaCena,@TipNamestaja,@Obrisan,@KolicinaUMagacinu,@AkcijaId)";
+                command.CommandText = @"INSERT INTO NAMESTAJ (ID,NAZIV,SIFRA,JEDINICNACENA,TIPNAMESTAJA,OBRISAN,KOLICINAUMAGACINU,AKCIJAID,CENASAAKCIJOM) VALUES (@ID,@Naziv, @Sifra,@JedinicnaCena,@TipNamestaja,@Obrisan,@KolicinaUMagacinu,@AkcijaId,@CenaSaAkcijom)";
 
                 command.Parameters.Add(new SqlParameter("@ID", n.Id));
                 command.Parameters.Add(new SqlParameter("@Naziv", n.Naziv));
                 command.Parameters.Add(new SqlParameter("@Sifra", n.Sifra));
                 command.Parameters.Add(new SqlParameter("@JedinicnaCena", n.JedinicnaCena));
-                command.Parameters.Add(new SqlParameter("@TipNamestaja", n.TipNamestaja.Id));
+                command.Parameters.Add(new SqlParameter("@TipNamestaja", n.TipNamestajaId));
                 command.Parameters.Add(new SqlParameter("@Obrisan", n.Obrisan));
                 command.Parameters.Add(new SqlParameter("@KolicinaUMagacinu", n.KolicinaUMagacinu));
-                command.Parameters.Add(new SqlParameter("@AkcijaId", n.Akcija.Id));
+                command.Parameters.Add(new SqlParameter("@AkcijaId", n.AkcijaId));
+                command.Parameters.Add(new SqlParameter("@CenaSaAkcijom", n.CenaSaAkcijom));
 
                 command.ExecuteNonQuery();
             }
@@ -289,16 +292,17 @@ namespace POP_SF59_2016.Model
                     conn.Open();
 
                     SqlCommand command = conn.CreateCommand();
-                    command.CommandText = @"UPDATE NAMESTAJ SET OBRISAN=@Obrisan, NAZIV=@Naziv, SIFRA=@Sifra, JEDINICNACENA=@JedCena, TIPNAMESTAJA=@TipNamestaja, KOLICINAUMAGACINU=@Kolicina, AKCIJAID=@AkcijaId WHERE ID=@Id";
+                    command.CommandText = @"UPDATE NAMESTAJ SET OBRISAN=@Obrisan, NAZIV=@Naziv, SIFRA=@Sifra, JEDINICNACENA=@JedCena, TIPNAMESTAJA=@TipNamestaja, KOLICINAUMAGACINU=@Kolicina, AKCIJAID=@AkcijaId, CENASAAKCIJOM=@CenaSaAkcijom WHERE ID=@Id";
 
                     command.Parameters.Add(new SqlParameter("@Id", n.Id));
                     command.Parameters.Add(new SqlParameter("@Obrisan", n.Obrisan));
                     command.Parameters.Add(new SqlParameter("@Naziv", n.Naziv));
                     command.Parameters.Add(new SqlParameter("@Sifra", n.Sifra));
                     command.Parameters.Add(new SqlParameter("@JedCena", n.JedinicnaCena));
-                    command.Parameters.Add(new SqlParameter("@TipNamestaja", n.TipNamestaja.Id));
+                    command.Parameters.Add(new SqlParameter("@TipNamestaja", n.TipNamestajaId));
                     command.Parameters.Add(new SqlParameter("@Kolicina", n.KolicinaUMagacinu));
-                    command.Parameters.Add(new SqlParameter("@AkcijaId", n.Akcija.Id));
+                    command.Parameters.Add(new SqlParameter("@AkcijaId", n.AkcijaId));
+                    command.Parameters.Add(new SqlParameter("@CenaSaAkcijom", n.CenaSaAkcijom));
 
                     command.ExecuteNonQuery();
                 }
@@ -315,7 +319,7 @@ namespace POP_SF59_2016.Model
                 DataSet ds = new DataSet();
 
                 SqlCommand nametajCommand = connection.CreateCommand();
-                nametajCommand.CommandText = @"SELECT n.id,n.naziv,n.sifra,n.jedinicnaCena,n.Tipnamestaja,n.Obrisan,n.Kolicinaumagacinu,n.akcijaid FROM NAMESTAJ n,NAMESTAJZAPRODAJU nzp,PRODAJA p where p.id=@IdProdaje and p.id=nzp.prodajaid and n.Id=nzp.namestajid";
+                nametajCommand.CommandText = @"SELECT n.id,n.naziv,n.sifra,n.jedinicnaCena,n.Tipnamestaja,n.Obrisan,n.Kolicinaumagacinu,n.akcijaid,n.CenaSaAkcijom FROM NAMESTAJ n,NAMESTAJZAPRODAJU nzp,PRODAJA p where p.id=@IdProdaje and p.id=nzp.prodajaid and n.Id=nzp.namestajid";
                 nametajCommand.Parameters.Add(new SqlParameter("@IdProdaje", p.Id));
                 SqlDataAdapter daNamestaj = new SqlDataAdapter();
                 daNamestaj.SelectCommand = nametajCommand;
@@ -332,7 +336,7 @@ namespace POP_SF59_2016.Model
                     n.Obrisan = (bool)row["Obrisan"];
                     n.KolicinaUMagacinu = (int)row["KolicinaUMagacinu"];
                     n.AkcijaId = (int)row["AkcijaId"];
-
+                    n.CenaSaAkcijom = (double)row["CenaSaAkcijom"];
                     namestaj.Add(n);
                     
                 }

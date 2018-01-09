@@ -48,7 +48,7 @@ namespace POP_SF59_2016_GUI.UI
             DataGridTextColumn column3 = new DataGridTextColumn();
             column3.Header = "Cena";
             column3.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
-            column3.Binding = new Binding("JedinicnaCena");
+            column3.Binding = new Binding("CenaSaAkcijom");
             dgNamestaj.Columns.Add(column3);
 
             DataGridTextColumn column4 = new DataGridTextColumn();

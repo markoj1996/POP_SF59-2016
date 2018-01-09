@@ -40,11 +40,11 @@ namespace POP_SF59_2016_GUI.UI
 
         private void ProdajeKolone()
         { 
-            DataGridTextColumn column1 = new DataGridTextColumn();
+            /*DataGridTextColumn column1 = new DataGridTextColumn();
             column1.Header = "Id";
             column1.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
             column1.Binding = new Binding("Id");
-            dgProdaje.Columns.Add(column1);
+            dgProdaje.Columns.Add(column1);*/
 
             DataGridTextColumn column2 = new DataGridTextColumn();
             column2.Header = "Datum Prodaje";

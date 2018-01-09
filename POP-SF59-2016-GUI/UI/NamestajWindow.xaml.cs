@@ -42,7 +42,6 @@ namespace POP_SF59_2016_GUI.UI
             cbTipNamestaja.ItemsSource = Aplikacija.Instance.TipNamestaja;
             cbAkcija.ItemsSource = Aplikacija.Instance.Akcija;
 
-
             tbNaziv.DataContext = namestaj;
             tbSifra.DataContext = namestaj;
             tbCena.DataContext = namestaj;
@@ -62,6 +61,9 @@ namespace POP_SF59_2016_GUI.UI
             {
                 case Operacija.Dodavanje:
                     namestaj.Id = Aplikacija.Instance.Namestaj.Count + 1;
+                    namestaj.TipNamestajaId = izabraniTipNamestaja.Id;
+                    namestaj.AkcijaId = izabranaAkcija.Id;
+                    namestaj.CenaSaAkcijom = namestaj.CenaSaAkcijom;
                     Aplikacija.Instance.Namestaj.Add(namestaj);
                     Namestaj.DodajNamestaj(namestaj);
                     break;
@@ -74,9 +76,10 @@ namespace POP_SF59_2016_GUI.UI
                             n.Sifra = namestaj.Sifra;
                             n.JedinicnaCena = namestaj.JedinicnaCena;
                             n.KolicinaUMagacinu = namestaj.KolicinaUMagacinu;
-                            n.TipNamestaja = namestaj.TipNamestaja;
-                            n.Akcija = namestaj.Akcija;
-                            Namestaj.IzmeniNamestaj(namestaj);
+                            n.TipNamestajaId = izabraniTipNamestaja.Id;
+                            n.AkcijaId = izabranaAkcija.Id;
+                            n.CenaSaAkcijom = namestaj.CenaSaAkcijom;
+                            Namestaj.IzmeniNamestaj(n);
                             break;
                         }
                     }
@@ -84,7 +87,7 @@ namespace POP_SF59_2016_GUI.UI
                 default:
                     break;
             }
-            GenericSerialize.Serialize("namestaj.xml", listaNamestaja);
+            //GenericSerialize.Serialize("namestaj.xml", listaNamestaja);
             Close();
         }
 

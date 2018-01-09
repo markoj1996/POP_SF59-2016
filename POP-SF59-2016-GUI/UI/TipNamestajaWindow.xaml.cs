@@ -66,7 +66,7 @@ namespace POP_SF59_2016_GUI.UI
                 default:
                     break;
             }
-            GenericSerialize.Serialize("tipNamestaja.xml", listaTipaNamestaja);
+            //GenericSerialize.Serialize("tipNamestaja.xml", listaTipaNamestaja);
             Close();
         }
         private void Izadji(object sender, RoutedEventArgs e)

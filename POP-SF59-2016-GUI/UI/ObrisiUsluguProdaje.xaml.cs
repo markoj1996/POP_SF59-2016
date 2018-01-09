@@ -45,11 +45,11 @@ namespace POP_SF59_2016_GUI.UI
                 }
             }
 
-            DataGridTextColumn column1 = new DataGridTextColumn();
+            /*DataGridTextColumn column1 = new DataGridTextColumn();
             column1.Header = "Id";
             column1.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
             column1.Binding = new Binding("Id");
-            dgDodatneUsluge.Columns.Add(column1);
+            dgDodatneUsluge.Columns.Add(column1);*/
 
             DataGridTextColumn column2 = new DataGridTextColumn();
             column2.Header = "Naziv";

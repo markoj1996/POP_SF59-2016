@@ -135,7 +135,7 @@ namespace POP_SF59_2016_GUI.UI
                 default:
                     break;
             }
-            GenericSerialize.Serialize("prodaje.xml", listaProdaja);
+            //GenericSerialize.Serialize("prodaje.xml", listaProdaja);
             Close();
         }
 

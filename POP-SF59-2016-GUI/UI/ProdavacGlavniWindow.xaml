@@ -14,7 +14,7 @@
                         <RowDefinition Height="183*"/>
                         <RowDefinition Height="38*"/>
                     </Grid.RowDefinitions>
-                    <DataGrid CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" Grid.Row="0" FontSize="20" Name="dgProdaje" Margin="0,35,0,0" Width="606" Height="347" SelectedItem="{Binding Path=izabranaProdaja}"/>
+                    <DataGrid IsReadOnly="True" CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False" Grid.Row="0" FontSize="20" Name="dgProdaje" Margin="0,35,0,0" Width="606" Height="347" SelectedItem="{Binding Path=izabranaProdaja}"/>
                     <Button Content="Pretraga" Grid.Row="0" Margin="15,7,523,355" Click="PretraziP_Click" Height="20" Width="68"/>
                     <Button Content="Refresh" Grid.Row="0" Margin="100,7,438,355"  Height="20" Width="68"/>
                     <Button Content="Dodaj" Margin="25,20,463,21" Grid.Row="1" Click="DodajP_Click"/>

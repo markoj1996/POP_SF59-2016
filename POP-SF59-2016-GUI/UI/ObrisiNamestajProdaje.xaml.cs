@@ -45,11 +45,11 @@ namespace POP_SF59_2016_GUI.UI
                 }
             }
 
-            DataGridTextColumn column1 = new DataGridTextColumn();
+            /*DataGridTextColumn column1 = new DataGridTextColumn();
             column1.Header = "Id";
             column1.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
             column1.Binding = new Binding("Id");
-            dgNamestaj.Columns.Add(column1);
+            dgNamestaj.Columns.Add(column1);*/
 
             DataGridTextColumn column2 = new DataGridTextColumn();
             column2.Header = "Naziv";
@@ -61,7 +61,7 @@ namespace POP_SF59_2016_GUI.UI
             DataGridTextColumn column3 = new DataGridTextColumn();
             column3.Header = "Cena";
             column3.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
-            column3.Binding = new Binding("JedinicnaCena");
+            column3.Binding = new Binding("CenaSaAkcijom");
             dgNamestaj.Columns.Add(column3);
 
             DataGridTextColumn column4 = new DataGridTextColumn();

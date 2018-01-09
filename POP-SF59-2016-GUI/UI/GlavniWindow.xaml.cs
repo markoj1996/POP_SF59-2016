@@ -50,11 +50,11 @@ namespace POP_SF59_2016_GUI.UI
 
         private void NamestajKolone()
         { 
-            DataGridTextColumn column1 = new DataGridTextColumn();
+            /*DataGridTextColumn column1 = new DataGridTextColumn();
             column1.Header = "Id";
             column1.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
             column1.Binding = new Binding("Id");
-            dgNamestaj.Columns.Add(column1);
+            dgNamestaj.Columns.Add(column1);*/
 
             DataGridTextColumn column2 = new DataGridTextColumn();
             column2.Header = "Naziv";
@@ -62,11 +62,10 @@ namespace POP_SF59_2016_GUI.UI
             column2.Binding = new Binding("Naziv");
             dgNamestaj.Columns.Add(column2);
 
-
             DataGridTextColumn column3 = new DataGridTextColumn();
-            column3.Header = "Cena";
+            column3.Header = "Tip namestaja";
             column3.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
-            column3.Binding = new Binding("JedinicnaCena");
+            column3.Binding = new Binding("TipNamestaja");
             dgNamestaj.Columns.Add(column3);
 
             DataGridTextColumn column4 = new DataGridTextColumn();
@@ -76,16 +75,16 @@ namespace POP_SF59_2016_GUI.UI
             dgNamestaj.Columns.Add(column4);
 
             DataGridTextColumn column5 = new DataGridTextColumn();
-            column5.Header = "Tip namestaja";
+            column5.Header = "Cena";
             column5.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
-            column5.Binding = new Binding("TipNamestaja");
+            column5.Binding = new Binding("CenaSaAkcijom");
             dgNamestaj.Columns.Add(column5);
 
-            DataGridTextColumn column6 = new DataGridTextColumn();
+            /*DataGridTextColumn column6 = new DataGridTextColumn();
             column6.Header = "Akcija Id";
             column6.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
             column6.Binding = new Binding("AkcijaId");
-            dgNamestaj.Columns.Add(column6);
+            dgNamestaj.Columns.Add(column6);*/
 
 
             view = CollectionViewSource.GetDefaultView(Aplikacija.Instance.Namestaj);
@@ -134,7 +133,7 @@ namespace POP_SF59_2016_GUI.UI
                         break;
                     }
                 }
-                GenericSerialize.Serialize("namestaj.xml", listaNamestaja);
+                //GenericSerialize.Serialize("namestaj.xml", listaNamestaja);
                 
             }
         }
@@ -163,11 +162,11 @@ namespace POP_SF59_2016_GUI.UI
 
         private void TipKolone()
         {
-            DataGridTextColumn column1 = new DataGridTextColumn();
+            /*DataGridTextColumn column1 = new DataGridTextColumn();
             column1.Header = "Id";
             column1.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
             column1.Binding = new Binding("Id");
-            dgTipNamestaja.Columns.Add(column1);
+            dgTipNamestaja.Columns.Add(column1);*/
 
             DataGridTextColumn column2 = new DataGridTextColumn();
             column2.Header = "Naziv";
@@ -208,7 +207,7 @@ namespace POP_SF59_2016_GUI.UI
         {
             var listaTipaNamestaja = Aplikacija.Instance.TipNamestaja;
 
-            if (MessageBox.Show($"Da li zelite da obrisete: {izabraniTip.Naziv}", "Brisanje", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (MessageBox.Show($"Bice obisani svi namestaji ovoga tipa.Da li zelite da obrisete: {izabraniTip.Naziv}", "Brisanje", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 foreach (var n in listaTipaNamestaja)
                 {
@@ -216,11 +215,19 @@ namespace POP_SF59_2016_GUI.UI
                     {
                         n.Obrisan = true;
                         TipNamestaja.ObrisiTip(izabraniTip);
+                        foreach (var namestaj in Aplikacija.Instance.Namestaj)
+                        {
+                            if (namestaj.TipNamestajaId == izabraniTip.Id)
+                            {
+                                namestaj.Obrisan = true;
+                                Namestaj.ObrisiNamestaj(namestaj);
+                            }
+                        }
                         view.Refresh();
                         break;
                     }
                 }
-                GenericSerialize.Serialize("tipNamestaja.xml", listaTipaNamestaja);
+                //GenericSerialize.Serialize("tipNamestaja.xml", listaTipaNamestaja);
             }
         }
 
@@ -234,11 +241,11 @@ namespace POP_SF59_2016_GUI.UI
 
         private void KorisnikKolone()
         {
-            DataGridTextColumn column1 = new DataGridTextColumn();
+            /*DataGridTextColumn column1 = new DataGridTextColumn();
             column1.Header = "Id";
             column1.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
             column1.Binding = new Binding("Id");
-            dgKorisnici.Columns.Add(column1);
+            dgKorisnici.Columns.Add(column1);*/
 
             DataGridTextColumn column2 = new DataGridTextColumn();
             column2.Header = "Ime";
@@ -317,7 +324,7 @@ namespace POP_SF59_2016_GUI.UI
                         break;
                     }
                 }
-                GenericSerialize.Serialize("korisnici.xml", listaKorisnika);
+                //GenericSerialize.Serialize("korisnici.xml", listaKorisnika);
             }
         }
 
@@ -331,11 +338,11 @@ namespace POP_SF59_2016_GUI.UI
 
         private void AkcijeKolone()
         {
-            DataGridTextColumn column1 = new DataGridTextColumn();
+            /*DataGridTextColumn column1 = new DataGridTextColumn();
             column1.Header = "Id";
             column1.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
             column1.Binding = new Binding("Id");
-            dgAkcije.Columns.Add(column1);
+            dgAkcije.Columns.Add(column1);*/
 
             DataGridTextColumn column2 = new DataGridTextColumn();
             column2.Header = "Datum pocetka";
@@ -395,27 +402,42 @@ namespace POP_SF59_2016_GUI.UI
                     {
                         a.Obrisan = true;
                         Akcija.ObrisiAkciju(izabranaAkcija);
+                        foreach (var n in Aplikacija.Instance.Namestaj)
+                        {
+                            if (n.AkcijaId == izabranaAkcija.Id)
+                            {
+                                n.AkcijaId = 0;
+                                n.CenaSaAkcijom = n.CenaSaAkcijom;
+                                Namestaj.IzmeniNamestaj(n);
+                            }
+                        }
                         view.Refresh();
                         break;
                     }
                 }
-                GenericSerialize.Serialize("akcije.xml", listaAkcija);
+                //GenericSerialize.Serialize("akcije.xml", listaAkcija);
             }
         }
 
         private void UslugeKolone()
         {
-            DataGridTextColumn column1 = new DataGridTextColumn();
+            /*DataGridTextColumn column1 = new DataGridTextColumn();
             column1.Header = "Id";
             column1.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
             column1.Binding = new Binding("Id");
-            dgDodatneUsluge.Columns.Add(column1);
+            dgDodatneUsluge.Columns.Add(column1);*/
 
             DataGridTextColumn column2 = new DataGridTextColumn();
             column2.Header = "Naziv";
             column2.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
             column2.Binding = new Binding("Naziv");
             dgDodatneUsluge.Columns.Add(column2);
+
+            DataGridTextColumn column4 = new DataGridTextColumn();
+            column4.Header = "PDV";
+            column4.Width = new DataGridLength(1, DataGridLengthUnitType.Star);
+            column4.Binding = new Binding("PDV");
+            dgDodatneUsluge.Columns.Add(column4);
 
             DataGridTextColumn column3 = new DataGridTextColumn();
             column3.Header = "Ukupna cena";
@@ -468,7 +490,7 @@ namespace POP_SF59_2016_GUI.UI
                         break;
                     }
                 }
-                GenericSerialize.Serialize("usluge.xml", listaUsluga);
+                //GenericSerialize.Serialize("usluge.xml", listaUsluga);
             }
         }
 
@@ -482,13 +504,6 @@ namespace POP_SF59_2016_GUI.UI
 
         private void Izadji_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
-        }
-
-        private void Logout_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow mw = new MainWindow();
-            mw.ShowDialog();
             this.Close();
         }
     }

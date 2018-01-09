@@ -24,40 +24,46 @@ namespace POP_SF59_2016.Model
         public double UkupanIznos
         {
             get { return ukupanIznos; }
-            set { ukupanIznos = value; }
+            set
+            {
+                ukupanIznos = value;
+                double p = (PDV / 100)*cena;
+                ukupanIznos = Cena + p;
+                OnPropertyChanged("UkupanIznos");
+            }
         }
 
 
         public double PDV
         {
             get { return pdv; }
-            set { pdv = value; }
+            set { pdv = value; OnPropertyChanged("PDV"); }
         }
 
 
         public double Cena
         {
             get { return cena; }
-            set { cena = value; }
+            set { cena = value; OnPropertyChanged("Cena"); }
         }
 
 
         public string Naziv
         {
             get { return naziv; }
-            set { naziv = value; }
+            set { naziv = value; OnPropertyChanged("Naziv"); }
         }
 
         public bool Obrisan
         {
-            get { return obrisan; }
-            set { obrisan = value; }
+            get { return obrisan;  }
+            set { obrisan = value; OnPropertyChanged("Obrisan"); }
         }
 
         public int Id
         {
             get { return id; }
-            set { id = value; }
+            set { id = value; OnPropertyChanged("Id"); }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -87,12 +93,12 @@ namespace POP_SF59_2016.Model
             return null;
         }
 
-        public double UkupnaCena(DodatnaUsluga usluga)
+        /*public double UkupnaCena(DodatnaUsluga usluga)
         {
             double ukupno = 0;
             ukupno = (usluga.cena * (1+usluga.PDV/100));
             return ukupno;
-        }
+        }*/
 
         public object Clone()
         {

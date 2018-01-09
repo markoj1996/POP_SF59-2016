@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfNamestaj xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Namestaj>
+    <CenaSaAkcijom>90</CenaSaAkcijom>
     <AkcijaId>0</AkcijaId>
     <KolicinaUMagacinu>10</KolicinaUMagacinu>
     <Obrisan>false</Obrisan>
@@ -11,7 +12,8 @@
     <Id>1</Id>
   </Namestaj>
   <Namestaj>
-    <AkcijaId>0</AkcijaId>
+    <CenaSaAkcijom>90</CenaSaAkcijom>
+    <AkcijaId>3</AkcijaId>
     <KolicinaUMagacinu>10</KolicinaUMagacinu>
     <Obrisan>false</Obrisan>
     <TipNamestajaId>1</TipNamestajaId>
@@ -19,5 +21,27 @@
     <Sifra>novi</Sifra>
     <Naziv>novi</Naziv>
     <Id>2</Id>
+  </Namestaj>
+  <Namestaj>
+    <CenaSaAkcijom>90</CenaSaAkcijom>
+    <AkcijaId>3</AkcijaId>
+    <KolicinaUMagacinu>10</KolicinaUMagacinu>
+    <Obrisan>false</Obrisan>
+    <TipNamestajaId>1</TipNamestajaId>
+    <JedinicnaCena>100</JedinicnaCena>
+    <Sifra>asd</Sifra>
+    <Naziv>sad</Naziv>
+    <Id>3</Id>
+  </Namestaj>
+  <Namestaj>
+    <CenaSaAkcijom>900</CenaSaAkcijom>
+    <AkcijaId>3</AkcijaId>
+    <KolicinaUMagacinu>10</KolicinaUMagacinu>
+    <Obrisan>false</Obrisan>
+    <TipNamestajaId>1</TipNamestajaId>
+    <JedinicnaCena>1000</JedinicnaCena>
+    <Sifra>af</Sifra>
+    <Naziv>af</Naziv>
+    <Id>4</Id>
   </Namestaj>
 </ArrayOfNamestaj>

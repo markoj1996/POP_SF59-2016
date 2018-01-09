@@ -79,7 +79,7 @@ namespace POP_SF59_2016_GUI.UI
                 default:
                     break;
             }
-            GenericSerialize.Serialize("korisnici.xml", listaKorisnika);
+            //GenericSerialize.Serialize("korisnici.xml", listaKorisnika);
             Close();
         }
 

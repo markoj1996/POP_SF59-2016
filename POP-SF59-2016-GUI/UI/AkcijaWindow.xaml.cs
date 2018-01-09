@@ -40,9 +40,8 @@ namespace POP_SF59_2016_GUI.UI
             this.akcija = akcija;
             this.operacija = operacija;
 
-
-            tbDatumPocetka.DataContext = akcija;
-            tbDatumZavrsetka.DataContext = akcija;
+            dpDatumPocetka.DataContext = akcija;
+            dpDatumZavrsetka.DataContext = akcija;
             tbPopust.DataContext = akcija;
 
         }
@@ -68,6 +67,14 @@ namespace POP_SF59_2016_GUI.UI
                             a.DatumZavrsetka = akcija.DatumZavrsetka;
                             a.Popust = akcija.Popust;
                             Akcija.IzmeniAkciju(akcija);
+                            foreach (var n in Aplikacija.Instance.Namestaj)
+                            {
+                                if (n.AkcijaId == akcija.Id)
+                                {
+                                    n.CenaSaAkcijom = n.CenaSaAkcijom;
+                                    Namestaj.IzmeniNamestaj(n);
+                                }
+                            } 
                             break;
                         }
                     }
@@ -75,7 +82,7 @@ namespace POP_SF59_2016_GUI.UI
                 default:
                     break;
             }
-            GenericSerialize.Serialize("akcije.xml", listaAkcija);
+            //GenericSerialize.Serialize("akcije.xml", listaAkcija);
             Close();
         }
 
