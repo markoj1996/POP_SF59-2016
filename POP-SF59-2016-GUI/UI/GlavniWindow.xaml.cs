@@ -24,7 +24,11 @@ namespace POP_SF59_2016_GUI.UI
     /// </summary>
     public partial class GlavniWindow : Window
     {
-        ICollectionView view;
+        ICollectionView viewN;
+        ICollectionView viewK;
+        ICollectionView viewT;
+        ICollectionView viewA;
+        ICollectionView viewU;
         public Namestaj izabraniNamestaj { get; set; }
         public Korisnik izabraniKorisnik { get; set; }
         public TipNamestaja izabraniTip { get; set; }
@@ -87,9 +91,9 @@ namespace POP_SF59_2016_GUI.UI
             dgNamestaj.Columns.Add(column6);*/
 
 
-            view = CollectionViewSource.GetDefaultView(namestaj);
-            view.Filter = NamestajFilter;
-            dgNamestaj.ItemsSource = view;
+            viewN = CollectionViewSource.GetDefaultView(namestaj);
+            viewN.Filter = NamestajFilter;
+            dgNamestaj.ItemsSource = viewN;
             dgNamestaj.IsSynchronizedWithCurrentItem = true;
             dgNamestaj.DataContext = this;
         }
@@ -129,7 +133,7 @@ namespace POP_SF59_2016_GUI.UI
                     {
                         n.Obrisan = true;
                         Namestaj.ObrisiNamestaj(izabraniNamestaj);
-                        view.Refresh();
+                        viewN.Refresh();
                         break;
                     }
                 }
@@ -174,9 +178,9 @@ namespace POP_SF59_2016_GUI.UI
             column2.Binding = new Binding("Naziv");
             dgTipNamestaja.Columns.Add(column2);
 
-            view = CollectionViewSource.GetDefaultView(tip);
-            view.Filter = tipNamestajaFilter;
-            dgTipNamestaja.ItemsSource = view;
+            viewT = CollectionViewSource.GetDefaultView(tip);
+            viewT.Filter = tipNamestajaFilter;
+            dgTipNamestaja.ItemsSource = viewT;
             dgTipNamestaja.IsSynchronizedWithCurrentItem = true;
             dgTipNamestaja.DataContext = this;
         }
@@ -223,7 +227,7 @@ namespace POP_SF59_2016_GUI.UI
                                 Namestaj.ObrisiNamestaj(namestaj);
                             }
                         }
-                        view.Refresh();
+                        viewT.Refresh();
                         break;
                     }
                 }
@@ -279,10 +283,10 @@ namespace POP_SF59_2016_GUI.UI
             dgKorisnici.Columns.Add(column6);
 
 
-            view = CollectionViewSource.GetDefaultView(korisnik);
+            viewK = CollectionViewSource.GetDefaultView(korisnik);
 
-            view.Filter = KorisnikFilter;
-            dgKorisnici.ItemsSource = view;
+            viewK.Filter = KorisnikFilter;
+            dgKorisnici.ItemsSource = viewK;
             dgKorisnici.IsSynchronizedWithCurrentItem = true;
             dgKorisnici.DataContext = this;
         }
@@ -320,7 +324,7 @@ namespace POP_SF59_2016_GUI.UI
                     {
                         k.Obrisan = true;
                         Korisnik.ObrisiKorisnika(izabraniKorisnik);
-                        view.Refresh();
+                        viewK.Refresh();
                         break;
                     }
                 }
@@ -362,10 +366,10 @@ namespace POP_SF59_2016_GUI.UI
             column4.Binding = new Binding("Popust");
             dgAkcije.Columns.Add(column4);
 
-            view = CollectionViewSource.GetDefaultView(akcija);
+            viewA = CollectionViewSource.GetDefaultView(akcija);
 
-            view.Filter = AkcijaFilter;
-            dgAkcije.ItemsSource = view;
+            viewA.Filter = AkcijaFilter;
+            dgAkcije.ItemsSource = viewA;
             dgAkcije.IsSynchronizedWithCurrentItem = true;
             dgAkcije.DataContext = this;
         }
@@ -385,16 +389,27 @@ namespace POP_SF59_2016_GUI.UI
         }
         private void IzmeniA_Click(object sender, RoutedEventArgs e)
         {
-            Akcija kopija = (Akcija)izabranaAkcija.Clone();
-            var AkcijaProzor = new AkcijaWindow(kopija, AkcijaWindow.OperacijaA.Izmena);
-            AkcijaProzor.ShowDialog();
+            if (izabranaAkcija.Id == 0)
+            {
+                MessageBox.Show("Nije moguce izmeniti izabranu akciju", "Izmena", MessageBoxButton.OK);
+            }
+            else
+            {
+                Akcija kopija = (Akcija)izabranaAkcija.Clone();
+                var AkcijaProzor = new AkcijaWindow(kopija, AkcijaWindow.OperacijaA.Izmena);
+                AkcijaProzor.ShowDialog();
+            }
+            
         }
 
         private void ObrisiA_Click(object sender, RoutedEventArgs e)
         {
             var listaAkcija = Aplikacija.Instance.Akcija;
-
-            if (MessageBox.Show($"Da li zelite da obrisete: {izabranaAkcija.Id}", "Brisanje", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (izabranaAkcija.Id == 0)
+            {
+                MessageBox.Show("Nije moguce obisati izabranu akciju", "Brisanje", MessageBoxButton.OK);
+            }
+            else if (MessageBox.Show($"Da li zelite da obrisete: {izabranaAkcija.Id}", "Brisanje", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 foreach (var a in listaAkcija)
                 {
@@ -411,7 +426,7 @@ namespace POP_SF59_2016_GUI.UI
                                 Namestaj.IzmeniNamestaj(n);
                             }
                         }
-                        view.Refresh();
+                        viewA.Refresh();
                         break;
                     }
                 }
@@ -445,10 +460,10 @@ namespace POP_SF59_2016_GUI.UI
             column3.Binding = new Binding("UkupanIznos");
             dgDodatneUsluge.Columns.Add(column3);
 
-            view = CollectionViewSource.GetDefaultView(usluga);
+            viewU = CollectionViewSource.GetDefaultView(usluga);
 
-            view.Filter = UslugaFilter;
-            dgDodatneUsluge.ItemsSource = view;
+            viewU.Filter = UslugaFilter;
+            dgDodatneUsluge.ItemsSource = viewU;
             dgDodatneUsluge.IsSynchronizedWithCurrentItem = true;
             dgDodatneUsluge.DataContext = this;
         }
@@ -486,7 +501,7 @@ namespace POP_SF59_2016_GUI.UI
                     {
                         u.Obrisan = true;
                         DodatnaUsluga.ObrisiUslugu(izabranaUsluga);
-                        view.Refresh();
+                        viewU.Refresh();
                         break;
                     }
                 }
