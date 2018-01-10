@@ -33,9 +33,26 @@ namespace POP_SF59_2016.Model
             {
                 cenaSaAkcijom = value;
                 Akcija akcija = Akcija.GetById(AkcijaId);
-                double popust = (akcija.Popust / 100) * jedinicnaCena;
-                cenaSaAkcijom = jedinicnaCena - popust;
-                OnPropertyChanged("CenaSaAkcijom");
+                DateTime sada = DateTime.Now;
+                if (akcija.DatumPocetka.Date <= sada.Date)
+                {
+                    if (akcija.DatumZavrsetka.Date >= sada.Date)
+                    {
+                        double popust = (akcija.Popust / 100) * jedinicnaCena;
+                        cenaSaAkcijom = jedinicnaCena - popust;
+                        OnPropertyChanged("CenaSaAkcijom");
+                    }
+                    else
+                    {
+                        cenaSaAkcijom = jedinicnaCena;
+                        OnPropertyChanged("CenaSaAkcijom");
+                    }
+                }
+                else
+                {
+                    cenaSaAkcijom = jedinicnaCena;
+                    OnPropertyChanged("CenaSaAkcijom");
+                }
             }
         }
 

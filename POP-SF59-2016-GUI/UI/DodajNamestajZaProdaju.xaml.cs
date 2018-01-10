@@ -81,6 +81,16 @@ namespace POP_SF59_2016_GUI.UI
         private void Potvrdi_Click(object sender, RoutedEventArgs e)
         {
             prodaja.NamestajZaProdajuId.Add(izabraniNamestaj.Id);
+            izabraniNamestaj.KolicinaUMagacinu = izabraniNamestaj.KolicinaUMagacinu - 1;
+            if (izabraniNamestaj.KolicinaUMagacinu == 0)
+            {
+                izabraniNamestaj.Obrisan = true;
+                Namestaj.IzmeniNamestaj(izabraniNamestaj);
+            }
+            else
+            {
+                Namestaj.IzmeniNamestaj(izabraniNamestaj);
+            }    
             Close();
         }
 

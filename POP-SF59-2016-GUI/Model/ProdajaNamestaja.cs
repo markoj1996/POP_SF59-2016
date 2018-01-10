@@ -276,8 +276,8 @@ namespace POP_SF59_2016.Model
                     foreach (var pn in n.DodatneUsluge)
                     {
                         SqlCommand command5 = conn.CreateCommand();
-                        command5.CommandText = @"INSERT INTO USLUGEPRODAJE (ID,DODATNEUSLUGAID,PRODAJAID) VALUES (@Idp,@UslugaID,@ProdajaID)";
-                        command5.Parameters.Add(new SqlParameter("@IDp", id2));
+                        command5.CommandText = @"INSERT INTO USLUGEPRODAJE (ID,DODATNEUSLUGAID,PRODAJAID) VALUES (@Id,@UslugaID,@ProdajaID)";
+                        command5.Parameters.Add(new SqlParameter("@ID", id2));
                         command5.Parameters.Add(new SqlParameter("@UslugaID", pn));
                         command5.Parameters.Add(new SqlParameter("@ProdajaID", n.Id));
                         command5.ExecuteNonQuery();
